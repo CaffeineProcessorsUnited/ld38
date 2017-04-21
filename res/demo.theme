@@ -1,0 +1,182 @@
+theme demoTheme
+{
+    texture = res/png/image.png
+    cursor demoThemeCursor
+    {
+        region = 10, 10, 10, 10
+        color = #FFFFFFFF
+    }
+
+    image checked
+    {
+        region = 0, 0, 16, 16
+        color = #F0F0F0FF
+    }
+    image unchecked
+    {
+        region = 0, 0, 16, 16
+        color = #FFFFFFFF
+    }
+
+    imageList demoThemeImage
+    {
+        color = #FFFFFFFF
+        image = checked, unchecked
+    }
+    skin demoThemeSkin
+    {
+        border
+        {
+            top = 0
+            bottom = 16
+            left = 0
+            right = 16
+        }
+        region = 0, 0, 16, 16
+        color = #FFFFFFFF
+    }
+    style demoThemeStyle
+    {
+        margin
+        {
+            top = 0
+            bottom = 0
+            left = 0
+            right = 0
+        }
+        padding
+        {
+            top = 0
+            bottom = 0
+            left = 0
+            right = 0
+        }
+        stateNormal
+        {
+            skin = demoThemeSkin
+            imageList = demoThemeImage
+            cursor = demoThemeCursor
+            font = res/roboto.gpb
+            fontSize = 16
+            textColor = #FFFFFFFF
+            textAlignment = ALIGN_VCENTER_LEFT
+            rightToLeft = false
+            opacity = 1
+        }
+        stateFocus
+        {
+            skin = demoThemeSkin
+            imageList = demoThemeImage
+            cursor = demoThemeCursor
+            font = res/roboto.gpb
+            fontSize = 16
+            textColor = #00FFFFFF
+            textAlignment = ALIGN_VCENTER_LEFT
+            rightToLeft = false
+            opacity = 1
+        }
+        stateActive
+        {
+            skin = demoThemeSkin
+            imageList = demoThemeImage
+            cursor = demoThemeCursor
+            font = res/roboto.gpb
+            fontSize = 16
+            textColor = #FF00FFFF
+            textAlignment = ALIGN_VCENTER_LEFT
+            rightToLeft = false
+            opacity = 1
+        }
+        stateDisabled
+        {
+            skin = demoThemeSkin
+            imageList = demoThemeImage
+            cursor = demoThemeCursor
+            font = res/roboto.gpb
+            fontSize = 16
+            textColor = #FFFF00FF
+            textAlignment = ALIGN_VCENTER_LEFT
+            rightToLeft = false
+            opacity = 1
+        }
+    }
+
+        skin demoThemeSkinTransparent
+        {
+            border
+            {
+                top = 0
+                bottom = 16
+                left = 0
+                right = 16
+            }
+            region = 0, 0, 16, 16
+            color = #FFFFFF00
+        }
+
+        style demoThemeStyleTransparent
+        {
+            margin
+            {
+                top = 0
+                bottom = 0
+                left = 0
+                right = 0
+            }
+            padding
+            {
+                top = 0
+                bottom = 0
+                left = 0
+                right = 0
+            }
+            stateNormal
+            {
+                skin = demoThemeSkinTransparent
+                imageList = demoThemeImage
+                cursor = demoThemeCursor
+                font = res/roboto.gpb
+                fontSize = 16
+                textColor = #00000000
+                textAlignment = ALIGN_VCENTER_LEFT
+                rightToLeft = false
+                opacity = 1
+            }
+            stateFocus
+            {
+                skin = demoThemeSkinTransparent
+                imageList = demoThemeImage
+                cursor = demoThemeCursor
+                font = res/roboto.gpb
+                fontSize = 16
+                textColor = #00000000
+                textAlignment = ALIGN_VCENTER_LEFT
+                rightToLeft = false
+                opacity = 1
+            }
+            stateActive
+            {
+                skin = demoThemeSkinTransparent
+                imageList = demoThemeImage
+                cursor = demoThemeCursor
+                font = res/roboto.gpb
+                fontSize = 16
+                textColor = #00000000
+                textAlignment = ALIGN_VCENTER_LEFT
+                rightToLeft = false
+                opacity = 1
+            }
+            stateDisabled
+            {
+                skin = demoThemeSkinTransparent
+                imageList = demoThemeImage
+                cursor = demoThemeCursor
+                font = res/roboto.gpb
+                fontSize = 16
+                textColor = #00000000
+                textAlignment = ALIGN_VCENTER_LEFT
+                rightToLeft = false
+                opacity = 1
+            }
+        }
+}

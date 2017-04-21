@@ -1,0 +1,29 @@
+form demo
+{
+    // Form properties.
+    theme                  = res/demo.theme
+    layout                 = LAYOUT_FLOW
+    style                  = demoThemeStyleTransparent
+    position               = 200, 200
+    alignment              = ALIGN_VCENTER_LEFT
+    size                   = 500, 500
+    autoWidth              = false
+    autoHeight             = false
+    width                  = 500
+    height                 = 500
+    consumeInputEvents     = false
+
+    // All the Controls within this Form.
+    container mainContainer {
+        style               = demoThemeStyleTransparent
+        consumeInputEvents  = false
+
+        label mainLabel {
+            text               = "HALLO WELT"
+            position           = 200, 200
+            style              = demoThemeStyle
+            consumeInputEvents = true
+        }
+    }
+
+}
