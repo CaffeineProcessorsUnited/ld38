@@ -197,6 +197,9 @@ set(GAME_SRC
     src/gamelogic/WorldObjectSingle.cpp
     src/gamelogic/WorldObjectSingle.h
     src/gamelogic/WorldResource.h
+    src/gamelogic/WorldObjectAction.h
+    src/gamelogic/ActionSelector.h
+    src/gamelogic/ActionSelector.cpp
     src/worldobjects/RainbowTree.cpp
     src/worldobjects/RainbowTree.h
     src/fw_decl.h
