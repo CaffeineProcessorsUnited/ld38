@@ -7,7 +7,7 @@
 
 #include "src/gamelogic/World.h"
 #include "src/worldobjects/RandomCloud.h"
-#include "src/worldobjects/Unicorn.h"
+#include "src/worldobjects/RandomStar.h"
 
 #include "CPU/CPU.h"
 using namespace CPU;
@@ -17,7 +17,8 @@ class TestScreen: public ScreenForm {
     World *world;
     vector<RandomCloud*> clouds;
     RandomCloud *myCloud;
-    Unicorn *unicorn;
+    vector<RandomStar*> stars;
+    RandomStar *myStar;
 public:
     virtual void resize(int width, int height) override;
 
