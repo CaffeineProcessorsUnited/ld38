@@ -74,6 +74,7 @@ bool App::mouseEvent(Mouse::MouseEvent evt, int x, int y, int wheelDelta) {
 }
 
 void App::touchEvent(Touch::TouchEvent evt, int x, int y, unsigned int contactIndex) {
+    manager->touchEvent(evt, x, y, contactIndex);
     if(evt == Touch::TouchEvent::TOUCH_PRESS) {
         manager->mouseEvent(Mouse::MouseEvent::MOUSE_PRESS_LEFT_BUTTON, x, y, 0);
     } else if(evt == Touch::TouchEvent::TOUCH_RELEASE) {

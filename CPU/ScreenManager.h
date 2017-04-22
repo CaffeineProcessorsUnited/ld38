@@ -35,13 +35,18 @@ namespace CPU {
         void keyRelease(Keyboard::Key key);
         void keyChar(Keyboard::Key key);
 
+        void keyEvent(Keyboard::KeyEvent evt, int key);
+
         void mousePress(MouseButton button, int x, int y);
         void mouseRelease(MouseButton button, int x, int y);
         void mouseMove(int x, int y);
         void mouseScrolled(int wheelData);
-
-        void keyEvent(Keyboard::KeyEvent evt, int key);
         void mouseEvent(Mouse::MouseEvent evt, int x, int y, int wheelDelta);
+
+        void touchPress(int x, int y, int contactIndex);
+        void touchRelease(int x, int y, int contactIndex);
+        void touchMove(int x, int y, int contactIndex);
+        void touchEvent(Touch::TouchEvent evt, int x, int y, int contactIndex);
 
         void update(float elapsedTime);
         void render();

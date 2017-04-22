@@ -47,6 +47,20 @@ void ScreenManager::keyChar(Keyboard::Key key) {
     for(auto& elem: screens){elem->keyChar(key);}
 }
 
+void ScreenManager::keyEvent(Keyboard::KeyEvent evt, int key) {
+    switch(evt){
+        case Keyboard::KEY_PRESS:
+            keyPress((Keyboard::Key)key);
+            break;
+        case Keyboard::KEY_RELEASE:
+            keyRelease((Keyboard::Key)key);
+            break;
+        case Keyboard::KEY_CHAR:
+            keyChar((Keyboard::Key)key);
+            break;
+    }
+}
+
 void ScreenManager::mousePress(MouseButton button, int x, int y) {
     for(auto& elem: screens){elem->mousePress(button, x, y);}
 }
@@ -61,20 +75,6 @@ void ScreenManager::mouseMove(int x, int y) {
 
 void ScreenManager::mouseScrolled(int wheelData) {
     for(auto& elem: screens){elem->mouseScrolled(wheelData);}
-}
-
-void ScreenManager::keyEvent(Keyboard::KeyEvent evt, int key) {
-    switch(evt){
-        case Keyboard::KEY_PRESS:
-            keyPress((Keyboard::Key)key);
-            break;
-        case Keyboard::KEY_RELEASE:
-            keyRelease((Keyboard::Key)key);
-            break;
-        case Keyboard::KEY_CHAR:
-            keyChar((Keyboard::Key)key);
-            break;
-    }
 }
 
 void ScreenManager::mouseEvent(Mouse::MouseEvent evt, int x, int y, int wheelDelta) {
@@ -102,6 +102,32 @@ void ScreenManager::mouseEvent(Mouse::MouseEvent evt, int x, int y, int wheelDel
             break;
         case Mouse::MOUSE_WHEEL:
             mouseScrolled(wheelDelta);
+            break;
+    }
+}
+
+void ScreenManager::touchPress(int x, int y, int contactIndex) {
+    for(auto& elem: screens){elem->touchPress(x, y, contactIndex);}
+}
+
+void ScreenManager::touchRelease(int x, int y, int contactIndex) {
+    for(auto& elem: screens){elem->touchRelease(x, y, contactIndex);}
+}
+
+void ScreenManager::touchMove(int x, int y, int contactIndex) {
+    for(auto& elem: screens){elem->touchMove(x, y, contactIndex);}
+}
+
+void ScreenManager::touchEvent(Touch::TouchEvent evt, int x, int y, int contactIndex) {
+    switch(evt){
+        case Touch::TOUCH_PRESS:
+            touchPress(x, y, contactIndex);
+            break;
+        case Touch::TOUCH_RELEASE:
+            touchRelease(x, y, contactIndex);
+            break;
+        case Touch::TOUCH_MOVE:
+            touchMove(x, y, contactIndex);
             break;
     }
 }

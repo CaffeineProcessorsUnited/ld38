@@ -97,6 +97,7 @@ void LD38::touchEvent(Touch::TouchEvent evt, int x, int y, unsigned int contactI
             _wireframe = !_wireframe;
             break;
     };
+    App::touchEvent(evt, x, y, contactIndex);
 }
 
 void LD38::resizeEvent(unsigned int width, unsigned int height) {

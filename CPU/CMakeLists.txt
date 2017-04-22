@@ -21,7 +21,7 @@ set(CPU_SOURCE
         SpriteBatch.cpp
         SpriteBatch.h
         App.cpp App.h
-        )
+        EventHandler.h)
 add_library(CPU SHARED ${CPU_SOURCE})
 
 add_sanitizers(CPU)

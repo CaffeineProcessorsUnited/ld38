@@ -70,6 +70,17 @@ void TestScreen::mouseScrolled(int wheelData) {
     }
 }
 
+void TestScreen::touchPress(int x, int y, unsigned int contactIndex) {
+    world->touchPress(x, y, contactIndex);
+}
+
+void TestScreen::touchRelease(int x, int y, unsigned int contactIndex) {
+    world->touchRelease(x, y, contactIndex);
+}
+
+void TestScreen::touchMove(int x, int y, unsigned int contactIndex) {
+    world->touchMove(x, y, contactIndex);
+}
 
 void TestScreen::resize(int width, int height) {
     ScreenForm::resize(width, height);
