@@ -30,6 +30,7 @@ public:
     ~World();
 
     constexpr static unsigned int MAX_LAYERS = 10;
+    constexpr static float MAX_HEIGHT= 4200;
     static float RADIUS;
     constexpr static float SPEED = 3.337;
     constexpr static float DAYTIME = 20;

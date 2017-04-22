@@ -27,9 +27,6 @@ public:
     virtual void update(float time_delta) = 0;
 
     virtual void draw() = 0;
-
-
-
 };
 
 #endif // WorldObject_h_INCLUDED
