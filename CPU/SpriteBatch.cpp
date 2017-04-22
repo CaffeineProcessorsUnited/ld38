@@ -10,7 +10,7 @@ CPU::SpriteBatch::SpriteBatch(std::string path) {
 
     pos = Vector3::zero();
     scale = Vector2::zero();
-    rotationPoint = Vector2(2.5, 1.5);
+    rotationPoint = Vector2(0.5, 0.5);
     rotationRad = 0;
 
     recreate();

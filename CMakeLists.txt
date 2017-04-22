@@ -184,8 +184,10 @@ set(GAME_SRC
     src/gamelogic/World.h
     src/gamelogic/WorldObject.cpp
     src/gamelogic/WorldObject.h
-        src/entities/WorldObjectCloud.cpp
-        src/entities/WorldObjectCloud.h
+    src/entities/WorldObjectCloud.cpp
+    src/entities/WorldObjectCloud.h
+    src/gamelogic/WorldObjectSingle.cpp
+    src/gamelogic/WorldObjectSingle.h
     src/gamelogic/WorldResource.h
     ${CPU_SOURCE}
 )

@@ -5,22 +5,15 @@
 #ifndef LD38_WORLDOBJECTCLOUD_H
 #define LD38_WORLDOBJECTCLOUD_H
 
-#include "src/gamelogic/WorldObject.h"
+#include "src/gamelogic/WorldObjectSingle.h"
+#include "src/gamelogic/World.h"
 
-#include "CPU/SpriteBatch.h"
-
-class WorldObjectCloud: public WorldObject {
+class WorldObjectCloud: public WorldObjectSingle {
 protected:
     constexpr static float minSpeed = -0.5f;
     constexpr static float maxSpeed = 0.5f;
-    float speed;
-    CPU::SpriteBatch* batch;
 public:
     WorldObjectCloud(World *world);
-    virtual void update(float time_delta) override;
-    virtual void draw() override;
-    virtual void resize(unsigned int width, unsigned int height) override ;
-
 };
 
 
