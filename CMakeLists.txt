@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-PROJECT(LDTest)
+PROJECT(LD38)
 
 option(SANITIZE_ADDRESS "" On)
 
@@ -8,7 +8,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/" ${CMAKE_MODULE_PATH})
 add_subdirectory(CPU)
 find_library(CPU REQUIRED)
 
-set(GAME_NAME LDTest)
+set(GAME_NAME LD38)
 
 if( CMAKE_SIZEOF_VOID_P EQUAL 8 )
     set(ARCH_DIR "x64" )
@@ -176,8 +176,8 @@ source_group(res FILES ${GAME_RES} ${GAMEPLAY_RES} ${GAME_RES_SHADERS} ${GAME_RE
 source_group(src FILES ${GAME_SRC})
 
 set(GAME_SRC
-	src/LDTest.cpp
-	src/LDTest.h
+        src/LD38.cpp
+        src/LD38.h
     src/Screens/TestScreen.cpp
     src/Screens/TestScreen.h
     ${CPU_SOURCE}

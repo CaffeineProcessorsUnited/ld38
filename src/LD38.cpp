@@ -1,9 +1,9 @@
-#include "LDTest.h"
+#include "LD38.h"
 
 // Declare our game instance
-LDTest game;
+LD38 game;
 
-LDTest::LDTest():
+LD38::LD38():
     App(),
     _scene(NULL),
     _wireframe(false),
@@ -11,7 +11,7 @@ LDTest::LDTest():
 {
 }
 
-void LDTest::initialize()
+void LD38::initialize()
 {
     App::initialize();
 
@@ -30,13 +30,13 @@ void LDTest::initialize()
     testScreen = getScreenManager()->createScreen<TestScreen>(BACK, true);
 
     setShowFPS(true);
-    Game::setVsync(false);
+    Game::setVsync(true);
 
     App::postInitialize();
     resizeEvent(game.getWidth(), game.getHeight());
 }
 
-void LDTest::finalize()
+void LD38::finalize()
 {
     App::finalize();
 
@@ -44,7 +44,7 @@ void LDTest::finalize()
     SAFE_RELEASE(testScreen);
 }
 
-void LDTest::update(float elapsedTime)
+void LD38::update(float elapsedTime)
 {
     if(!isInitialized())
         return;
@@ -53,18 +53,18 @@ void LDTest::update(float elapsedTime)
     _scene->findNode("box")->rotateY(MATH_DEG_TO_RAD((float)elapsedTime / 1000.0f * 180.0f));
 }
 
-void LDTest::preRender() {
+void LD38::preRender() {
     App::preRender();
 
-    _scene->visit(this, &LDTest::drawScene);
+    _scene->visit(this, &LD38::drawScene);
 }
 
-void LDTest::render(float elapsedTime)
+void LD38::render(float elapsedTime)
 {
     App::render(elapsedTime);
 }
 
-bool LDTest::drawScene(Node* node)
+bool LD38::drawScene(Node* node)
 {
     // If the node visited contains a drawable object, draw it
     Drawable* drawable = node->getDrawable();
@@ -74,7 +74,7 @@ bool LDTest::drawScene(Node* node)
     return true;
 }
 
-void LDTest::keyEvent(Keyboard::KeyEvent evt, int key)
+void LD38::keyEvent(Keyboard::KeyEvent evt, int key)
 {
     App::keyEvent(evt,key);
 
@@ -89,7 +89,7 @@ void LDTest::keyEvent(Keyboard::KeyEvent evt, int key)
     }
 }
 
-void LDTest::touchEvent(Touch::TouchEvent evt, int x, int y, unsigned int contactIndex)
+void LD38::touchEvent(Touch::TouchEvent evt, int x, int y, unsigned int contactIndex)
 {
     switch (evt)
     {
@@ -99,7 +99,7 @@ void LDTest::touchEvent(Touch::TouchEvent evt, int x, int y, unsigned int contac
     };
 }
 
-void LDTest::resizeEvent(unsigned int width, unsigned int height) {
+void LD38::resizeEvent(unsigned int width, unsigned int height) {
     App::resizeEvent(width, height);
 }
 
