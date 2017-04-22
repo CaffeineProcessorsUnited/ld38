@@ -13,7 +13,6 @@ namespace CPU {
         gameplay::SpriteBatch *batch;
     protected:
         gameplay::SpriteBatch *getBatch() const;
-        Rectangle src;
         std::string path;
 
     public:
@@ -22,10 +21,13 @@ namespace CPU {
         ~SpriteBatch();
         void recreate();
 
-        Rectangle pos;
+        Vector3 pos;
+        Rectangle src;
+        Vector2 scale;
+        Vector2 rotationPoint;
+        float rotationRad;
 
         void draw();
-        void draw(const Rectangle &pos);
     };
 }
 
