@@ -21,6 +21,7 @@ private:
     Vector2 _offset;
 public:
     World();
+    ~World();
 
     constexpr static unsigned int MAX_LAYERS = 10;
     constexpr static float RADIUS = 42;

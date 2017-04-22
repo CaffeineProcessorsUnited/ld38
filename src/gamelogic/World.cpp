@@ -6,6 +6,11 @@ World::World():
 {
 }
 
+World::~World() {
+    resources.clear();
+    objects.clear();
+}
+
 vector<WorldResource *> & World::getResources() {
     return resources;
 }
