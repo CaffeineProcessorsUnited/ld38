@@ -6,7 +6,9 @@
 
 TestScreen::TestScreen(ScreenManager *parent) :
         ScreenForm(parent),
-        _batch(NULL)
+        _batch(NULL),
+        world(NULL),
+        cloud(NULL)
 {
 }
 
@@ -17,6 +19,9 @@ void TestScreen::initialize() {
 
     loadForm("res/demo.form");
     registerFormControl("mainLabel");
+
+    world = new World();
+    cloud = world->spawn<WorldObjectCloud>();
 }
 
 void TestScreen::finalize() {
@@ -28,6 +33,8 @@ void TestScreen::update(float elapsedTime) {
         return;
     ScreenForm::update(elapsedTime);
     _batch->rotationRad += 0.1;
+
+    world->update(elapsedTime);
 }
 
 void TestScreen::render() {
@@ -35,6 +42,7 @@ void TestScreen::render() {
         return;
     _batch->draw();
     ScreenForm::render();
+    world->draw();
 }
 
 void TestScreen::keyRelease(Keyboard::Key key) {
@@ -65,5 +73,6 @@ void TestScreen::mouseScrolled(int wheelData) {
 void TestScreen::resize(int width, int height) {
     ScreenForm::resize(width, height);
     _batch->recreate();
+    world->resize(width, height);
 }
 

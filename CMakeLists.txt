@@ -178,15 +178,16 @@ source_group(src FILES ${GAME_SRC})
 set(GAME_SRC
         src/LD38.cpp
         src/LD38.h
-        src/Screens/TestScreen.cpp
-        src/Screens/TestScreen.h
-        src/gamelogic/World.cpp
-        src/gamelogic/World.h
-        src/gamelogic/WorldObject.cpp
-        src/gamelogic/WorldObject.h
-        src/gamelogic/WorldResource.cpp
-        src/gamelogic/WorldResource.h
-        ${CPU_SOURCE}
+    src/Screens/TestScreen.cpp
+    src/Screens/TestScreen.h
+    src/gamelogic/World.cpp
+    src/gamelogic/World.h
+    src/gamelogic/WorldObject.cpp
+    src/gamelogic/WorldObject.h
+    src/gamelogic/WorldObjectCloud.cpp
+    src/gamelogic/WorldObjectCloud.h
+    src/gamelogic/WorldResource.h
+    ${CPU_SOURCE}
 )
 
 find_package(Sanitizers)

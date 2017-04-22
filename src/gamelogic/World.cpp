@@ -6,8 +6,6 @@ World::World():
 {
 }
 
-const float World::WORLD_RADIUS = 42;
-
 vector<WorldResource *> & World::getResources() {
     return resources;
 }
@@ -24,4 +22,13 @@ void World::draw() {
     for(WorldObject *obj: objects){
         obj->draw();
     }
+}
+
+void World::resize(int width, int height) {
+    _offset.x = width/2;
+    _offset.y = height/2;
+}
+
+Vector2 World::offset() {
+    return _offset;
 }

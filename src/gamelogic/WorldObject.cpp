@@ -5,4 +5,3 @@ WorldObject::WorldObject(World *world):
     pos(0,0,0)
 {
 }
-

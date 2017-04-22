@@ -5,11 +5,16 @@
 #ifndef LDTEST_TESTSCREEN_H
 #define LDTEST_TESTSCREEN_H
 
+#include "src/gamelogic/World.h"
+#include "src/gamelogic/WorldObjectCloud.h"
+
 #include "CPU/CPU.h"
 using namespace CPU;
 
 class TestScreen: public ScreenForm {
     CPU::SpriteBatch *_batch;
+    World *world;
+    WorldObjectCloud *cloud;
 public:
     virtual void resize(int width, int height) override;
 
