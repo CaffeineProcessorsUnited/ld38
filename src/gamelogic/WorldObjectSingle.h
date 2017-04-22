@@ -17,7 +17,7 @@ public:
     virtual ~WorldObjectSingle();
     virtual void update(float time_delta) override;
     virtual void draw() override;
-    virtual void resize(unsigned int width, unsigned int height) override ;
+    virtual void resize(unsigned int width, unsigned int height) override;
     virtual void setSpeed(float speed);
 };
 

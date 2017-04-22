@@ -2,13 +2,9 @@
 #define WorldObject_h_INCLUDED
 
 #ifndef World_h_INCLUDED
-
 class WorldObject;
-
 #include "World.h"
-
 #endif
-
 
 struct WorldPos {
     float rad;

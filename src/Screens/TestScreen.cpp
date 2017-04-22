@@ -21,7 +21,7 @@ void TestScreen::initialize() {
     registerFormControl("mainLabel");
 
     world = new World();
-    cloud = world->spawn<WorldObjectCloud>();
+    cloud = world->spawn<Cloud>();
     cloud->pos.height = 128;
 }
 

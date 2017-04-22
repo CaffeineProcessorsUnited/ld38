@@ -1,11 +1,11 @@
 #include <random>
 using namespace std;
 
-#include "WorldObjectCloud.h"
+#include "Cloud.h"
 #include "gameplay.h"
 using namespace gameplay;
 
-WorldObjectCloud::WorldObjectCloud(World *world):
+Cloud::Cloud(World *world):
     WorldObjectSingle(world)
 {
     std::default_random_engine generator;

@@ -13,6 +13,10 @@ class World;
 #endif
 
 #include "WorldResource.h"
+#ifndef LD38_BACKGROUND_H
+class World;
+#include "src/worldobjects/Background.h"
+#endif
 
 #include "CPU/SpriteBatch.h"
 
@@ -22,13 +26,15 @@ private:
     vector<WorldObject *> objects;
     Vector2 _offset;
     CPU::SpriteBatch *batch, *batch2, *batch3;
+    Background *background;
 public:
     World();
     ~World();
 
     constexpr static unsigned int MAX_LAYERS = 10;
-    constexpr static float RADIUS = 42;
+    constexpr static float RADIUS = 512;
     constexpr static float SPEED = 1.337;
+    constexpr static float DAYTIME = 10;
     vector<WorldResource *> &getResources();
     vector<WorldObject *> &getObjects();
 
@@ -37,6 +43,7 @@ public:
 
     void resize(unsigned int width, unsigned int height);
     Vector2 offset();
+    Vector2 size;
 
     template<typename T>
     T* spawn() {

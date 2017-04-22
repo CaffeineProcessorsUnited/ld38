@@ -12,6 +12,7 @@ CPU::SpriteBatch::SpriteBatch(std::string path) {
     scale = Vector2::zero();
     rotationPoint = Vector2(0.5, 0.5);
     rotationRad = 0;
+    color = Vector4::one();
 
     recreate();
 }
@@ -24,7 +25,7 @@ CPU::SpriteBatch::~SpriteBatch() {
 
 void CPU::SpriteBatch::draw() {
     getBatch()->start();
-    getBatch()->draw(Vector3(pos.x - scale.x / 2.f, pos.y - scale.y / 2.f, pos.z), src, scale, gameplay::Vector4::one(), rotationPoint, rotationRad);
+    getBatch()->draw(Vector3(pos.x - scale.x / 2.f, pos.y - scale.y / 2.f, pos.z), src, scale, color, rotationPoint, rotationRad);
     getBatch()->finish();
 }
 

@@ -26,6 +26,7 @@ namespace CPU {
         Rectangle src;
         Vector2 scale;
         Vector2 rotationPoint;
+        Vector4 color;
         float rotationRad;
 
         void draw();
