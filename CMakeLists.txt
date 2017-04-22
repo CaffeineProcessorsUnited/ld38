@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 PROJECT(LDTest)
 
-option(SANITIZE_ADDRESS "" Off)
+option(SANITIZE_ADDRESS "" On)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/" ${CMAKE_MODULE_PATH})
