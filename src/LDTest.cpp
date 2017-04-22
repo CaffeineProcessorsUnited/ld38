@@ -33,6 +33,7 @@ void LDTest::initialize()
     Game::setVsync(false);
 
     App::postInitialize();
+    resizeEvent(game.getWidth(), game.getHeight());
 }
 
 void LDTest::finalize()

@@ -108,11 +108,11 @@ bool App::isShowFPS() const {
 }
 
 void App::resizeEvent(unsigned int width, unsigned int height) {
-    if(!initialized)
-        return;
     Game::resizeEvent(width, height);
     Game::getInstance()->setViewport(Rectangle(width, height));
 
+    if(!initialized)
+        return;
     manager->resize(width,height);
 }
 
