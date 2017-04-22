@@ -12,6 +12,11 @@ World::World():
     batch2->scale.set(4,4);
 }
 
+World::~World() {
+    resources.clear();
+    objects.clear();
+}
+
 vector<WorldResource *> & World::getResources() {
     return resources;
 }

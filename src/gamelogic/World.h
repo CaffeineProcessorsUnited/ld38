@@ -24,6 +24,7 @@ private:
     CPU::SpriteBatch *batch, *batch2;
 public:
     World();
+    ~World();
 
     constexpr static unsigned int MAX_LAYERS = 10;
     constexpr static float RADIUS = 42;
