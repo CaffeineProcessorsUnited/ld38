@@ -37,7 +37,7 @@ vector<WorldObject *> & World::getObjects() {
 void World::update(float time_delta) {
     if (fabs(rotateV) > 0.000005) {
         cout << rotateV << endl;
-        batch->rotationRad += rotateV * time_delta;
+        rotate(rotateV * time_delta);
         rotateV *= 0.85;
     }
     background->update(time_delta);
@@ -79,15 +79,18 @@ void World::resize(unsigned int width, unsigned int height) {
 
 void World::rotate(float rad) {
     batch->rotationRad += rad;
+    for(WorldObject* obj: objects){
+        obj->pos.rad -= rad;
+        if(obj->pos.rad > 2*M_PI){
+            obj->pos.rad -= 2*M_PI;
+        } else if(obj->pos.rad < -2*M_PI){
+            obj->pos.rad += 2*M_PI;
+        }
+    }
 }
 
 void World::touchPress(int x, int y, unsigned int contactIndex) {
     dragStart.set(x, y);
-}
-
-void World::touchRelease(int x, int y, unsigned int contactIndex) {
-    cout << "release" << endl;
-    //rotate(-rotateV);
 }
 
 void World::touchMove(int x, int y, unsigned int contactIndex) {
@@ -97,7 +100,6 @@ void World::touchMove(int x, int y, unsigned int contactIndex) {
     n.cross(b);
     rotateV += n.z / 36000 * SPEED;
     cout << rotateV << endl;
-    //rotate(rotateV);
     dragStart.set(x, y);
 }
 

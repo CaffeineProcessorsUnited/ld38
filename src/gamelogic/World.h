@@ -44,7 +44,6 @@ public:
     void rotate(float rad);
 
     virtual void touchPress(int x, int y, unsigned int contactIndex) override;
-    virtual void touchRelease(int x, int y, unsigned int contactIndex) override;
     virtual void touchMove(int x, int y, unsigned int contactIndex) override;
 
     Vector2 offset();

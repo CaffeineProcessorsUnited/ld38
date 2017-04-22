@@ -184,15 +184,17 @@ set(GAME_SRC
     src/gamelogic/World.h
     src/gamelogic/WorldObject.cpp
     src/gamelogic/WorldObject.h
-    src/worldobjects/Cloud.cpp
-    src/worldobjects/Cloud.h
-        src/worldobjects/RandomCloud.cpp
-        src/worldobjects/RandomCloud.h
-    src/worldobjects/Background.cpp
-    src/worldobjects/Background.h
     src/gamelogic/WorldObjectSingle.cpp
     src/gamelogic/WorldObjectSingle.h
     src/gamelogic/WorldResource.h
+    src/worldobjects/Cloud.cpp
+    src/worldobjects/Cloud.h
+    src/worldobjects/RandomCloud.cpp
+    src/worldobjects/RandomCloud.h
+    src/worldobjects/Background.cpp
+    src/worldobjects/Background.h
+    src/worldobjects/Unicorn.h
+    src/worldobjects/Unicorn.cpp
     src/fw_decl.h
     ${CPU_SOURCE}
 )

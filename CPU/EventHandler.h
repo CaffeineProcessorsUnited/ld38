@@ -14,6 +14,7 @@ namespace CPU {
     using namespace gameplay;
 
     class EventHandler {
+    public:
         virtual void keyPress(Keyboard::Key key) {};
         virtual void keyRelease(Keyboard::Key key) {};
         virtual void keyChar(Keyboard::Key key) {};
