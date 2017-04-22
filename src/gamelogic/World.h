@@ -30,7 +30,7 @@ public:
     ~World();
 
     constexpr static unsigned int MAX_LAYERS = 10;
-    constexpr static float RADIUS = 512;
+    static float RADIUS;
     constexpr static float SPEED = 1.337;
     constexpr static float DAYTIME = 20;
     vector<WorldResource *> &getResources();

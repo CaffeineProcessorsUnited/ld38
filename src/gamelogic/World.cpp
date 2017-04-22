@@ -1,5 +1,7 @@
 #include "World.h"
 
+float World::RADIUS = 512;
+
 World::World():
     resources(),
     objects()
@@ -58,12 +60,21 @@ void World::draw() {
 
 void World::resize(unsigned int width, unsigned int height) {
     size.set(width, height);
+    float w = max(size.x - 400,500.f);
+    float h = max(size.x - 0.5f*sqrt(4*size.x*size.x - w*w),height/3.f);
     _offset.x = size.x/2.f;
-    _offset.y = size.y;
+    _offset.y = 1.5f*height-h;
     background->resize(size.x, size.y);
     for(WorldObject *obj: objects){
         obj->resize(size.x, size.y);
     }
+
+    cout << w << " " << h << " " << width << " " << height << " " << _offset.y << endl;
+
+    RADIUS = w/2.f;
+    batch->recreate();
+    batch->scale.set(w,w);
+    batch->rotationPoint.set(0.5, 0.5);
 }
 
 void World::rotate(float rad) {
