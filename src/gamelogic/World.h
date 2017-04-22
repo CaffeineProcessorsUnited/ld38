@@ -42,6 +42,8 @@ public:
     void resize(unsigned int width, unsigned int height);
     void rotate(float rad);
 
+    virtual void mouseScrolled(int wheelData) override;
+
     virtual void touchPress(int x, int y, unsigned int contactIndex) override;
     virtual void touchMove(int x, int y, unsigned int contactIndex) override;
 

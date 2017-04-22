@@ -36,7 +36,6 @@ vector<WorldObject *> & World::getObjects() {
 
 void World::update(float time_delta) {
     if (fabs(rotateV) > 0.000005) {
-        cout << rotateV << endl;
         rotate(rotateV * time_delta);
         rotateV *= 0.85;
     }
@@ -101,6 +100,13 @@ void World::touchMove(int x, int y, unsigned int contactIndex) {
     rotateV += n.z / 36000 * SPEED;
     cout << rotateV << endl;
     dragStart.set(x, y);
+}
+
+void World::mouseScrolled(int wheelData) {
+    if(wheelData != 0){
+        cout << wheelData << endl;
+        rotateV += wheelData * SPEED / 6;
+    }
 }
 
 Vector2 World::offset() {
