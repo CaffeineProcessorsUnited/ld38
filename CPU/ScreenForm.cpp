@@ -40,7 +40,6 @@ void ScreenForm::render() {
 
 void ScreenForm::resize(int width, int height) {
     Screen::resize(width, height);
-    //form->setSize(width, height);
 }
 
 

@@ -31,6 +31,8 @@ void LDTest::initialize()
 
     setShowFPS(true);
     Game::setVsync(false);
+
+    App::postInitialize();
 }
 
 void LDTest::finalize()

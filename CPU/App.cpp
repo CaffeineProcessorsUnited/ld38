@@ -24,6 +24,7 @@ ScreenManager* App::getScreenManager() {
 void App::initialize() {
     Game::initialize();
 
+    initialized = true;
     manager = new ScreenManager();
     fontFPS = Font::create("res/roboto.gpb");
 
@@ -107,10 +108,16 @@ bool App::isShowFPS() const {
 }
 
 void App::resizeEvent(unsigned int width, unsigned int height) {
+    if(!initialized)
+        return;
     Game::resizeEvent(width, height);
     Game::getInstance()->setViewport(Rectangle(width, height));
 
     manager->resize(width,height);
+}
+
+void App::postInitialize() {
+    initialized = true;
 }
 
 

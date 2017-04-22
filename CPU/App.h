@@ -13,11 +13,13 @@ namespace CPU {
         bool showFPS;
         Font *fontFPS;
         ScreenManager *manager;
+        bool initialized;
     protected:
         ScreenManager* getScreenManager();
 
         //Override this to initialize GamePlay elements. DO NOT initialize those in the constructor
         virtual void initialize() override;
+        virtual void postInitialize();
 
         //Override this to destroy GamePlay elements. DO NOT destroy those in the destructor
         virtual void finalize() override;
