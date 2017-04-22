@@ -8,6 +8,7 @@
 #include "gameplay.h"
 
 namespace CPU {
+    using namespace std;
     using namespace gameplay;
     class SpriteBatch {
         gameplay::SpriteBatch *batch;

@@ -9,7 +9,7 @@ CPU::SpriteBatch::SpriteBatch(std::string path) {
     batch = NULL;
 
     pos = Vector3::zero();
-    scale = Vector2::one();
+    scale = Vector2::zero();
     rotationPoint = Vector2(2.5, 1.5);
     rotationRad = 0;
 
@@ -24,7 +24,7 @@ CPU::SpriteBatch::~SpriteBatch() {
 
 void CPU::SpriteBatch::draw() {
     getBatch()->start();
-    getBatch()->draw(pos, src, scale, gameplay::Vector4::one(), rotationPoint, rotationRad);
+    getBatch()->draw(Vector3(pos.x - scale.x / 2.f, pos.y - scale.y / 2.f, pos.z), src, scale, gameplay::Vector4::one(), rotationPoint, rotationRad);
     getBatch()->finish();
 }
 

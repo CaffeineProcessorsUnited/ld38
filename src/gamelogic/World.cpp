@@ -10,6 +10,11 @@ World::World():
 
     batch2 = new CPU::SpriteBatch("@image");
     batch2->scale.set(4,4);
+
+    batch3 = new CPU::SpriteBatch("@circle");
+    //batch3->scale.set(4,4);
+
+
 }
 
 World::~World() {
@@ -27,6 +32,7 @@ vector<WorldObject *> & World::getObjects() {
 void World::update(float time_delta) {
     batch->pos.set(_offset.x, _offset.y, 1);
     batch2->pos.set(_offset.x, _offset.y, 1);
+    batch3->pos.set(_offset.x, _offset.y, 1);
     batch->rotationRad += SPEED * time_delta;
     for(WorldObject *obj: objects){
         obj->update(time_delta);
@@ -35,14 +41,18 @@ void World::update(float time_delta) {
 void World::draw() {
     //batch->draw();
     batch2->draw();
+    batch3->draw();
     for(WorldObject *obj: objects){
         obj->draw();
     }
 }
 
-void World::resize(int width, int height) {
+void World::resize(unsigned int width, unsigned int height) {
     _offset.x = width/2;
     _offset.y = height/2;
+    for(WorldObject *obj: objects){
+        obj->resize(width, height);
+    }
 }
 
 Vector2 World::offset() {

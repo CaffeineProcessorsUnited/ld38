@@ -22,6 +22,7 @@ void TestScreen::initialize() {
 
     world = new World();
     cloud = world->spawn<WorldObjectCloud>();
+    cloud->pos.height = 128;
 }
 
 void TestScreen::finalize() {

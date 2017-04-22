@@ -21,7 +21,7 @@ private:
     vector<WorldResource *> resources;
     vector<WorldObject *> objects;
     Vector2 _offset;
-    CPU::SpriteBatch *batch, *batch2;
+    CPU::SpriteBatch *batch, *batch2, *batch3;
 public:
     World();
     ~World();
@@ -35,7 +35,7 @@ public:
     virtual void update(float time_delta);
     virtual void draw();
 
-    void resize(int width, int height);
+    void resize(unsigned int width, unsigned int height);
     Vector2 offset();
 
     template<typename T>
