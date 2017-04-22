@@ -33,7 +33,6 @@ Background::Background(World *world):
     
     batch = new CPU::SpriteBatch("@white");
     batch->scale.set(world->size.x, world->size.y);
-    cout << colors.size() << endl;
     current = 0;
     next = 0;
     if (colors.size() > 1) {

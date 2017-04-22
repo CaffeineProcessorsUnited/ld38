@@ -2,6 +2,7 @@
 // Created by niels on 17.04.17.
 //
 
+#include <src/worldobjects/RainbowTree.h>
 #include "TestScreen.h"
 
 TestScreen::TestScreen(ScreenManager *parent) :
@@ -25,6 +26,10 @@ void TestScreen::initialize() {
         myCloud = world->spawn<RandomCloud>();
         clouds.push_back(myCloud);
     }
+    RainbowTree* tree = world->spawn<RainbowTree>();
+    tree->pos.rad = 0;
+    tree->pos.height = 20;
+    tree->pos.zindex = 1;
 
     unicorn = world->spawn<Unicorn>();
 }
