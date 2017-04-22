@@ -195,6 +195,11 @@ set(GAME_SRC
     src/worldobjects/Background.h
     src/worldobjects/Unicorn.h
     src/worldobjects/Unicorn.cpp
+    src/gamelogic/WorldObjectSingle.cpp
+    src/gamelogic/WorldObjectSingle.h
+    src/gamelogic/WorldResource.h
+        src/worldobjects/RainbowTree.cpp
+        src/worldobjects/RainbowTree.h
     src/fw_decl.h
     ${CPU_SOURCE}
 )
