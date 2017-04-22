@@ -48,7 +48,7 @@ void LD38::update(float elapsedTime)
 {
     if(!isInitialized())
         return;
-    App::update(elapsedTime);
+    App::update(elapsedTime / 1000.0f); // Turn into seconds
 
     _scene->findNode("box")->rotateY(MATH_DEG_TO_RAD((float)elapsedTime / 1000.0f * 180.0f));
 }

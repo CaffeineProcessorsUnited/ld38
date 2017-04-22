@@ -14,16 +14,20 @@ class World;
 
 #include "WorldResource.h"
 
+#include "CPU/SpriteBatch.h"
+
 class World {
 private:
     vector<WorldResource *> resources;
     vector<WorldObject *> objects;
     Vector2 _offset;
+    CPU::SpriteBatch *batch, *batch2;
 public:
     World();
 
     constexpr static unsigned int MAX_LAYERS = 10;
     constexpr static float RADIUS = 42;
+    constexpr static float SPEED = 1.337;
     vector<WorldResource *> &getResources();
     vector<WorldObject *> &getObjects();
 

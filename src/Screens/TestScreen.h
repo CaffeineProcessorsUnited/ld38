@@ -6,7 +6,7 @@
 #define LDTEST_TESTSCREEN_H
 
 #include "src/gamelogic/World.h"
-#include "src/gamelogic/WorldObjectCloud.h"
+#include "src/entities/WorldObjectCloud.h"
 
 #include "CPU/CPU.h"
 using namespace CPU;

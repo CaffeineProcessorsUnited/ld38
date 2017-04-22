@@ -5,7 +5,7 @@
 #ifndef LD38_WORLDOBJECTCLOUD_H
 #define LD38_WORLDOBJECTCLOUD_H
 
-#include "WorldObject.h"
+#include "src/gamelogic/WorldObject.h"
 
 #include "CPU/SpriteBatch.h"
 
