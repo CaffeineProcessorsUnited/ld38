@@ -35,8 +35,7 @@ void WorldObjectSingle::update(float time_delta){
                          world->offset().y + cos(pos.rad)*(World::RADIUS+pos.height),
                          pos.zindex);
     batch->rotationRad = - pos.rad;
-
-    cout << "aaa" << World::RADIUS << endl;
+    cout << pos.height << endl;
 }
 
 void WorldObjectSingle::draw() {

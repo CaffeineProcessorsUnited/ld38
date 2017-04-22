@@ -1,17 +1,26 @@
 #include <random>
 using namespace std;
 
-#include "Cloud.h"
+#include "RandomCloud.h"
 #include "gameplay.h"
 using namespace gameplay;
 
-Cloud::Cloud(World *world):
+const vector<string> RandomCloud::cloudSprites = {"@cloud", "@cloud2"};
+
+RandomCloud::RandomCloud(World *world):
     WorldObjectSingle(world)
 {
-    std::default_random_engine generator;
+    std::random_device generator;
     std::uniform_real_distribution<float> distribution(minSpeed, maxSpeed);
+    std::uniform_int_distribution<int> distributionIntSprite(0, RandomCloud::cloudSprites.size() - 1);
+    std::uniform_int_distribution<int> distributionIntHeight(minHeight, maxHeight);
+    std::uniform_real_distribution<float> distributionRad(0, 2*M_PI);
     speed = distribution(generator);
+    spriteIndex = distributionIntSprite(generator);
+    pos.height = distributionIntHeight(generator);
+    pos.rad = distributionRad(generator);
 
-    batch = new CPU::SpriteBatch("@cloud");
+    cout << pos.height << " " << pos.rad << endl;
+    batch = new CPU::SpriteBatch(RandomCloud::cloudSprites[spriteIndex]);
     batch->scale.set(16, 16);
 }

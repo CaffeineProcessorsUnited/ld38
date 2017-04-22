@@ -7,8 +7,7 @@
 TestScreen::TestScreen(ScreenManager *parent) :
         ScreenForm(parent),
         _batch(NULL),
-        world(NULL),
-        cloud(NULL)
+        world(NULL)
 {
 }
 
@@ -21,8 +20,11 @@ void TestScreen::initialize() {
     registerFormControl("mainLabel");
 
     world = new World();
-    cloud = world->spawn<Cloud>();
-    cloud->pos.height = 128;
+
+    for(int i = 0; i < 10; i++){
+        myCloud = world->spawn<RandomCloud>();
+        clouds.push_back(myCloud);
+    }
 }
 
 void TestScreen::finalize() {

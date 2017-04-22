@@ -186,6 +186,8 @@ set(GAME_SRC
     src/gamelogic/WorldObject.h
     src/worldobjects/Cloud.cpp
     src/worldobjects/Cloud.h
+        src/worldobjects/RandomCloud.cpp
+        src/worldobjects/RandomCloud.h
     src/worldobjects/Background.cpp
     src/worldobjects/Background.h
     src/gamelogic/WorldObjectSingle.cpp
