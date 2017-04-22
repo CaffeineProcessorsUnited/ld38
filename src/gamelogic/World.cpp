@@ -39,6 +39,7 @@ void World::update(float time_delta) {
     for(WorldObject *obj: objects){
         obj->update(time_delta);
     }
+
 }
 void World::draw() {
     background->draw();

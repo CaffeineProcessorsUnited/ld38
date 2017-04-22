@@ -22,13 +22,13 @@ void TestScreen::initialize() {
     world = new World();
 
     //Spawn Random Clouds.
-    for(int i = 0; i < 40; i++){
+    for(int i = 0; i < 10; i++){
         myCloud = world->spawn<RandomCloud>();
         clouds.push_back(myCloud);
     }
 
     //Spawn Random Stars.
-    for(int i = 0; i < 40; i++){
+    for(int i = 0; i < 100; i++){
         myStar = world->spawn<RandomStar>();
         stars.push_back(myStar);
     }
