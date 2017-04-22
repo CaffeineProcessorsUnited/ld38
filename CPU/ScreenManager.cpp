@@ -114,6 +114,11 @@ void ScreenManager::render() {
     for(auto& elem: screens){elem->render();}
 }
 
+void ScreenManager::resize(unsigned int width, unsigned int height) {
+    for(auto& elem: screens){elem->resize(width, height);}
+}
+
+
 bool ScreenManager::isMostFrontScreen(const Screen *screen) const {
     if(!contains(screen))
         return false;
@@ -128,3 +133,4 @@ bool ScreenManager::isMostFrontScreen(const Screen *screen) const {
     }
     return *elem == screen;
 }
+

@@ -36,6 +36,8 @@ namespace CPU {
 
         //Override this to customize the display of frame rate
         virtual void drawFrameRate();
+
+        virtual void resizeEvent(unsigned int width, unsigned int height) override;
     public:
         App();
 

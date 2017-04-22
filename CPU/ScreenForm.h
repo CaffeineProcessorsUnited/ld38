@@ -20,6 +20,8 @@ namespace CPU {
         void update(float elapsedTime) override ;
         void render() override;
 
+        virtual void resize(int width, int height) override;
+
 
         void loadForm(const string& filename);
         void registerFormControl(const string& element);

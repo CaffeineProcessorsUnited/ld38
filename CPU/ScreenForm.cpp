@@ -38,6 +38,12 @@ void ScreenForm::render() {
     }
 }
 
+void ScreenForm::resize(int width, int height) {
+    Screen::resize(width, height);
+    //form->setSize(width, height);
+}
+
+
 void ScreenForm::loadForm(const string &filename) {
     if(form != nullptr){
         SAFE_RELEASE(form);
@@ -98,7 +104,6 @@ void ScreenForm::controlEvent(Control* control, Control::Listener::EventType evt
             controlFocusLost(control);
             break;
     }
-    cout << control << " " << evt << endl;
 }
 void ScreenForm::controlPress(Control* control) {
 
@@ -121,5 +126,6 @@ void ScreenForm::controlFocusGained(Control* control) {
 void ScreenForm::controlFocusLost(Control* control) {
 
 }
+
 
 

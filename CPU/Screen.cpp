@@ -48,6 +48,9 @@ void Screen::setVisible(bool visible) {
     this->visible = visible;
 }
 
+void Screen::resize(int width, int height) {
+}
+
 bool Screen::isVisible() const {
     return visible;
 }
@@ -106,3 +109,4 @@ void Screen::render() {
         cerr << "Call to Screen::render before screen is initialized. IF IT CRASHES IT IS YOUR FAULT!!!" << endl;
     }
 }
+

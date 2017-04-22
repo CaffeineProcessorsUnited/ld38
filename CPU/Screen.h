@@ -38,6 +38,8 @@ namespace CPU {
         void setVisible(bool visible);
         bool isVisible() const;
 
+        virtual void resize(int width, int height);
+
         void raise();
         void lower();
         void moveToBack();

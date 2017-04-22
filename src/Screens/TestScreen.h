@@ -11,6 +11,8 @@ using namespace CPU;
 class TestScreen: public ScreenForm {
     CPU::SpriteBatch *_batch;
 public:
+    virtual void resize(int width, int height) override;
+
     TestScreen(ScreenManager *parent);
 
     void initialize() override;

@@ -13,6 +13,8 @@ class LDTest: public App
 {
 public:
     LDTest();
+protected:
+    virtual void resizeEvent(unsigned int width, unsigned int height) override;
     void keyEvent(Keyboard::KeyEvent evt, int key);
     void touchEvent(Touch::TouchEvent evt, int x, int y, unsigned int contactIndex);
 

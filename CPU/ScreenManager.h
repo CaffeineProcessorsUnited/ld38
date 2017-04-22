@@ -45,6 +45,8 @@ namespace CPU {
 
         void update(float elapsedTime);
         void render();
+        void resize(unsigned int width, unsigned int height);
+
 
         bool isMostFrontScreen(const Screen * screen) const;
 

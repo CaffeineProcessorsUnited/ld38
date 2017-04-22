@@ -13,18 +13,18 @@ namespace CPU {
         gameplay::SpriteBatch *batch;
     protected:
         gameplay::SpriteBatch *getBatch() const;
-
         Rectangle src;
+        std::string path;
 
     public:
         SpriteBatch() {};
         SpriteBatch(std::string path);
         ~SpriteBatch();
+        void recreate();
 
         Rectangle pos;
 
         void draw();
-
         void draw(const Rectangle &pos);
     };
 }

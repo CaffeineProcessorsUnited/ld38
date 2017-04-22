@@ -59,3 +59,10 @@ void TestScreen::mouseScrolled(int wheelData) {
         _batch->pos.width += wheelData;
     }
 }
+
+
+void TestScreen::resize(int width, int height) {
+    ScreenForm::resize(width, height);
+    _batch->recreate();
+}
+

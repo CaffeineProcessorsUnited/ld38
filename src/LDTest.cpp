@@ -95,3 +95,8 @@ void LDTest::touchEvent(Touch::TouchEvent evt, int x, int y, unsigned int contac
             break;
     };
 }
+
+void LDTest::resizeEvent(unsigned int width, unsigned int height) {
+    App::resizeEvent(width, height);
+}
+

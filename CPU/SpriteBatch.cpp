@@ -5,10 +5,9 @@
 #include "SpriteBatch.h"
 
 CPU::SpriteBatch::SpriteBatch(std::string path) {
-    gameplay::Texture* texture = gameplay::Texture::create(path.c_str());
-    src = gameplay::Rectangle(0,0,texture->getWidth(), texture->getHeight());
-    batch = gameplay::SpriteBatch::create(texture, NULL, 0u);
-    SAFE_RELEASE(texture);
+    this->path = path;
+    batch = NULL;
+    recreate();
 }
 
 CPU::SpriteBatch::~SpriteBatch() {
@@ -32,6 +31,19 @@ void CPU::SpriteBatch::draw(const gameplay::Rectangle &pos) {
 gameplay::SpriteBatch *CPU::SpriteBatch::getBatch() const {
     return batch;
 }
+
+void CPU::SpriteBatch::recreate() {
+    if(batch != nullptr) {
+        SAFE_DELETE(batch);
+    }
+
+    gameplay::Texture* texture = gameplay::Texture::create(path.c_str());
+    src = gameplay::Rectangle(0,0,texture->getWidth(), texture->getHeight());
+    batch = gameplay::SpriteBatch::create(texture, NULL, 0u);
+    SAFE_RELEASE(texture);
+}
+
+
 
 
 
