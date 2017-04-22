@@ -7,7 +7,29 @@ using namespace gameplay;
 Background::Background(World *world):
     WorldObjectSingle(world)
 {
-    colors = vector<Vector4>{ Vector4(0, 0, 0, 1), Vector4(0.2, 0.2, 0.2, 1), Vector4(0.7, 0.2, 0.1, 1), Vector4(0.7, 0.7, 0, 1), Vector4(0.2, 0.2, 0.8, 1), Vector4(0.2, 0.2, 0.2, 1), Vector4(0.5, 0.5, 0.5, 1)};
+    /*colors = vector<Vector4>{
+                                    Vector4(0, 0, 0, 1), // 0
+                                    Vector4(0.2, 0.2, 0.2, 1),
+                                    Vector4(0.7, 0.2, 0.1, 1),
+                                    Vector4(0.7, 0.7, 0, 1),
+                                    Vector4(0.2, 0.2, 0.8, 1),
+                                    Vector4(0.2, 0.2, 0.2, 1),
+                                    Vector4(0.5, 0.5, 0.5, 1)
+    };*/
+    colors = vector<Vector4>{
+            Vector4(0, 0, 0, 1), // 0-1
+            Vector4(0, 0, 0, 1), // 2-3
+            Vector4(0.7, 0.2, 0.1, 1), // 4-5
+            Vector4(0.7, 0.5, 0, 1), // 6-7
+            Vector4(0.6, 0.4, 0, 1), // 8-9
+            Vector4(0.5, 0.3, 0.5, 1), // 10-11
+            Vector4(0.5, 0.3, 0.7, 1), // 12-13
+            Vector4(0.5, 0.4, 0.7, 1), // 14-15
+            Vector4(0.4, 0.4, 0.7, 1), // 16-17
+            Vector4(0.6, 0.4, 0.4, 1), // 18-19
+            Vector4(0.3, 0.3, 0.3, 1), // 20-21
+            Vector4(0.1, 0.1, 0.1, 1) // 22-23 -> start again
+    };
     
     batch = new CPU::SpriteBatch("@white");
     batch->scale.set(world->size.x, world->size.y);

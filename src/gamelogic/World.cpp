@@ -10,6 +10,11 @@ World::World():
     batch->scale.set(2*RADIUS, 2*RADIUS);
     batch->rotationPoint.set(0.5, 0.5);
 
+    batch2 = new CPU::SpriteBatch("@world");
+    batch2->scale.set(16, 16);
+    batch2->rotationPoint.set(0.5, 0.5);
+    batch2->pos.set(50, 50, 1);
+
     background = new Background(this);
 
     size.set(Game::getInstance()->getWidth(), Game::getInstance()->getHeight());
@@ -39,10 +44,13 @@ void World::update(float time_delta) {
     for(WorldObject *obj: objects){
         obj->update(time_delta);
     }
+
+    batch2->scale.set(batch2->scale.x * (1 + time_delta), batch2->scale.y * (1 + time_delta));
 }
 void World::draw() {
-    background->draw();
-    batch->draw();
+    //background->draw();
+    //batch->draw();
+    batch2->draw();
     for(WorldObject *obj: objects){
         obj->draw();
     }

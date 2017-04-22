@@ -15,9 +15,11 @@ using namespace std;
 class Background: public WorldObjectSingle {
 protected:
     vector<Vector4> colors;
-    int noColors, current, next;
+    int next;
     float lastColorChange, timePerColor;
 public:
+    int current;
+
     Background(World *world);
 
     virtual void draw() override;

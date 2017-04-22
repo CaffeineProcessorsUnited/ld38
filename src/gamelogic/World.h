@@ -19,7 +19,7 @@ private:
     vector<WorldResource *> resources;
     vector<WorldObject *> objects;
     Vector2 _offset;
-    CPU::SpriteBatch *batch;
+    CPU::SpriteBatch *batch, *batch2;
     Background *background;
 
     Vector2 dragStart;
