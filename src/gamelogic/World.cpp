@@ -95,19 +95,10 @@ void World::touchMove(int x, int y, unsigned int contactIndex) {
     b = Vector3((float) x - _offset.x, (float) y - _offset.y, 0);
     n = Vector3(a);
     n.cross(b);
-    rotateV += n.z / 3600 * SPEED;
+    rotateV += n.z / 36000 * SPEED;
     cout << rotateV << endl;
     //rotate(rotateV);
     dragStart.set(x, y);
-    /*
-        cout << Vector2::angle(a, b) << Vector2::angle(a, b) * SPEED << endl;
-        c = a.dot(b);
-        cout << a.x << "," << a.y << " " << b.x << "," << b.y << " " << c << " " << acos(c) * SPEED << endl;
-        rotate(Vector2::angle(a, b) * SPEED);
-        dragStart.set(x, y);
-    } else {
-        dragStart.set(dragStart.x + dA, dragStart.y + dB);
-    }*/
 }
 
 Vector2 World::offset() {

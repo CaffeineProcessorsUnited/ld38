@@ -31,7 +31,7 @@ public:
 
     constexpr static unsigned int MAX_LAYERS = 10;
     static float RADIUS;
-    constexpr static float SPEED = 1.337;
+    constexpr static float SPEED = 3.337;
     constexpr static float DAYTIME = 20;
     vector<WorldResource *> &getResources();
     vector<WorldObject *> &getObjects();
