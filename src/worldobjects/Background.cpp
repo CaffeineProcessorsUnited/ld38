@@ -2,10 +2,7 @@
 using namespace std;
 
 #include "Background.h"
-#include "gameplay.h"
 using namespace gameplay;
-
-#include "src/gamelogic/World.h"
 
 Background::Background(World *world):
     WorldObjectSingle(world)
@@ -45,5 +42,6 @@ void Background::resize(unsigned int width, unsigned int height) {
     if (batch != nullptr) {
         batch->recreate();
         batch->scale.set(world->size.x, world->size.y);
+        batch->pos.set(world->offset().x / 2, world->offset().y / 2, 1);
     }
 }
