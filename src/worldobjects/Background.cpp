@@ -5,13 +5,15 @@ using namespace std;
 #include "gameplay.h"
 using namespace gameplay;
 
+#include "src/gamelogic/World.h"
+
 Background::Background(World *world):
     WorldObjectSingle(world)
 {
     colors = new Vector4[2] { Vector4(0, 0, 0, 1), Vector4(1, 1, 1, 1) };
     
     batch = new CPU::SpriteBatch("@white");
-    batch->scale.set(world.size.x, world.size.y);
+    batch->scale.set(world->size.x, world->size.y);
     noColors = sizeof(colors) / sizeof(Vector4);
     current = 0;
     if (noColors > 1) {
@@ -42,6 +44,6 @@ void Background::update(float elapsedTime) {
 void Background::resize(unsigned int width, unsigned int height) {
     if (batch != nullptr) {
         batch->recreate();
-        batch->scale.set(world.size.x, world.size.y);
+        batch->scale.set(world->size.x, world->size.y);
     }
 }

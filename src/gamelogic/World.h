@@ -7,17 +7,10 @@ using namespace std;
 #include "gameplay.h"
 using namespace gameplay;
 
-#ifndef WorldObject_h_INCLUDED
-class World;
-#include "WorldObject.h"
-#endif
-
-#include "WorldResource.h"
-#ifndef LD38_BACKGROUND_H
-class World;
+#include "src/fw_decl.h"
 #include "src/worldobjects/Background.h"
-#endif
-
+#include "src/gamelogic/WorldObject.h"
+#include "src/gamelogic/WorldResource.h"
 #include "CPU/SpriteBatch.h"
 
 class World {

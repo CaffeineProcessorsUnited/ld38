@@ -5,6 +5,7 @@
 #ifndef LD38_WORLDOBJECTSINGLE_H
 #define LD38_WORLDOBJECTSINGLE_H
 
+#include "src/fw_decl.h"
 #include "src/gamelogic/WorldObject.h"
 #include "CPU/SpriteBatch.h"
 
@@ -15,9 +16,9 @@ protected:
 public:
     WorldObjectSingle(World *world);
     virtual ~WorldObjectSingle();
-    virtual void update(float time_delta) override;
-    virtual void draw() override;
-    virtual void resize(unsigned int width, unsigned int height) override;
+    virtual void update(float time_delta);
+    virtual void draw();
+    virtual void resize(unsigned int width, unsigned int height);
     virtual void setSpeed(float speed);
 };
 

@@ -5,11 +5,9 @@
 #ifndef LD38_BACKGROUND_H
 #define LD38_BACKGROUND_H
 
-#ifndef LD38_WORLDOBJECTSINGLE_H
-class Background;
-#include "src/gamelogic/WorldObjectSingle.h"
+#include "src/fw_decl.h"
 #include "src/gamelogic/World.h"
-#endif
+#include "src/gamelogic/WorldObjectSingle.h"
 
 class Background: public WorldObjectSingle {
 protected:

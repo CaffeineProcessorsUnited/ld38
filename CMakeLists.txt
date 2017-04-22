@@ -191,6 +191,7 @@ set(GAME_SRC
     src/gamelogic/WorldObjectSingle.cpp
     src/gamelogic/WorldObjectSingle.h
     src/gamelogic/WorldResource.h
+    src/fw_decl.h
     ${CPU_SOURCE}
 )
 

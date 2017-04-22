@@ -1,7 +1,9 @@
 #include <random>
 using namespace std;
 
+
 #include "WorldObjectSingle.h"
+#include "World.h"
 #include "gameplay.h"
 using namespace gameplay;
 
@@ -32,7 +34,7 @@ void WorldObjectSingle::update(float time_delta){
     batch->pos = Vector3(world->offset().x + sin(pos.rad)*(World::RADIUS+pos.height),
                          world->offset().y + cos(pos.rad)*(World::RADIUS+pos.height),
                          pos.zindex);
-    batch->rotationRad = -pos.rad;
+    batch->rotationRad = - pos.rad;
 }
 
 void WorldObjectSingle::draw() {

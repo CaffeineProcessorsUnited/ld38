@@ -5,6 +5,7 @@
 #ifndef LD38_CLOUD_H
 #define LD38_CLOUD_H
 
+#include "src/fw_decl.h"
 #include "src/gamelogic/WorldObjectSingle.h"
 #include "src/gamelogic/World.h"
 
