@@ -1,16 +1,28 @@
-#ifndef src/gamelogic/WorldObject_h_INCLUDED
-#define src/gamelogic/WorldObject_h_INCLUDED
+#ifndef WorldObject_h_INCLUDED
+#define WorldObject_h_INCLUDED
 
-#include "gameplay.h"
+#ifndef World_h_INCLUDED
+class WorldObject;
+#include "World.h"
+#endif
 
-class WorldObject{
-	protected:
-    		WorldObject(World* world);
-    		World* world;
-    		Vector2 rad_lay_pos;
-	public:
-    		void update(float time_delta);
+
+struct WorldPos {
+    float rad;
+    unsigned int layer;
 };
 
-#endif // src/gamelogic/WorldObject_h_INCLUDED
+class WorldObject {
+protected:
+    WorldObject(World *world);
+
+    World *world;
+public:
+    WorldPos pos;
+    virtual void update(float time_delta) = 0;
+    virtual void draw() = 0;
+
+};
+
+#endif // WorldObject_h_INCLUDED
 

@@ -1,24 +1,30 @@
-#ifndef src/gamelogic/World_h_INCLUDED
-#define src/gamelogic/World_h_INCLUDED
+#ifndef World_h_INCLUDED
+#define World_h_INCLUDED
 
-#include <WorldResource.h>
-#include <WorldObject.h>
 #include <vector>
-
 using namespace std;
 
-class World{
-	private:
-		vector<WorldResource*> resources;
-		vector<WorldObject*> objects;
-	public:
-		World();
-		const static unsigned int MAX_LAYERS;
-		vector<WorldResource*>& getResources();
-		vector<WorldResource*>& getObjects();
+#ifndef WorldObject_h_INCLUDED
+class World;
+#include "WorldObject.h"
+#endif
 
-		void update(float time_delta);
+#include "WorldResource.h"
+
+class World {
+private:
+    vector<WorldResource *> resources;
+    vector<WorldObject *> objects;
+public:
+    World();
+
+    const static unsigned int MAX_LAYERS;
+    vector<WorldResource *> &getResources();
+    vector<WorldObject *> &getObjects();
+
+    virtual void update(float time_delta);
+    virtual void draw();
 };
 
-#endif // src/gamelogic/World_h_INCLUDED
+#endif // World_h_INCLUDED
 
