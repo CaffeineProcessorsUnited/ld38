@@ -10,6 +10,12 @@ class WorldObject;
 struct WorldPos {
     float rad;
     unsigned int layer;
+    float hight;
+    WorldPos(float r, unsigned int lay, float h) {
+	this->rad = r;
+	this->layer = lay;
+	this->hight = h;
+    }
 };
 
 class WorldObject {

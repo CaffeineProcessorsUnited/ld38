@@ -6,6 +6,8 @@ World::World():
 {
 }
 
+const float World::WORLD_RADIUS = 42;
+
 vector<WorldResource *> & World::getResources() {
     return resources;
 }

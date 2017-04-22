@@ -2,6 +2,7 @@
 
 WorldObject::WorldObject(World *world):
     world(world),
-    pos(0,0)
+    pos(0,0,0)
 {
 }
+

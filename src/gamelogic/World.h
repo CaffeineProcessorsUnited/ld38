@@ -18,7 +18,8 @@ private:
 public:
     World();
 
-    const static unsigned int MAX_LAYERS;
+    const static unsigned int MAX_LAYERS = 3;
+    const static float WORLD_RADIUS;
     vector<WorldResource *> &getResources();
     vector<WorldObject *> &getObjects();
 

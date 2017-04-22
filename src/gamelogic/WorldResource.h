@@ -1,5 +1,5 @@
-#ifndef src/gamelogic/WorldResource_h_INCLUDED
-#define src/gamelogic/WorldResource_h_INCLUDED
+#ifndef WorldResource_h_INCLUDED
+#define WorldResource_h_INCLUDED
 
 #include <string>
 
@@ -16,8 +16,8 @@ class WorldResource{
 		virtual string getName();
 		virtual unsigned int getAmount();
 
-		virtual void setAmount();
+		virtual void setAmount(unsigned int value);
 };
 
-#endif // src/gamelogic/WorldResource_h_INCLUDED
+#endif // WorldResource_h_INCLUDED
 
