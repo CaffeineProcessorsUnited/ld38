@@ -12,14 +12,19 @@ using namespace gameplay;
 #include "src/gamelogic/WorldObject.h"
 #include "src/gamelogic/WorldResource.h"
 #include "CPU/SpriteBatch.h"
+#include "CPU/EventHandler.h"
 
-class World {
+class World: public CPU::EventHandler {
 private:
     vector<WorldResource *> resources;
     vector<WorldObject *> objects;
     Vector2 _offset;
     CPU::SpriteBatch *batch, *batch2, *batch3;
     Background *background;
+
+    Vector2 dragStart;
+    Vector3 a, b, n;
+    float rotateV;
 public:
     World();
     ~World();
@@ -27,7 +32,7 @@ public:
     constexpr static unsigned int MAX_LAYERS = 10;
     constexpr static float RADIUS = 512;
     constexpr static float SPEED = 1.337;
-    constexpr static float DAYTIME = 10;
+    constexpr static float DAYTIME = 20;
     vector<WorldResource *> &getResources();
     vector<WorldObject *> &getObjects();
 
@@ -35,6 +40,12 @@ public:
     virtual void draw();
 
     void resize(unsigned int width, unsigned int height);
+    void rotate(float rad);
+
+    virtual void touchPress(int x, int y, unsigned int contactIndex) override;
+    virtual void touchRelease(int x, int y, unsigned int contactIndex) override;
+    virtual void touchMove(int x, int y, unsigned int contactIndex) override;
+
     Vector2 offset();
     Vector2 size;
 

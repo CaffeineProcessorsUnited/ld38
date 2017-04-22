@@ -16,10 +16,11 @@ namespace CPU {
 #endif
 
 #include "Common.h"
+#include "CPU/EventHandler.h"
 
 namespace CPU {
     using namespace gameplay;
-    class Screen : public Ref {
+    class Screen : public Ref, public EventHandler  {
         ScreenManager *parent;
         bool visible;
         ScreenLayer layer;
@@ -45,7 +46,7 @@ namespace CPU {
         void moveToBack();
         void moveToFront();
         virtual void setLayer(ScreenLayer layer);
-        virtual ScreenLayer getLayer() const ;
+        virtual ScreenLayer getLayer() const;
         bool isMostFrontScreen() const;
 
         virtual void initialize();
@@ -61,6 +62,10 @@ namespace CPU {
         virtual void mouseRelease(MouseButton button, int x, int y) {};
         virtual void mouseMove(int x, int y) {};
         virtual void mouseScrolled(int wheelData) {};
+
+        virtual void touchPress(int x, int y, unsigned int contactIndex) {};
+        virtual void touchRelease(int x, int y, unsigned int contactIndex) {};
+        virtual void touchMove(int x, int y, unsigned int contactIndex) {};
     };
 }
 
