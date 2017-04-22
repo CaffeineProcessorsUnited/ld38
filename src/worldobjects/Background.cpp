@@ -42,6 +42,6 @@ void Background::resize(unsigned int width, unsigned int height) {
     if (batch != nullptr) {
         batch->recreate();
         batch->scale.set(world->size.x, world->size.y);
-        batch->pos.set(world->offset().x / 2, world->offset().y / 2, 1);
+        batch->pos.set(world->size.x / 2, world->size.y / 2, 1);
     }
 }
