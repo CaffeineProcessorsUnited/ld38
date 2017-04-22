@@ -19,7 +19,7 @@ private:
     vector<WorldResource *> resources;
     vector<WorldObject *> objects;
     Vector2 _offset;
-    CPU::SpriteBatch *batch, *batch2, *batch3;
+    CPU::SpriteBatch *batch;
     Background *background;
 
     Vector2 dragStart;
@@ -42,6 +42,8 @@ public:
 
     void resize(unsigned int width, unsigned int height);
     void rotate(float rad);
+
+    virtual void mouseScrolled(int wheelData) override;
 
     virtual void touchPress(int x, int y, unsigned int contactIndex) override;
     virtual void touchMove(int x, int y, unsigned int contactIndex) override;

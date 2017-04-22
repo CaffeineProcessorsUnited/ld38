@@ -69,8 +69,7 @@ void TestScreen::mouseMove(int x, int y) {
 void TestScreen::mouseScrolled(int wheelData) {
     ScreenForm::mouseScrolled(wheelData);
     if(wheelData != 0){
-        _batch->scale.x += wheelData;
-        _batch->scale.y += wheelData;
+        world->mouseScrolled(wheelData);
     }
 }
 

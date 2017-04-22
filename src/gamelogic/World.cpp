@@ -10,11 +10,6 @@ World::World():
     batch->scale.set(2*RADIUS, 2*RADIUS);
     batch->rotationPoint.set(0.5, 0.5);
 
-    batch2 = new CPU::SpriteBatch("@image");
-    batch2->scale.set(4,4);
-
-    batch3 = new CPU::SpriteBatch("@circle");
-
     background = new Background(this);
 
     size.set(Game::getInstance()->getWidth(), Game::getInstance()->getHeight());
@@ -36,14 +31,11 @@ vector<WorldObject *> & World::getObjects() {
 
 void World::update(float time_delta) {
     if (fabs(rotateV) > 0.000005) {
-        cout << rotateV << endl;
         rotate(rotateV * time_delta);
         rotateV *= 0.85;
     }
     background->update(time_delta);
     batch->pos.set(_offset.x, _offset.y, 1);
-    batch2->pos.set(_offset.x, _offset.y, 1);
-    batch3->pos.set(_offset.x, _offset.y, 1);
     for(WorldObject *obj: objects){
         obj->update(time_delta);
     }
@@ -51,8 +43,6 @@ void World::update(float time_delta) {
 void World::draw() {
     background->draw();
     batch->draw();
-    batch2->draw();
-    batch3->draw();
     for(WorldObject *obj: objects){
         obj->draw();
     }
@@ -68,8 +58,6 @@ void World::resize(unsigned int width, unsigned int height) {
     for(WorldObject *obj: objects){
         obj->resize(size.x, size.y);
     }
-
-    cout << w << " " << h << " " << width << " " << height << " " << _offset.y << endl;
 
     RADIUS = w/2.f;
     batch->recreate();
@@ -99,8 +87,13 @@ void World::touchMove(int x, int y, unsigned int contactIndex) {
     n = Vector3(a);
     n.cross(b);
     rotateV += n.z / 36000 * SPEED;
-    cout << rotateV << endl;
     dragStart.set(x, y);
+}
+
+void World::mouseScrolled(int wheelData) {
+    if(wheelData != 0){
+        rotateV += wheelData * SPEED / 6;
+    }
 }
 
 Vector2 World::offset() {
