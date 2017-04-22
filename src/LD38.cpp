@@ -30,7 +30,7 @@ void LD38::initialize()
     testScreen = getScreenManager()->createScreen<TestScreen>(BACK, true);
 
     setShowFPS(true);
-    Game::setVsync(true);
+    Game::setVsync(false);
 
     App::postInitialize();
     resizeEvent(game.getWidth(), game.getHeight());

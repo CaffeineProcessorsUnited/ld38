@@ -31,20 +31,20 @@ vector<WorldObject *> & World::getObjects() {
 }
 
 void World::update(float time_delta) {
+    background->update(time_delta);
     batch->pos.set(_offset.x, _offset.y, 1);
     batch2->pos.set(_offset.x, _offset.y, 1);
     batch3->pos.set(_offset.x, _offset.y, 1);
     batch->rotationRad += SPEED * time_delta;
-    background->update(time_delta);
     for(WorldObject *obj: objects){
         obj->update(time_delta);
     }
 }
 void World::draw() {
+    background->draw();
     batch->draw();
     batch2->draw();
     batch3->draw();
-    background->draw();
     for(WorldObject *obj: objects){
         obj->draw();
     }
@@ -53,7 +53,7 @@ void World::draw() {
 void World::resize(unsigned int width, unsigned int height) {
     size.set(width, height);
     _offset.x = size.x/2.f;
-    _offset.y = size.y*1.25f;
+    _offset.y = size.y;
     background->resize(size.x, size.y);
     for(WorldObject *obj: objects){
         obj->resize(size.x, size.y);
