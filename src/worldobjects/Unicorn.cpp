@@ -1,0 +1,18 @@
+#include "Unicorn.h"
+#include "gameplay.h"
+
+using namespace gameplay;
+
+Unicorn::Unicorn(World* world):
+WorldObjectSingle(world) {
+	speed = 0;
+
+	batch = new CPU::SpriteBatch("@unicorn");
+	batch->scale.set(10,10);
+}
+
+Unicorn::Unicorn(World* world, float rad, unsigned int zindex, float height)
+:Unicorn(world) 
+{
+	pos = WorldPos(rad, zindex, height);
+}

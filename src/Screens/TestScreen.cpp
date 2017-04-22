@@ -25,6 +25,8 @@ void TestScreen::initialize() {
         myCloud = world->spawn<RandomCloud>();
         clouds.push_back(myCloud);
     }
+
+    unicorn = world->spawn<Unicorn>();
 }
 
 void TestScreen::finalize() {
