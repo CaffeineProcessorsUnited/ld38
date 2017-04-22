@@ -79,6 +79,14 @@ void World::resize(unsigned int width, unsigned int height) {
 
 void World::rotate(float rad) {
     batch->rotationRad += rad;
+    for(WorldObject* obj: objects){
+        obj->pos.rad -= rad;
+        if(obj->pos.rad > 2*M_PI){
+            obj->pos.rad -= 2*M_PI;
+        } else if(obj->pos.rad < -2*M_PI){
+            obj->pos.rad += 2*M_PI;
+        }
+    }
 }
 
 void World::touchPress(int x, int y, unsigned int contactIndex) {

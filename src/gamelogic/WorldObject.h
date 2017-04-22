@@ -22,14 +22,10 @@ protected:
     World *world;
 public:
     virtual void resize(unsigned int width, unsigned int height) = 0;
-    WorldPos pos;
-
     virtual void update(float time_delta) = 0;
-
     virtual void draw() = 0;
 
-
-
+    WorldPos pos;
 };
 
 #endif // WorldObject_h_INCLUDED
