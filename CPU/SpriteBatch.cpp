@@ -40,8 +40,10 @@ void CPU::SpriteBatch::recreate() {
 
     gameplay::Texture* texture = gameplay::Texture::create(path.c_str());
     src = gameplay::Rectangle(0,0,texture->getWidth(), texture->getHeight());
-    scale.x = texture->getWidth();
-    scale.y = texture->getHeight();
+    if (scale.isZero()) {
+        scale.x = texture->getWidth();
+        scale.y = texture->getHeight();
+    }
     batch = gameplay::SpriteBatch::create(texture, NULL, 0u);
     SAFE_RELEASE(texture);
 }
