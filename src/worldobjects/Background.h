@@ -27,6 +27,8 @@ public:
     virtual void resize(unsigned int width, unsigned int height) override;
 
     ~Background() override;
+
+    float getHourOfDay();
 };
 
 

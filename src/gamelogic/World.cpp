@@ -99,3 +99,7 @@ void World::mouseScrolled(int wheelData) {
 Vector2 World::offset() {
     return _offset;
 }
+
+float World::getHourOfDay() {
+    return background->getHourOfDay();
+}

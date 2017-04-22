@@ -40,6 +40,7 @@ Background::Background(World *world):
         next = 1;
     }
     timePerColor = World::DAYTIME / colors.size();
+    lastColorChange = 0;
 }
 
 void Background::draw() {
@@ -75,4 +76,10 @@ void Background::resize(unsigned int width, unsigned int height) {
         batch->scale.set(world->size.x, world->size.y);
         batch->pos.set(world->size.x / 2, world->size.y / 2, 1);
     }
+}
+
+float Background::getHourOfDay() {
+    float percentageOfDay = 24 / colors.size();
+    float percentOfPart = lastColorChange / timePerColor;
+    return current * percentageOfDay + percentOfPart;
 }
