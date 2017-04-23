@@ -20,6 +20,8 @@ public:
     virtual void draw();
     virtual void resize(unsigned int width, unsigned int height);
     virtual void setSpeed(float speed);
+
+    bool intersect(int x, int y) const override;
 };
 
 #endif //LD38_WORLDOBJECTSINGLE_H
