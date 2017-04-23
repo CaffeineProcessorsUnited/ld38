@@ -22,14 +22,14 @@ RandomStar::RandomStar(World *world):
     std::normal_distribution<float> distributionScale(4, 1.5);
     std::uniform_int_distribution<int> flickerFactor(0, 100);
 
-    if(flickerFactor(generator) > 5){
+    if(flickerFactor(generator) < 5){
         isFlickering = true;
     } else{
         isFlickering = false;
     }
 
     isVisible = true;
-
+    flickerCounter = 0;
     speed = distribution(generator);
     spriteIndex = distributionIntSprite(generator);
     pos.height = distributionIntHeight(generator);
@@ -52,7 +52,15 @@ void RandomStar::update(float delta_time)
     }
     else
     {
-        isVisible = true;
+        flickerCounter++;
+        if (isFlickering && flickerCounter > 5){
+            isVisible = !isVisible;
+            flickerCounter = 0;
+        }
+        else{
+            isVisible = true;
+        }
+
     }
 }
 

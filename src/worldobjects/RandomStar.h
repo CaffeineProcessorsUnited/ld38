@@ -30,6 +30,7 @@ protected:
     bool isFlickering;
     float appearTod;
     float disappearTod;
+    int flickerCounter;
 public:
     RandomStar(World *world);
     void update(float delta_time);
