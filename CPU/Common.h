@@ -21,6 +21,14 @@ namespace CPU {
         MIDDLE,
         RIGHT
     };
+
+    enum ObjectType {
+        BACKGROUND,
+        TREE,
+        CLOUD,
+        UNICORN,
+        STAR
+    };
 }
 
 #endif //CPU_COMMON_H

@@ -2,36 +2,35 @@
 // Created by niels on 17.04.17.
 //
 
-#include <src/worldobjects/RainbowTree.h>
 #include "TestScreen.h"
 
 TestScreen::TestScreen(ScreenManager *parent) :
         ScreenForm(parent),
-        _batch(NULL),
         world(NULL)
 {
 }
 
 void TestScreen::initialize() {
     ScreenForm::initialize();
-    _batch = new CPU::SpriteBatch("res/png/image.png");
-    _batch->pos = Vector3(Game::getInstance()->getWidth()/2, Game::getInstance()->getHeight()/2,1);
 
-    loadForm("res/demo.form");
-    registerFormControl("mainLabel");
+    //loadForm("res/demo.form");
+    //registerFormControl("mainLabel");
 
     world = new World();
 
+    //Spawn Random Clouds.
     for(int i = 0; i < 10; i++){
         myCloud = world->spawn<RandomCloud>();
         clouds.push_back(myCloud);
     }
-    RainbowTree* tree = world->spawn<RainbowTree>();
-    tree->pos.rad = 0;
-    tree->pos.height = 20;
-    tree->pos.zindex = 1;
 
-    unicorn = world->spawn<Unicorn>();
+    //Spawn Random Stars.
+    for(int i = 0; i < 200; i++){
+        myStar = world->spawn<RandomStar>();
+        stars.push_back(myStar);
+    }
+    uni = world->spawn<Unicorn>();
+
 }
 
 void TestScreen::finalize() {
@@ -42,7 +41,6 @@ void TestScreen::update(float elapsedTime) {
     if(!isInitialized() )
         return;
     ScreenForm::update(elapsedTime);
-    _batch->rotationRad += 0.1;
 
     world->update(elapsedTime);
 }
@@ -50,7 +48,6 @@ void TestScreen::update(float elapsedTime) {
 void TestScreen::render() {
     if(!isVisible() || !isInitialized() )
         return;
-    _batch->draw();
     ScreenForm::render();
     world->draw();
 }
@@ -58,17 +55,12 @@ void TestScreen::render() {
 void TestScreen::keyRelease(Keyboard::Key key) {
     ScreenForm::keyRelease(key);
     if(key == Keyboard::KEY_SPACE) {
-        _batch->scale.x += 4;
-        _batch->scale.y += 4;
     } else if(key == Keyboard::KEY_TAB) {
-        _batch->scale.x -= 4;
-        _batch->scale.y -= 4;
     }
 }
 
 void TestScreen::mouseMove(int x, int y) {
     ScreenForm::mouseMove(x, y);
-    _batch->pos.set(x,y,1);
 }
 
 void TestScreen::mouseScrolled(int wheelData) {
@@ -92,7 +84,6 @@ void TestScreen::touchMove(int x, int y, unsigned int contactIndex) {
 
 void TestScreen::resize(int width, int height) {
     ScreenForm::resize(width, height);
-    _batch->recreate();
     world->resize(width, height);
 }
 

@@ -20,6 +20,11 @@ RandomCloud::RandomCloud(World *world):
     pos.height = distributionIntHeight(generator);
     pos.rad = distributionRad(generator);
 
+    cout << pos.height << " " << pos.rad << endl;
     batch = new CPU::SpriteBatch(RandomCloud::cloudSprites[spriteIndex]);
-    batch->scale.set(64, 64);
+    batch->scale.set(100, 50);
+}
+
+ObjectType RandomCloud::type() {
+    return ObjectType::CLOUD;
 }

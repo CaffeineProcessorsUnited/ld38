@@ -7,17 +7,19 @@
 
 #include "src/gamelogic/World.h"
 #include "src/worldobjects/RandomCloud.h"
-#include "src/worldobjects/Unicorn.h"
+#include "src/worldobjects/RandomStar.h"
 
 #include "CPU/CPU.h"
 using namespace CPU;
 
 class TestScreen: public ScreenForm {
-    CPU::SpriteBatch *_batch;
     World *world;
     vector<RandomCloud*> clouds;
     RandomCloud *myCloud;
-    Unicorn *unicorn;
+    vector<RandomStar*> stars;
+    RandomStar *myStar;
+
+    Unicorn *uni;
 public:
     virtual void resize(int width, int height) override;
 

@@ -60,3 +60,7 @@ void RainbowTree::upgradeBatch() {
     }
     batch->recreate();
 }
+
+ObjectType RainbowTree::type() {
+    return ObjectType::TREE;
+}

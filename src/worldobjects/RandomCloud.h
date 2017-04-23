@@ -5,6 +5,9 @@
 #ifndef LD38_RANDOMCLOUD_H
 #define LD38_RANDOMCLOUD_H
 
+#include "CPU/Common.h"
+using namespace CPU;
+
 #include "src/fw_decl.h"
 #include "src/gamelogic/WorldObjectSingle.h"
 #include "src/gamelogic/World.h"
@@ -12,14 +15,15 @@
 
 class RandomCloud: public WorldObjectSingle {
 protected:
-    constexpr static float minSpeed = -0.5f;
-    constexpr static float maxSpeed = 0.5f;
-    const static int minHeight = 80;
-    const static int maxHeight = 200;
+    constexpr static float minSpeed = -0.2f;
+    constexpr static float maxSpeed = 0.2f;
+    const static int minHeight = 128;
+    const static int maxHeight = 333;
     const static vector<string> cloudSprites;
     int spriteIndex;
 public:
     RandomCloud(World *world);
+    virtual ObjectType type();
 };
 
 
