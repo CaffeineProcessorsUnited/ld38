@@ -83,7 +83,6 @@ bool WorldObjectSingle::intersect(int x, int y) const {
 }
 
 bool WorldObjectSingle::near(const WorldPos &pos, float dist) const {
-
     Vector3 r = world->pos2vec(pos);
     Vector3 r2 = world->pos2vec(this->pos);
     return r.distance(r2) < dist;

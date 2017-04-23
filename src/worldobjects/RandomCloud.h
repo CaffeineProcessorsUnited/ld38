@@ -41,6 +41,8 @@ public:
     bool doRain();
     bool doRain(int amount, bool dieAfter=false);
     virtual ObjectType type() const;
+
+    void forceRainOnGrouping() const;
 };
 
 

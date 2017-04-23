@@ -38,6 +38,7 @@ RandomCloud::RandomCloud(World *world):
 
 void RandomCloud::update(float delta_time) {
     WorldObjectSingle::update(delta_time);
+
     if (isRaining) {
         if (myRain != NULL){
             if (pos.height - myRain->pos.height > 100){
@@ -59,6 +60,33 @@ void RandomCloud::update(float delta_time) {
         if(mustDie){
             cout << "DIEDIEDIE" << endl;
             world->destroy(this);
+        }
+    }
+
+    forceRainOnGrouping();
+}
+
+void RandomCloud::forceRainOnGrouping() const {
+    vector<WorldObject*>& objects = world->getObjects();
+
+
+    int count = 0;
+    for(WorldObject* object: objects){
+        RandomCloud* cloud = dynamic_cast<RandomCloud*>(object);
+        if(cloud != nullptr){
+            if(abs(cloud->pos.rad - pos.rad) < 0.1){
+                count++;
+            }
+        }
+    }
+    if(count > 1){
+        for(WorldObject* object: objects){
+            RandomCloud* cloud = dynamic_cast<RandomCloud*>(object);
+            if(cloud != nullptr){
+                if(abs(cloud->pos.rad - pos.rad) < 0.1){
+                    cloud->doRain(10);
+                }
+            }
         }
     }
 }
