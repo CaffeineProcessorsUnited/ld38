@@ -33,6 +33,7 @@ RandomCloud::RandomCloud(World *world):
     isRaining = false;
     rainTime = 0;
     myRain = NULL;
+    mustDie = false;
 }
 
 void RandomCloud::update(float delta_time) {
@@ -55,6 +56,10 @@ void RandomCloud::update(float delta_time) {
     }
     else {
         myRain = NULL;
+        if(mustDie){
+            cout << "DIEDIEDIE" << endl;
+            world->destroy(this);
+        }
     }
 }
 
@@ -93,11 +98,13 @@ bool RandomCloud::doRain() {
     return doRain(1);
 }
 
-bool RandomCloud::doRain(int amount) {
+bool RandomCloud::doRain(int amount, bool dieAfter) {
     if (!canRain(amount)) {
         return false;
     }
     rainTime = 0;
     isRaining = true;
+    if(dieAfter)
+        mustDie = true;
     return true;
 }

@@ -14,13 +14,21 @@ using namespace CPU;
 class RainbowTree: public WorldObjectSingle {
     void upgradeBatch();
     int growthState;
+    float water;
+    constexpr static float DEHYDRATE = 0.01f;
 public:
     RainbowTree(World* world);
+    virtual void update(float delta);
     virtual void grow();
     virtual void consume();
     virtual ObjectType type() const;
     bool isGrown() const;
     bool canGrow() const;
+    bool canDie() const;
+    void die();
+    void tryGrow();
+    void tryDie();
+    void receiveRain(float numWater);
 };
 
 

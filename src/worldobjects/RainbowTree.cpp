@@ -14,14 +14,17 @@ RainbowTree::RainbowTree(World* world):
     batch = new CPU::SpriteBatch("@plantseed");
     batch->scale.set(20,20);
     growthState = 0;
-    //grow();
-    //grow();
-    //grow();
+    water = 50;
+    upgradeBatch();
 }
 
 void RainbowTree::grow(){
     if(this->growthState <= 2) {
         this->growthState += 1;
+
+        if(growthState == 3){
+            world->receiveSeeds(1);
+        }
     }
     upgradeBatch();
 }
@@ -71,5 +74,56 @@ bool RainbowTree::isGrown() const {
 
 bool RainbowTree::canGrow() const {
     int hour = world->getHourOfDay();
-    return !isGrown() && 8 <= hour && hour <= 18;
+    return !isGrown() && 8 <= hour && hour <= 18 && water > 10;
+}
+
+void RainbowTree::update(float delta) {
+    WorldObjectSingle::update(delta);
+
+    water -= DEHYDRATE;
+    cout << "water " << water <<endl;
+
+    tryGrow();
+    tryDie();
+}
+
+void RainbowTree::receiveRain(float numWater) {
+    water = max(water+numWater,99.f);
+}
+
+bool RainbowTree::canDie() const {
+    return water < 10;
+}
+
+void RainbowTree::tryGrow() {
+    if(canGrow()){
+        std::random_device generator;
+        std::uniform_real_distribution<float> grow_dist(0,1000.f/(10.f-water/10.f+MATH_FLOAT_SMALL));
+        float num = grow_dist(generator);
+
+        if(num < 1){
+            grow();
+        }
+    }
+}
+
+void RainbowTree::tryDie() {
+    if(canDie()){
+        if(water < 0){
+            die();
+        }
+
+        std::random_device generator;
+        std::uniform_real_distribution<float> grow_dist(0,1000.f/(water/10.f+MATH_FLOAT_SMALL));
+        float num = grow_dist(generator);
+
+        if(num < 1){
+
+            die();
+        }
+    }
+}
+
+void RainbowTree::die() {
+    world->destroy(this);
 }

@@ -50,7 +50,6 @@ void World::update(float time_delta) {
 
     int i = 0;
     while(i < toDestroy.size()) {
-        cout << i << " "<< toDestroy.size() << endl;
         WorldObject* tod = nullptr;
         it = toDestroy.begin();
         tod = *(it+i);
@@ -62,7 +61,6 @@ void World::update(float time_delta) {
         }
         delete tod;
         tod = nullptr;
-        cout << "aaa" << tod << endl;
         ++i;
     }
     toDestroy.clear();
@@ -183,7 +181,7 @@ void World::mouseScrolled(int wheelData) {
     }
 }
 
-Vector2 World::offset() {
+Vector2 World::offset() const {
     return _offset;
 }
 
@@ -232,7 +230,7 @@ void World::treeClicked(WorldObject *plant) {
 void World::cloudClicked(WorldObject *cloud) {
     RandomCloud *mycloud = dynamic_cast<RandomCloud*>(cloud);
     if (mycloud != NULL){
-        mycloud->doRain(10);
+        mycloud->doRain(10, true);
     }
 
 }
@@ -262,4 +260,27 @@ float World::pos2angle(int x, int y){
     top.y = 9999;
     float angle = points2angle(Vector2(x, y), offset(), top);
     return (float) fmod(angle,4 * M_PI);
+}
+
+void World::receiveSeeds(int n) {
+    seeds += n;
+}
+
+void World::receiveRain(const WorldPos& pos) {
+    vector<WorldObject*> obj;
+
+    for(WorldObject* object: objects){
+        RainbowTree* tree = dynamic_cast<RainbowTree*>(object);
+        if(tree != nullptr) {
+            if (tree->near(pos, RAIN_DIST)) {
+                tree->receiveRain(RAIN_HYDR);
+            }
+        }
+    }
+}
+
+Vector3 World::pos2vec(const WorldPos& pos) const {
+    return Vector3(offset().x + sin(pos.rad)*(World::RADIUS+pos.height),
+            offset().y + cos(pos.rad)*(World::RADIUS+pos.height),
+            pos.zindex);
 }

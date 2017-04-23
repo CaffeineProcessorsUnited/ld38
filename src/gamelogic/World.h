@@ -31,6 +31,7 @@ private:
     Vector2 _offset;
     CPU::SpriteBatch *batch;
     Background *background;
+    int seeds;
 
     bool drag;
     Vector2 dragStart;
@@ -48,6 +49,8 @@ public:
     constexpr static float GROUND = -40;
     constexpr static float AIR = 80;
     constexpr static float SKY = 430;
+    constexpr static float RAIN_DIST = 64;
+    constexpr static float RAIN_HYDR = 10.f;
     vector<WorldResource *> &getResources();
     vector<WorldObject *> &getObjects();
 
@@ -63,7 +66,7 @@ public:
     virtual void touchMove(int x, int y, unsigned int contactIndex) override;
     virtual void touchRelease(int x, int y, unsigned int contactIndex) override;
 
-    Vector2 offset();
+    Vector2 offset() const;
     Vector2 size;
 
     float getHourOfDay();
@@ -76,6 +79,8 @@ public:
     void unicornCicked(WorldObject* unicorn);
     void treeClicked(WorldObject *plant);
     void cloudClicked(WorldObject* cloud);
+    void receiveSeeds(int n);
+    void receiveRain(const WorldPos& pos);
 
     template<typename T>
     T* spawn() {
@@ -88,7 +93,6 @@ public:
         vector<WorldObject*>::iterator it = find(toDestroy.begin(), toDestroy.end(), t);
         //Kill only once :(
         if(it == toDestroy.end()) {
-            cout << "DESTROYING" << t << endl;
             toDestroy.push_back(t);
         }
     }
@@ -96,6 +100,7 @@ public:
     void plantSapling(int x, int y);
     float points2angle(const Vector2 &p1, const Vector2 &p2, const Vector2 &p3);
     float pos2angle(int x, int y);
+    Vector3 pos2vec(const WorldPos& pos) const;
 };
 
 #endif // World_h_INCLUDED

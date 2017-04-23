@@ -31,9 +31,7 @@ void WorldObjectSingle::update(float time_delta){
         pos.rad += 2*M_PI;
     }
 
-    batch->pos = Vector3(world->offset().x + sin(pos.rad)*(World::RADIUS+pos.height),
-                         world->offset().y + cos(pos.rad)*(World::RADIUS+pos.height),
-                         pos.zindex);
+    batch->pos = world->pos2vec(pos);
     batch->rotationRad = - pos.rad;
 }
 
@@ -82,5 +80,12 @@ bool WorldObjectSingle::intersect(int x, int y) const {
             ABAM <= ABAB &&
             0 <= ACAM &&
             ACAM <= ACAC;
+}
+
+bool WorldObjectSingle::near(const WorldPos &pos, float dist) const {
+
+    Vector3 r = world->pos2vec(pos);
+    Vector3 r2 = world->pos2vec(this->pos);
+    return r.distance(r2) < dist;
 }
 

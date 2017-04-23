@@ -26,6 +26,7 @@ public:
     virtual ObjectType type() const = 0;
 
     bool intersect(int x, int y) const;
+    bool near(const WorldPos& pos, float dist) const;
 };
 
 #endif //LD38_WORLDOBJECTSINGLE_H

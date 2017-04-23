@@ -26,6 +26,7 @@ protected:
     int spriteIndex;
     int rainAmount;
     bool isRaining;
+    bool mustDie;
     float rainTime;
     Rain *myRain;
     void spawnRaindrop();
@@ -38,7 +39,7 @@ public:
     bool canRain();
     bool canRain(int amount);
     bool doRain();
-    bool doRain(int amount);
+    bool doRain(int amount, bool dieAfter=false);
     virtual ObjectType type() const;
 };
 
