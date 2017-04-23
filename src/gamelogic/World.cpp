@@ -1,5 +1,7 @@
 #include "World.h"
 
+#include <algorithm>
+
 #include "src/gamelogic/WorldResource.h"
 #include "src/gamelogic/WorldObject.h"
 #include "src/worldobjects/Background.h"
@@ -38,6 +40,33 @@ vector<WorldObject *> & World::getObjects() {
 }
 
 void World::update(float time_delta) {
+    vector<WorldObject*>::iterator it;
+    for(it=toSpawn.begin();it!=toSpawn.end();++it){
+        if((*it) != nullptr){
+            objects.push_back(*it);
+        }
+    }
+    toSpawn.clear();
+
+    int i = 0;
+    while(i < toDestroy.size()) {
+        cout << i << " "<< toDestroy.size() << endl;
+        WorldObject* tod = nullptr;
+        it = toDestroy.begin();
+        tod = *(it+i);
+        if (tod != nullptr) {
+            vector<WorldObject *>::iterator itt = find(objects.begin(), objects.end(), tod);
+            if (itt != objects.end()) {
+                objects.erase(itt);
+            }
+        }
+        delete tod;
+        tod = nullptr;
+        cout << "aaa" << tod << endl;
+        ++i;
+    }
+    toDestroy.clear();
+
     if (fabs(rotateV) > 0.000005) {
         rotate(rotateV * time_delta);
         rotateV *= 0.85;
@@ -196,6 +225,7 @@ void World::treeClicked(WorldObject *plant) {
     RainbowTree *tree = dynamic_cast<RainbowTree*>(plant);
     if(tree != nullptr){
         tree->grow();
+        destroy(tree);
     }
 }
 

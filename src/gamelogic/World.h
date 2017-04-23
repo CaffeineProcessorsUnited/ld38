@@ -25,6 +25,8 @@ class World: public CPU::EventHandler {
 private:
     vector<WorldResource *> resources;
     vector<WorldObject *> objects;
+    vector<WorldObject *> toSpawn;
+    vector<WorldObject *> toDestroy;
     Vector2 _offset;
     CPU::SpriteBatch *batch;
     Background *background;
@@ -77,14 +79,21 @@ public:
     template<typename T>
     T* spawn() {
         T* t = new T(this);
-        objects.push_back(t);
+        toSpawn.push_back(t);
         return t;
+    }
+    template<typename T>
+    void destroy(T* t) {
+        vector<WorldObject*>::iterator it = find(toDestroy.begin(), toDestroy.end(), t);
+        //Kill only once :(
+        if(it == toDestroy.end()) {
+            cout << "DESTROYING" << t << endl;
+            toDestroy.push_back(t);
+        }
     }
 
     void plantSapling(int x, int y);
-
     float points2angle(const Vector2 &p1, const Vector2 &p2, const Vector2 &p3);
-
     float pos2angle(int x, int y);
 };
 
