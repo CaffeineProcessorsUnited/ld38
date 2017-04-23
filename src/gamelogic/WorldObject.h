@@ -24,6 +24,7 @@ public:
     virtual void resize(unsigned int width, unsigned int height) = 0;
     virtual void update(float time_delta) = 0;
     virtual void draw() = 0;
+    virtual bool intersect(int x, int y) const = 0;
 
     WorldPos pos;
 };

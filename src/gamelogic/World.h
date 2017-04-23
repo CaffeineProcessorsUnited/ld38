@@ -22,6 +22,7 @@ private:
     CPU::SpriteBatch *batch;
     Background *background;
 
+    bool drag;
     Vector2 dragStart;
     Vector3 a, b, n;
     float rotateV;
@@ -34,6 +35,9 @@ public:
     static float RADIUS;
     constexpr static float SPEED = 3.337;
     constexpr static float DAYTIME = 60;
+    constexpr static float GROUND = -40;
+    constexpr static float AIR = 80;
+    constexpr static float SKY = 430;
     vector<WorldResource *> &getResources();
     vector<WorldObject *> &getObjects();
 
@@ -47,11 +51,22 @@ public:
 
     virtual void touchPress(int x, int y, unsigned int contactIndex) override;
     virtual void touchMove(int x, int y, unsigned int contactIndex) override;
+    virtual void touchRelease(int x, int y, unsigned int contactIndex) override;
 
     Vector2 offset();
     Vector2 size;
 
     float getHourOfDay();
+    vector<WorldObject*> objectsAtPos(int x, int y) const;
+    bool isGround(int x, int y) const;
+    bool isAir(int x, int y) const;
+    bool isSky(int x, int y) const;
+
+    void unicornCicked(WorldObject* unicorn);
+    void plantClicked(WorldObject* plant);
+    void cloudClicked(WorldObject* cloud);
+
+
 
     template<typename T>
     T* spawn() {

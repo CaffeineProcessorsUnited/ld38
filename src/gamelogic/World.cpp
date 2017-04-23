@@ -1,5 +1,9 @@
 #include "World.h"
 
+#include <src/worldobjects/Unicorn.h>
+#include <src/worldobjects/RainbowTree.h>
+#include <src/worldobjects/RandomCloud.h>
+
 float World::RADIUS = 512;
 
 World::World():
@@ -15,6 +19,7 @@ World::World():
     size.set(Game::getInstance()->getWidth(), Game::getInstance()->getHeight());
     dragStart = Vector2::zero();
     rotateV = 0;
+    drag = false;
 }
 
 World::~World() {
@@ -78,8 +83,52 @@ void World::rotate(float rad) {
     }
 }
 
+
 void World::touchPress(int x, int y, unsigned int contactIndex) {
     dragStart.set(x, y);
+}
+
+void World::touchRelease(int x, int y, unsigned int contactIndex) {
+    cout << "DRAG " << drag << endl;
+    if(!drag){
+        cout << Vector2(_offset.x-x, _offset.y-y).length()-RADIUS << endl;
+        vector<WorldObject *> objs = objectsAtPos(x,y);
+
+        for(WorldObject* obj: objs){
+            Unicorn* unicorn = dynamic_cast<Unicorn*>(obj);
+            if(unicorn != nullptr){
+                unicornCicked(obj);
+            }
+            RainbowTree* tree = dynamic_cast<RainbowTree*>(obj);
+            if(tree != nullptr){
+                plantClicked(obj);
+            }
+            RandomCloud* rcloud = dynamic_cast<RandomCloud*>(obj);
+            if(rcloud != nullptr){
+                cloudClicked(obj);
+            }
+            /*
+Sun* sun = dynamic_cast<Sun*>(obj);
+if(sun != nullptr){
+    //do stuff with sun
+}
+Moon* moon = dynamic_cast<Moon*>(obj);
+if(moon != nullptr){
+    //do stuff with moon
+}*/
+        }
+        if(isGround(x,y)){
+            cout << "GROUND " << x << " " << y << endl;
+            //Do something with ground
+        } else if(isAir(x,y)){
+            cout << "AIR " << x << " " << y << endl;
+            //Do something with air
+        } else if(isSky(x,y)){
+            cout << "SKY " << x << " " << y << endl;
+            //Do something with sky
+        }
+    }
+    drag = false;
 }
 
 void World::touchMove(int x, int y, unsigned int contactIndex) {
@@ -89,6 +138,7 @@ void World::touchMove(int x, int y, unsigned int contactIndex) {
     n.cross(b);
     rotateV += n.z / 36000 * SPEED;
     dragStart.set(x, y);
+    drag = true;
 }
 
 void World::mouseScrolled(int wheelData) {
@@ -103,4 +153,42 @@ Vector2 World::offset() {
 
 float World::getHourOfDay() {
     return background->getHourOfDay();
+}
+
+vector<WorldObject *> World::objectsAtPos(int x, int y) const {
+    vector<WorldObject*> obj;
+
+    for(WorldObject* object: objects){
+        if(object->intersect(x,y)){
+            obj.push_back(object);
+        }
+    }
+    return obj;
+}
+
+bool World::isGround(int x, int y) const {
+    float dist = Vector2(_offset.x-x, _offset.y-y).length() - RADIUS;
+    return GROUND <= dist && dist <= AIR;
+}
+
+bool World::isAir(int x, int y) const {
+    float dist = Vector2(_offset.x-x, _offset.y-y).length() - RADIUS;
+    return AIR <= dist && dist <= SKY;
+}
+
+bool World::isSky(int x, int y) const {
+    float dist = Vector2(_offset.x-x, _offset.y-y).length() - RADIUS;
+    return SKY <= dist;
+}
+
+void World::plantClicked(WorldObject *plant) {
+
+}
+
+void World::cloudClicked(WorldObject *cloud) {
+
+}
+
+void World::unicornCicked(WorldObject *unicorn) {
+
 }
