@@ -9,9 +9,9 @@
 using namespace CPU;
 
 #include "src/fw_decl.h"
-#include "src/gamelogic/WorldObjectSingle.h"
-#include "src/gamelogic/World.h"
 #include <vector>
+#include "src/gamelogic/WorldObjectSingle.h"
+#include "Rain.h"
 
 class RandomCloud: public WorldObjectSingle {
 protected:
