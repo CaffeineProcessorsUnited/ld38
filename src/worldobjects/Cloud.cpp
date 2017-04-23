@@ -15,3 +15,7 @@ Cloud::Cloud(World *world):
     batch = new CPU::SpriteBatch("@cloud");
     batch->scale.set(16, 16);
 }
+
+ObjectType Cloud::type() {
+    return ObjectType::CLOUD;
+}

@@ -24,3 +24,7 @@ RandomCloud::RandomCloud(World *world):
     batch = new CPU::SpriteBatch(RandomCloud::cloudSprites[spriteIndex]);
     batch->scale.set(100, 50);
 }
+
+ObjectType RandomCloud::type() {
+    return ObjectType::CLOUD;
+}

@@ -5,6 +5,9 @@
 #ifndef LD38_CLOUD_H
 #define LD38_CLOUD_H
 
+#include "CPU/Common.h"
+using namespace CPU;
+
 #include "src/fw_decl.h"
 #include "src/gamelogic/WorldObjectSingle.h"
 #include "src/gamelogic/World.h"
@@ -15,6 +18,7 @@ protected:
     constexpr static float maxSpeed = 0.5f;
 public:
     Cloud(World *world);
+    virtual ObjectType type();
 };
 
 

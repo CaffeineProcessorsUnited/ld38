@@ -17,8 +17,8 @@ Background::Background(World *world):
                                     Vector4(0.5, 0.5, 0.5, 1)
     };*/
     colors = vector<Vector4>{
-            Vector4(0, 0, 0, 1), // 0-1
-            Vector4(0, 0, 0, 1), // 2-3
+            Vector4(0, 0, 0, 0), // 0-1
+            Vector4(0, 0, 0, 0), // 2-3
             Vector4(0.7, 0.2, 0.1, 1), // 4-5
             Vector4(0.7, 0.5, 0, 1), // 6-7
             Vector4(0.6, 0.4, 0, 1), // 8-9
@@ -28,7 +28,7 @@ Background::Background(World *world):
             Vector4(0.4, 0.4, 0.7, 1), // 16-17
             Vector4(0.6, 0.4, 0.4, 1), // 18-19
             Vector4(0.3, 0.3, 0.3, 1), // 20-21
-            Vector4(0.1, 0.1, 0.1, 1) // 22-23 -> start again
+            Vector4(0.1, 0.1, 0.1, 0.5) // 22-23 -> start again
     };
     
     batch = new CPU::SpriteBatch("@white");
@@ -61,7 +61,7 @@ void Background::update(float elapsedTime) {
         batch->color.x = colorPercentage * colors[next].x + (1 - colorPercentage) * colors[current].x;
         batch->color.y = colorPercentage * colors[next].y + (1 - colorPercentage) * colors[current].y;
         batch->color.z = colorPercentage * colors[next].z + (1 - colorPercentage) * colors[current].z;
-        batch->color.w = 1;
+        batch->color.w = colorPercentage * colors[next].w + (1 - colorPercentage) * colors[current].w;
     }
 }
 
@@ -81,4 +81,8 @@ float Background::getHourOfDay() {
     float percentageOfDay = 24 / colors.size();
     float percentOfPart = lastColorChange / timePerColor;
     return current * percentageOfDay + percentOfPart;
+}
+
+ObjectType Background::type() {
+    return ObjectType::BACKGROUND;
 }

@@ -5,6 +5,9 @@
 #ifndef LD38_RANDOMSTAR_H
 #define LD38_RANDOMSTAR_H
 
+#include "CPU/Common.h"
+using namespace CPU;
+
 #include "src/fw_decl.h"
 #include "src/gamelogic/WorldObjectSingle.h"
 #include "src/gamelogic/World.h"
@@ -36,6 +39,7 @@ public:
     RandomStar(World *world);
     void update(float delta_time);
     void draw();
+    virtual ObjectType type();
 };
 
 

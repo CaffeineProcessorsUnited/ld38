@@ -42,10 +42,17 @@ void World::update(float time_delta) {
 
 }
 void World::draw() {
+    for(WorldObject *obj: objects){
+        if (obj->type() == ObjectType::STAR) {
+            obj->draw();
+        }
+    }
     background->draw();
     batch->draw();
     for(WorldObject *obj: objects){
-        obj->draw();
+        if (obj->type() != ObjectType::STAR) {
+            obj->draw();
+        }
     }
 }
 

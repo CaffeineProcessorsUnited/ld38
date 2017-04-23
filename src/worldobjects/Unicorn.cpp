@@ -16,3 +16,8 @@ Unicorn::Unicorn(World* world, float rad, unsigned int zindex, float height)
 {
 	pos = WorldPos(rad, zindex, height);
 }
+
+
+ObjectType Unicorn::type() {
+    return ObjectType::UNICORN;
+}

@@ -5,6 +5,9 @@
 #ifndef LD38_RANDOMCLOUD_H
 #define LD38_RANDOMCLOUD_H
 
+#include "CPU/Common.h"
+using namespace CPU;
+
 #include "src/fw_decl.h"
 #include "src/gamelogic/WorldObjectSingle.h"
 #include "src/gamelogic/World.h"
@@ -20,6 +23,7 @@ protected:
     int spriteIndex;
 public:
     RandomCloud(World *world);
+    virtual ObjectType type();
 };
 
 

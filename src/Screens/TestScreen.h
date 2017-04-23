@@ -13,7 +13,6 @@
 using namespace CPU;
 
 class TestScreen: public ScreenForm {
-    CPU::SpriteBatch *_batch;
     World *world;
     vector<RandomCloud*> clouds;
     RandomCloud *myCloud;
