@@ -83,6 +83,18 @@ float Background::getHourOfDay() {
     return current * percentageOfDay + percentOfPart;
 }
 
+void Background::setHourOfDay(float hour) {
+    while (hour < 0) {
+        hour += 24;
+    }
+    while (hour >= 24) {
+        hour -= 24;
+    }
+    float percentageOfDay = 24 / colors.size();
+    current = (hour / percentageOfDay);
+    lastColorChange = timePerColor * fmod(hour, percentageOfDay);
+}
+
 ObjectType Background::type() const {
     return ObjectType::BACKGROUND;
 }

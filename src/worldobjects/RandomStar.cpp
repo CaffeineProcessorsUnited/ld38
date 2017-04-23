@@ -43,15 +43,11 @@ RandomStar::RandomStar(World *world):
     batch->scale.set(scale, scale);
 }
 
-void RandomStar::update(float delta_time)
-{
+void RandomStar::update(float delta_time){
     WorldObjectSingle::update(delta_time);
-    if (world->getHourOfDay() >= disappearTod && world->getHourOfDay() < appearTod)
-    {
+    if (world->getHourOfDay() >= disappearTod && world->getHourOfDay() < appearTod) {
         isVisible = false;
-    }
-    else
-    {
+    } else {
         flickerCounter++;
         if (isFlickering && flickerCounter > 5){
             isVisible = !isVisible;
@@ -64,13 +60,12 @@ void RandomStar::update(float delta_time)
     }
 }
 
-void RandomStar::draw()
-{
-    if (isVisible)
-    {
+void RandomStar::draw() {
+    if (isVisible) {
         WorldObjectSingle::draw();
     }
 }
+
 ObjectType RandomStar::type() const {
     return ObjectType::STAR;
 }

@@ -44,7 +44,6 @@ void World::update(float time_delta) {
     for(WorldObject *obj: objects){
         obj->update(time_delta);
     }
-
 }
 void World::draw() {
     for(WorldObject *obj: objects){
@@ -155,6 +154,10 @@ Vector2 World::offset() {
 
 float World::getHourOfDay() {
     return background->getHourOfDay();
+}
+
+void World::setHourOfDay(float hour) {
+    background->setHourOfDay(hour);
 }
 
 vector<WorldObject *> World::objectsAtPos(int x, int y) const {

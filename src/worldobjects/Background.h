@@ -30,6 +30,7 @@ public:
 
     ~Background() override;
     float getHourOfDay();
+    void setHourOfDay(float hour);
 };
 
 
