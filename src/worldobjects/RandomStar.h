@@ -10,6 +10,7 @@
 #include "src/gamelogic/World.h"
 #include <vector>
 #include <random>
+#include "src/worldobjects/Unicorn.h"
 
 class RandomStar: public WorldObjectSingle {
 protected:

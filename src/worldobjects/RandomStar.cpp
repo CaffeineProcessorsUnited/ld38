@@ -22,7 +22,7 @@ RandomStar::RandomStar(World *world):
     std::normal_distribution<float> distributionScale(4, 1.5);
     std::uniform_int_distribution<int> flickerFactor(0, 100);
 
-    if(flickerFactor(generator) < 5){
+    if(flickerFactor(generator) < 6){
         isFlickering = true;
     } else{
         isFlickering = false;

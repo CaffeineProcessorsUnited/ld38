@@ -19,6 +19,8 @@ class TestScreen: public ScreenForm {
     RandomCloud *myCloud;
     vector<RandomStar*> stars;
     RandomStar *myStar;
+
+    Unicorn *uni;
 public:
     virtual void resize(int width, int height) override;
 

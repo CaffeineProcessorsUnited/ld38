@@ -32,6 +32,8 @@ void TestScreen::initialize() {
         myStar = world->spawn<RandomStar>();
         stars.push_back(myStar);
     }
+    uni = world->spawn<Unicorn>();
+
 }
 
 void TestScreen::finalize() {
