@@ -33,7 +33,7 @@ protected:
 public:
     RandomStar(World *world);
     void update(float delta_time);
-    virtual ObjectType type();
+    virtual ObjectType type() const override;
 };
 
 

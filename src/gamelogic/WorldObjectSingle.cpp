@@ -63,26 +63,23 @@ bool WorldObjectSingle::intersect(int x, int y) const {
 
     const Vector2 center(cX, cY);
 
-    Vector2 posA(batch->pos.x+0, batch->pos.y+0);
-    Vector2 posB(batch->pos.x+0, batch->pos.y+h);
-    Vector2 posC(batch->pos.x+w, batch->pos.y+h);
+    Vector2 posA(cX-w, cY-h);
+    Vector2 posB(cX+w, cY-h);
+    Vector2 posC(cX-w, cY+h);
     posA.rotate(center,angle);
     posB.rotate(center,angle);
     posC.rotate(center,angle);
 
-    Vector2 mouse(x,y);
+    Vector2 AB(posB.x-posA.x, posB.y-posA.y);
+    Vector2 AC(posC.x-posA.x, posC.y-posA.y);
+    Vector2 AM(x-posA.x, y-posA.y);
+    float ABAM = Vector2::dot(AB, AM);
+    float ABAB = Vector2::dot(AB, AB);
+    float ACAM = Vector2::dot(AC, AM);
+    float ACAC = Vector2::dot(AC, AC);
 
-    Vector2 BA(posA.x-posB.x, posA.y-posB.y);
-    Vector2 CA(posA.x-posC.x, posA.y-posC.y);
-    Vector2 BM(x-posB.x, y-posB.y);
-    Vector2 CM(x-posB.x, y-posB.y);
-    float BABM = Vector2::dot(BA, BM);
-    float BABA = Vector2::dot(BA, BA);
-    float CACM = Vector2::dot(CA,CM);
-    float CACA = Vector2::dot(CA,CA);
-
-    return 0 <= BABM &&
-            BABM <= BABA &&
-            0 <= CACM &&
-            CACM <= CACA;
+    return 0 <= ABAM &&
+            ABAM <= ABAB &&
+            0 <= ACAM &&
+            ACAM <= ACAC;
 }

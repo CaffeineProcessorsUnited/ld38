@@ -31,12 +31,11 @@ public:
     void update(float delta_time);
     void draw();
 
-    virtual ObjectType type();
-
     bool canRain();
     bool canRain(int amount);
     bool doRain();
     bool doRain(int amount);
+    virtual ObjectType type() const override;
 };
 
 

@@ -47,7 +47,7 @@ void RandomCloud::draw() {
     }
 }
 
-ObjectType RandomCloud::type() {
+ObjectType RandomCloud::type() const {
     return ObjectType::CLOUD;
 }
 

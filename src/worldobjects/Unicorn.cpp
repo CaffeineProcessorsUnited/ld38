@@ -18,6 +18,6 @@ Unicorn::Unicorn(World* world, float rad, unsigned int zindex, float height)
 }
 
 
-ObjectType Unicorn::type() {
+ObjectType Unicorn::type() const {
     return ObjectType::UNICORN;
 }
