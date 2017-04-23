@@ -100,6 +100,7 @@ void World::touchRelease(int x, int y, unsigned int contactIndex) {
     if(!drag){
         cout << Vector2(_offset.x-x, _offset.y-y).length()-RADIUS << endl;
         vector<WorldObject *> objs = objectsAtPos(x,y);
+        cout << "got " << objs.size() << "objs" << endl;
 
         for(WorldObject* obj: objs){
             ObjectType type = obj->type();
@@ -117,7 +118,9 @@ void World::touchRelease(int x, int y, unsigned int contactIndex) {
         }
         if(isGround(x,y)){
             cout << "GROUND " << x << " " << y << endl;
-            plantSapling(x,y);
+            if(objs.size() == 0) {
+                plantSapling(x, y);
+            }
             //Do something with ground
         } else if(isAir(x,y)){
             cout << "AIR " << x << " " << y << endl;
@@ -181,7 +184,10 @@ bool World::isSky(int x, int y) const {
 }
 
 void World::treeClicked(WorldObject *plant) {
-
+    RainbowTree *tree = dynamic_cast<RainbowTree*>(plant);
+    if(tree != nullptr){
+        tree->grow();
+    }
 }
 
 void World::cloudClicked(WorldObject *cloud) {
@@ -212,6 +218,5 @@ float World::pos2angle(int x, int y){
     Vector2 top = offset();
     top.y = 9999;
     float angle = points2angle(Vector2(x, y), offset(), top);
-    cout << "angle: " << angle << endl;
     return (float) fmod(angle,4 * M_PI);
 }

@@ -10,7 +10,7 @@ using namespace gameplay;
 const vector<string> RandomStar::sprites = {"@star1"};
 
 RandomStar::RandomStar(World *world):
-    WorldObjectSingle(world)
+        WorldObjectSingle(world)
 {
     std::random_device generator;
     std::uniform_real_distribution<float> distribution(minSpeed, maxSpeed);
@@ -48,17 +48,17 @@ void RandomStar::update(float delta_time)
     WorldObjectSingle::update(delta_time);
     if (world->getHourOfDay() >= disappearTod && world->getHourOfDay() < appearTod)
     {
-        //isVisible = false;
+        isVisible = false;
     }
     else
     {
         flickerCounter++;
         if (isFlickering && flickerCounter > 5){
-            //isVisible = !isVisible;
+            isVisible = !isVisible;
             flickerCounter = 0;
         }
         else{
-            //isVisible = true;
+            isVisible = true;
         }
 
     }
@@ -71,7 +71,6 @@ void RandomStar::draw()
         WorldObjectSingle::draw();
     }
 }
-
-ObjectType RandomStar::type() {
-    return ObjectType::TREE;
+ObjectType RandomStar::type() const {
+    return ObjectType::STAR;
 }

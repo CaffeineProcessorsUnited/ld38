@@ -202,7 +202,7 @@ set(GAME_SRC
     src/worldobjects/RainbowTree.h
     src/fw_decl.h
     ${CPU_SOURCE}
-)
+        src/worldobjects/Rain.h src/worldobjects/Rain.cpp)
 
 find_package(Sanitizers)
 

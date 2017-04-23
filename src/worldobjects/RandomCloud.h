@@ -9,9 +9,9 @@
 using namespace CPU;
 
 #include "src/fw_decl.h"
-#include "src/gamelogic/WorldObjectSingle.h"
-#include "src/gamelogic/World.h"
 #include <vector>
+#include "src/gamelogic/WorldObjectSingle.h"
+#include "Rain.h"
 
 class RandomCloud: public WorldObjectSingle {
 protected:
@@ -19,11 +19,23 @@ protected:
     constexpr static float maxSpeed = 0.2f;
     const static int minHeight = 128;
     const static int maxHeight = 333;
+    constexpr static float rainDuration = 2;
     const static vector<string> cloudSprites;
     int spriteIndex;
+    int rainAmount;
+    bool isRaining;
+    float rainTime;
 public:
     RandomCloud(World *world);
-    virtual ObjectType type();
+
+    void update(float delta_time);
+    void draw();
+
+    bool canRain();
+    bool canRain(int amount);
+    bool doRain();
+    bool doRain(int amount);
+    virtual ObjectType type() const override;
 };
 
 

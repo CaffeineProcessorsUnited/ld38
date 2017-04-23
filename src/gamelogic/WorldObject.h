@@ -28,7 +28,7 @@ public:
     virtual void update(float time_delta) = 0;
     virtual void draw() = 0;
 
-    virtual ObjectType type() = 0;
+    virtual ObjectType type() const = 0;
     virtual bool intersect(int x, int y) const = 0;
 
     WorldPos pos;
