@@ -63,7 +63,7 @@ public:
     bool isSky(int x, int y) const;
 
     void unicornCicked(WorldObject* unicorn);
-    void plantClicked(WorldObject* plant);
+    void treeClicked(WorldObject *plant);
     void cloudClicked(WorldObject* cloud);
 
 
@@ -74,6 +74,12 @@ public:
         objects.push_back(t);
         return t;
     }
+
+    void plantSapling(int x, int y);
+
+    float points2angle(const Vector2 &p1, const Vector2 &p2, const Vector2 &p3);
+
+    float pos2angle(int x, int y);
 };
 
 #endif // World_h_INCLUDED
