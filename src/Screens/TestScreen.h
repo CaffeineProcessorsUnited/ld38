@@ -6,6 +6,7 @@
 #define LDTEST_TESTSCREEN_H
 
 #include "src/fw_decl.h"
+#include "src/worldobjects/Rain.h"
 
 #include "CPU/CPU.h"
 using namespace CPU;
@@ -18,6 +19,7 @@ class TestScreen: public ScreenForm {
     RandomStar *myStar;
 
     Unicorn *uni;
+    Rain *rain;
 public:
     virtual void resize(int width, int height) override;
 

@@ -23,18 +23,25 @@ protected:
     constexpr static float midAppearTod = 19;
     constexpr static float deviateAppear = 1.5;
 
+    constexpr static float midDisappearTod = 3.6;
+    constexpr static float deviateDisappear = 0.8;
+
     const static int minHeight = 50;
     const static int maxHeight = 800;
     const static vector<string> sprites;
     int spriteIndex;
     bool isVisible;
     bool isFlickering;
+    float appearTod;
+    float disappearTod;
     int flickerCounter;
 public:
     RandomStar(World *world);
     virtual void update(float delta_time) ;
+    virtual void draw();
     virtual ObjectType type() const;
 };
+
 
 
 #endif //LD38_CLOUD_H

@@ -27,6 +27,7 @@ void TestScreen::initialize() {
     for(int i = 0; i < 10; i++){
         myCloud = world->spawn<RandomCloud>();
         clouds.push_back(myCloud);
+
     }
 
     //Spawn Random Stars.

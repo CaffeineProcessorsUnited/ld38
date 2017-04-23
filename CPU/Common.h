@@ -27,7 +27,8 @@ namespace CPU {
         TREE,
         CLOUD,
         UNICORN,
-        STAR
+        STAR,
+        RAIN
     };
 }
 
