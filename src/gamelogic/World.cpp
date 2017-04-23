@@ -45,6 +45,9 @@ void World::update(float time_delta) {
     background->update(time_delta);
     batch->pos.set(_offset.x, _offset.y, 1);
     for(WorldObject *obj: objects){
+        if(obj == nullptr){
+            continue;
+        }
         obj->update(time_delta);
     }
 
@@ -191,7 +194,6 @@ void World::treeClicked(WorldObject *plant) {
     if(tree != nullptr){
         tree->grow();
     }
-    SAFE_DELETE(tree);
 }
 
 void World::cloudClicked(WorldObject *cloud) {
