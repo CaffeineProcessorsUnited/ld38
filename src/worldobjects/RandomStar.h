@@ -9,6 +9,7 @@
 #include "src/gamelogic/WorldObjectSingle.h"
 #include "src/gamelogic/World.h"
 #include <vector>
+#include <random>
 
 class RandomStar: public WorldObjectSingle {
 protected:
@@ -21,11 +22,12 @@ protected:
     constexpr static float midDisappearTod = 3.6;
     constexpr static float deviateDisappear = 0.8;
 
-    const static int minHeight = 128;
-    const static int maxHeight = 600;
+    const static int minHeight = 50;
+    const static int maxHeight = 800;
     const static vector<string> sprites;
     int spriteIndex;
     bool isVisible;
+    bool isFlickering;
     float appearTod;
     float disappearTod;
 public:

@@ -28,7 +28,7 @@ void TestScreen::initialize() {
     }
 
     //Spawn Random Stars.
-    for(int i = 0; i < 100; i++){
+    for(int i = 0; i < 200; i++){
         myStar = world->spawn<RandomStar>();
         stars.push_back(myStar);
     }
