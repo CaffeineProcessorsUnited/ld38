@@ -17,8 +17,6 @@ RandomStar::RandomStar(World *world):
     std::uniform_int_distribution<int> distributionIntSprite(0, RandomStar::sprites.size() - 1);
     std::uniform_int_distribution<int> distributionIntHeight(minHeight, maxHeight);
     std::uniform_real_distribution<float> distributionRad(0, 2*M_PI);
-    std::normal_distribution<float> distributionAppear(midAppearTod, deviateAppear);
-    std::normal_distribution<float> distributionDisappear(midDisappearTod, deviateDisappear);
     std::normal_distribution<float> distributionScale(4, 1.5);
     std::uniform_int_distribution<int> flickerFactor(0, 100);
 
@@ -35,9 +33,6 @@ RandomStar::RandomStar(World *world):
     pos.height = distributionIntHeight(generator);
     pos.rad = distributionRad(generator);
 
-    appearTod = distributionAppear(generator);
-    disappearTod = distributionDisappear(generator);
-
     batch = new CPU::SpriteBatch(RandomStar::sprites[spriteIndex]);
     float scale = distributionScale(generator);
     batch->scale.set(scale, scale);
@@ -46,29 +41,12 @@ RandomStar::RandomStar(World *world):
 void RandomStar::update(float delta_time)
 {
     WorldObjectSingle::update(delta_time);
-    if (world->getHourOfDay() >= disappearTod && world->getHourOfDay() < appearTod)
-    {
-        //isVisible = false;
-    }
-    else
-    {
-        flickerCounter++;
-        if (isFlickering && flickerCounter > 5){
-            //isVisible = !isVisible;
-            flickerCounter = 0;
-        }
-        else{
-            //isVisible = true;
-        }
-
-    }
-}
-
-void RandomStar::draw()
-{
-    if (isVisible)
-    {
-        WorldObjectSingle::draw();
+    flickerCounter++;
+    if (isFlickering && flickerCounter > 5){
+        isVisible = !isVisible;
+        flickerCounter = 0;
+    } else{
+        isVisible = true;
     }
 }
 

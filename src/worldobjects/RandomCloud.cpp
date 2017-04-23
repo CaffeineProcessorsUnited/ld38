@@ -23,8 +23,55 @@ RandomCloud::RandomCloud(World *world):
     cout << pos.height << " " << pos.rad << endl;
     batch = new CPU::SpriteBatch(RandomCloud::cloudSprites[spriteIndex]);
     batch->scale.set(100, 50);
+
+    rainAmount = 1; // TODO: maybe randomize?
+    isRaining = false;
+    rainTime = 0;
+}
+
+void RandomCloud::update(float delta_time) {
+    WorldObjectSingle::update(delta_time);
+    if (isRaining) {
+        if(rainTime < rainDuration) {
+            rainTime += delta_time;
+        } else {
+            isRaining = false;
+        }
+    }
+}
+
+void RandomCloud::draw() {
+    WorldObjectSingle::draw();
+    if (isRaining) {
+        // TODO: Draw rain
+    }
 }
 
 ObjectType RandomCloud::type() const {
     return ObjectType::CLOUD;
+}
+
+bool RandomCloud::canRain() {
+    return canRain(1);
+}
+
+bool RandomCloud::canRain(int amount) {
+    if (rainAmount - amount >= 0) {
+        rainAmount -= amount;
+        return true;
+    }
+    return false;
+}
+
+bool RandomCloud::doRain() {
+    return doRain(1);
+}
+
+bool RandomCloud::doRain(int amount) {
+    if (!canRain(amount)) {
+        return false;
+    }
+    rainTime = 0;
+    isRaining = true;
+    return true;
 }
