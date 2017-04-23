@@ -4,7 +4,6 @@
 #include "CPU/Common.h"
 using namespace CPU;
 
-class World;
 
 struct WorldPos {
     float rad;
@@ -17,6 +16,9 @@ struct WorldPos {
         this->height = height;
     }
 };
+class World;
+
+#include "src/fw_decl.h"
 
 class WorldObject {
 protected:
@@ -27,7 +29,6 @@ public:
     virtual void resize(unsigned int width, unsigned int height) = 0;
     virtual void update(float time_delta) = 0;
     virtual void draw() = 0;
-
     virtual ObjectType type() const = 0;
     virtual bool intersect(int x, int y) const = 0;
 

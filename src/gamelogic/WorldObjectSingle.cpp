@@ -3,8 +3,8 @@ using namespace std;
 
 
 #include "WorldObjectSingle.h"
-#include "World.h"
-#include "gameplay.h"
+#include "src/gamelogic/WorldObject.h"
+#include "src/gamelogic/World.h"
 using namespace gameplay;
 
 WorldObjectSingle::WorldObjectSingle(World *world):
@@ -83,3 +83,4 @@ bool WorldObjectSingle::intersect(int x, int y) const {
             0 <= ACAM &&
             ACAM <= ACAC;
 }
+

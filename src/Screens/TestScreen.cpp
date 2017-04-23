@@ -3,6 +3,11 @@
 //
 
 #include "TestScreen.h"
+#include "src/gamelogic/World.h"
+#include "src/gamelogic/WorldObjectSingle.h"
+#include "src/gamelogic/WorldObject.h"
+#include "src/worldobjects/RandomCloud.h"
+#include "src/worldobjects/RandomStar.h"
 
 TestScreen::TestScreen(ScreenManager *parent) :
         ScreenForm(parent),

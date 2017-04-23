@@ -1,8 +1,11 @@
 #include "World.h"
 
-#include <src/worldobjects/Unicorn.h>
-#include <src/worldobjects/RainbowTree.h>
-#include <src/worldobjects/RandomCloud.h>
+#include "src/gamelogic/WorldResource.h"
+#include "src/gamelogic/WorldObject.h"
+#include "src/worldobjects/Background.h"
+#include "src/worldobjects/Unicorn.h"
+#include "src/worldobjects/RainbowTree.h"
+#include "src/worldobjects/RandomCloud.h"
 
 float World::RADIUS = 512;
 
@@ -42,6 +45,9 @@ void World::update(float time_delta) {
     background->update(time_delta);
     batch->pos.set(_offset.x, _offset.y, 1);
     for(WorldObject *obj: objects){
+        if(obj == nullptr){
+            continue;
+        }
         obj->update(time_delta);
     }
 }

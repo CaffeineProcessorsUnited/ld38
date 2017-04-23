@@ -5,20 +5,22 @@
 #ifndef LD38_RANDOMCLOUD_H
 #define LD38_RANDOMCLOUD_H
 
+#include <vector>
+#include <string>
+using namespace std;
+
 #include "CPU/Common.h"
 using namespace CPU;
 
 #include "src/fw_decl.h"
-#include <vector>
 #include "src/gamelogic/WorldObjectSingle.h"
-#include "Rain.h"
 
 class RandomCloud: public WorldObjectSingle {
 protected:
     constexpr static float minSpeed = -0.2f;
     constexpr static float maxSpeed = 0.2f;
-    const static int minHeight = 128;
-    const static int maxHeight = 333;
+    constexpr static int minHeight = 128;
+    constexpr static int maxHeight = 333;
     constexpr static float rainDuration = 2;
     const static vector<string> cloudSprites;
     int spriteIndex;
@@ -28,14 +30,14 @@ protected:
 public:
     RandomCloud(World *world);
 
-    void update(float delta_time);
-    void draw();
+    virtual void update(float delta_time);
+    virtual void draw();
 
     bool canRain();
     bool canRain(int amount);
     bool doRain();
     bool doRain(int amount);
-    virtual ObjectType type() const override;
+    virtual ObjectType type() const;
 };
 
 
