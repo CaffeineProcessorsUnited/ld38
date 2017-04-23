@@ -50,6 +50,6 @@ void RandomStar::update(float delta_time)
     }
 }
 
-ObjectType RandomStar::type() {
+ObjectType RandomStar::type() const {
     return ObjectType::STAR;
 }
