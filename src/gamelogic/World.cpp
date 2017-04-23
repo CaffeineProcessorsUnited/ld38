@@ -218,6 +218,5 @@ float World::pos2angle(int x, int y){
     Vector2 top = offset();
     top.y = 9999;
     float angle = points2angle(Vector2(x, y), offset(), top);
-    cout << "angle: " << angle << endl;
     return (float) fmod(angle,4 * M_PI);
 }
