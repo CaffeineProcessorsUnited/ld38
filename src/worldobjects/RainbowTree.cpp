@@ -10,9 +10,9 @@ RainbowTree::RainbowTree(World* world):
     batch = new CPU::SpriteBatch("@plantseed");
     batch->scale.set(20,20);
     growthState = 0;
-    grow();
-    grow();
-    grow();
+    //grow();
+    //grow();
+    //grow();
 }
 
 void RainbowTree::grow(){
@@ -37,22 +37,18 @@ void RainbowTree::upgradeBatch() {
         case 0:
             batch = new CPU::SpriteBatch("@plantseed");
             batch->scale.set(20, 20);
-            batch->recreate();
             break;
         case 1:
             batch = new CPU::SpriteBatch("@plantsmall");
             batch->scale.set(30, 30);
-            batch->recreate();
             break;
         case 2:
             batch = new CPU::SpriteBatch("@plantmedium");
             batch->scale.set(50, 50);
-            batch->recreate();
             break;
         case 3:
             batch = new CPU::SpriteBatch("@planttree");
             batch->scale.set(100, 100);
-            batch->recreate();
             break;
         default:
             batch = NULL;
@@ -61,6 +57,6 @@ void RainbowTree::upgradeBatch() {
     batch->recreate();
 }
 
-ObjectType RainbowTree::type() {
+ObjectType RainbowTree::type() const {
     return ObjectType::TREE;
 }

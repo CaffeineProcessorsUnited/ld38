@@ -23,7 +23,7 @@ protected:
     int spriteIndex;
 public:
     RandomCloud(World *world);
-    virtual ObjectType type();
+    virtual ObjectType type() const override;
 };
 
 

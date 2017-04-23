@@ -39,7 +39,7 @@ public:
     RandomStar(World *world);
     void update(float delta_time);
     void draw();
-    virtual ObjectType type();
+    virtual ObjectType type() const override;
 };
 
 

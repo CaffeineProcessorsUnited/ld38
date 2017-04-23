@@ -83,6 +83,6 @@ float Background::getHourOfDay() {
     return current * percentageOfDay + percentOfPart;
 }
 
-ObjectType Background::type() {
+ObjectType Background::type() const {
     return ObjectType::BACKGROUND;
 }

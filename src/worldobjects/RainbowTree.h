@@ -19,7 +19,7 @@ public:
     RainbowTree(World* world);
     virtual void grow();
     virtual void consume();
-    virtual ObjectType type();
+    virtual ObjectType type() const override;
 };
 
 

@@ -26,10 +26,9 @@ public:
     virtual void update(float elapsedTime) override;
     virtual void resize(unsigned int width, unsigned int height) override;
 
-    virtual ObjectType type();
+    virtual ObjectType type() const override;
 
     ~Background() override;
-
     float getHourOfDay();
 };
 

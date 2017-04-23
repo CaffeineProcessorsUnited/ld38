@@ -12,7 +12,7 @@ class Unicorn : public WorldObjectSingle {
     public:
 		Unicorn(World* world);
 		Unicorn(World* world, float rad, unsigned int zindex, float height);
-        virtual ObjectType type();
+        virtual ObjectType type() const override;
 };
 
 #endif // Unicorn_h_INCLUDED

@@ -25,6 +25,6 @@ RandomCloud::RandomCloud(World *world):
     batch->scale.set(100, 50);
 }
 
-ObjectType RandomCloud::type() {
+ObjectType RandomCloud::type() const {
     return ObjectType::CLOUD;
 }

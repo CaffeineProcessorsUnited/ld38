@@ -72,6 +72,6 @@ void RandomStar::draw()
     }
 }
 
-ObjectType RandomStar::type() {
+ObjectType RandomStar::type() const {
     return ObjectType::TREE;
 }
