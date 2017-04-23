@@ -51,5 +51,5 @@ void RandomStar::update(float delta_time)
 }
 
 ObjectType RandomStar::type() {
-    return ObjectType::TREE;
+    return ObjectType::STAR;
 }
