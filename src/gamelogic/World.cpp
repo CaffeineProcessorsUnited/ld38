@@ -102,30 +102,22 @@ void World::touchRelease(int x, int y, unsigned int contactIndex) {
         vector<WorldObject *> objs = objectsAtPos(x,y);
 
         for(WorldObject* obj: objs){
-            Unicorn* unicorn = dynamic_cast<Unicorn*>(obj);
-            if(unicorn != nullptr){
-                unicornCicked(obj);
+            ObjectType type = obj->type();
+            switch(type){
+                case TREE:
+                    treeClicked(obj);
+                    break;
+                case UNICORN:
+                    unicornCicked(obj);
+                    break;
+                case CLOUD:
+                    cloudClicked(obj);
+                    break;
             }
-            RainbowTree* tree = dynamic_cast<RainbowTree*>(obj);
-            if(tree != nullptr){
-                plantClicked(obj);
-            }
-            RandomCloud* rcloud = dynamic_cast<RandomCloud*>(obj);
-            if(rcloud != nullptr){
-                cloudClicked(obj);
-            }
-            /*
-Sun* sun = dynamic_cast<Sun*>(obj);
-if(sun != nullptr){
-    //do stuff with sun
-}
-Moon* moon = dynamic_cast<Moon*>(obj);
-if(moon != nullptr){
-    //do stuff with moon
-}*/
         }
         if(isGround(x,y)){
             cout << "GROUND " << x << " " << y << endl;
+            plantSapling(x,y);
             //Do something with ground
         } else if(isAir(x,y)){
             cout << "AIR " << x << " " << y << endl;
@@ -188,7 +180,7 @@ bool World::isSky(int x, int y) const {
     return SKY <= dist;
 }
 
-void World::plantClicked(WorldObject *plant) {
+void World::treeClicked(WorldObject *plant) {
 
 }
 
@@ -198,4 +190,28 @@ void World::cloudClicked(WorldObject *cloud) {
 
 void World::unicornCicked(WorldObject *unicorn) {
 
+}
+
+void World::plantSapling(int x, int y) {
+    float rotation = pos2angle(x,y);
+    RainbowTree* tree = spawn<RainbowTree>();
+    tree->pos.rad = rotation;
+}
+
+float World::points2angle(const Vector2& p1, const Vector2& p2, const Vector2& p3){
+    Vector2 a(p2.x-p1.x,p2.y-p1.y);
+    Vector2 b(p2.x-p3.x,p2.y-p3.y);
+
+    float dot = (a.x*b.x+a.y*b.y);
+    float cross = (a.x*b.y-a.y*b.x);
+    float alpha = atan2(cross+MATH_FLOAT_SMALL,dot);
+    return alpha;
+}
+
+float World::pos2angle(int x, int y){
+    Vector2 top = offset();
+    top.y = 9999;
+    float angle = points2angle(Vector2(x, y), offset(), top);
+    cout << "angle: " << angle << endl;
+    return (float) fmod(angle,4 * M_PI);
 }
