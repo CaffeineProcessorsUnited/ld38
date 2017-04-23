@@ -1,8 +1,11 @@
 #include "World.h"
 
-#include <src/worldobjects/Unicorn.h>
-#include <src/worldobjects/RainbowTree.h>
-#include <src/worldobjects/RandomCloud.h>
+#include "src/gamelogic/WorldResource.h"
+#include "src/gamelogic/WorldObject.h"
+#include "src/worldobjects/Background.h"
+#include "src/worldobjects/Unicorn.h"
+#include "src/worldobjects/RainbowTree.h"
+#include "src/worldobjects/RandomCloud.h"
 
 float World::RADIUS = 512;
 
@@ -188,6 +191,7 @@ void World::treeClicked(WorldObject *plant) {
     if(tree != nullptr){
         tree->grow();
     }
+    SAFE_DELETE(tree);
 }
 
 void World::cloudClicked(WorldObject *cloud) {

@@ -2,17 +2,24 @@
 #define World_h_INCLUDED
 
 #include <vector>
+#include <CPU/EventHandler.h>
+
 using namespace std;
 
 #include "gameplay.h"
 using namespace gameplay;
 
 #include "src/fw_decl.h"
-#include "src/worldobjects/Background.h"
-#include "src/gamelogic/WorldObject.h"
-#include "src/gamelogic/WorldResource.h"
 #include "CPU/SpriteBatch.h"
 #include "CPU/EventHandler.h"
+
+#include "WorldObject.h"
+#include "WorldObjectSingle.h"
+#include "src/worldobjects/RandomCloud.h"
+#include "src/worldobjects/RandomStar.h"
+#include "src/worldobjects/Unicorn.h"
+#include "src/worldobjects/RainbowTree.h"
+#include "src/worldobjects/Background.h"
 
 class World: public CPU::EventHandler {
 private:
@@ -65,8 +72,6 @@ public:
     void unicornCicked(WorldObject* unicorn);
     void treeClicked(WorldObject *plant);
     void cloudClicked(WorldObject* cloud);
-
-
 
     template<typename T>
     T* spawn() {

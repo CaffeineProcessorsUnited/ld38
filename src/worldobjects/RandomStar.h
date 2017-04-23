@@ -5,15 +5,15 @@
 #ifndef LD38_RANDOMSTAR_H
 #define LD38_RANDOMSTAR_H
 
+#include <vector>
+#include <random>
+using namespace std;
+
 #include "CPU/Common.h"
 using namespace CPU;
 
 #include "src/fw_decl.h"
 #include "src/gamelogic/WorldObjectSingle.h"
-#include "src/gamelogic/World.h"
-#include <vector>
-#include <random>
-#include "src/worldobjects/Unicorn.h"
 
 class RandomStar: public WorldObjectSingle {
 protected:
@@ -32,8 +32,8 @@ protected:
     int flickerCounter;
 public:
     RandomStar(World *world);
-    void update(float delta_time);
-    virtual ObjectType type() const override;
+    virtual void update(float delta_time) ;
+    virtual ObjectType type() const;
 };
 
 

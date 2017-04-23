@@ -5,11 +5,10 @@
 #ifndef LD38_RAINBOWTREE_H
 #define LD38_RAINBOWTREE_H
 
-class World;
-
 #include "CPU/Common.h"
 using namespace CPU;
 
+#include "src/fw_decl.h"
 #include "src/gamelogic/WorldObjectSingle.h"
 
 class RainbowTree: public WorldObjectSingle {
@@ -19,7 +18,9 @@ public:
     RainbowTree(World* world);
     virtual void grow();
     virtual void consume();
-    virtual ObjectType type() const override;
+    virtual ObjectType type() const;
+    bool isGrown() const;
+    bool canGrow() const;
 };
 
 

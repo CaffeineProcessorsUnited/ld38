@@ -4,6 +4,10 @@
 
 #include "RainbowTree.h"
 
+#include "src/gamelogic/WorldObjectSingle.h"
+#include "src/gamelogic/WorldObject.h"
+#include "src/gamelogic/World.h"
+
 RainbowTree::RainbowTree(World* world):
         WorldObjectSingle(world)
 {
@@ -59,4 +63,13 @@ void RainbowTree::upgradeBatch() {
 
 ObjectType RainbowTree::type() const {
     return ObjectType::TREE;
+}
+
+bool RainbowTree::isGrown() const {
+    return growthState == 3;
+}
+
+bool RainbowTree::canGrow() const {
+    int hour = world->getHourOfDay();
+    return !isGrown() && 8 <= hour && hour <= 18;
 }

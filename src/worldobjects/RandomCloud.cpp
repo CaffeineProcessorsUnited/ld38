@@ -1,9 +1,13 @@
 #include <random>
 using namespace std;
 
-#include "RandomCloud.h"
 #include "gameplay.h"
 using namespace gameplay;
+
+#include "src/worldobjects/RandomCloud.h"
+#include "src/gamelogic/WorldObject.h"
+#include "src/gamelogic/WorldObjectSingle.h"
+#include "src/gamelogic/World.h"
 
 const vector<string> RandomCloud::cloudSprites = {"@cloud", "@cloud2"};
 

@@ -10,6 +10,9 @@ class WorldObject;
 class WorldObjectSingle;
 class WorldResource;
 class Background;
-class Cloud;
+class RandomCloud;
+class RandomStar;
+class RainbowTree;
+class Unicorn;
 
 #endif //LD38_FW_DECL_H

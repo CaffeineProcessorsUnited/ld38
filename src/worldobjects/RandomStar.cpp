@@ -1,11 +1,15 @@
 #include <random>
 #include <math.h>
-
 using namespace std;
 
-#include "RandomStar.h"
 #include "gameplay.h"
 using namespace gameplay;
+
+#include "src/worldobjects/RandomStar.h"
+#include "src/gamelogic/WorldObjectSingle.h"
+#include "src/gamelogic/WorldObject.h"
+#include "src/gamelogic/World.h"
+#include "src/worldobjects/Unicorn.h"
 
 const vector<string> RandomStar::sprites = {"@star1"};
 

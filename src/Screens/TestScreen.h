@@ -5,9 +5,7 @@
 #ifndef LDTEST_TESTSCREEN_H
 #define LDTEST_TESTSCREEN_H
 
-#include "src/gamelogic/World.h"
-#include "src/worldobjects/RandomCloud.h"
-#include "src/worldobjects/RandomStar.h"
+#include "src/fw_decl.h"
 
 #include "CPU/CPU.h"
 using namespace CPU;
