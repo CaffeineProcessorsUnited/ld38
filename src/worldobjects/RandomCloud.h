@@ -17,8 +17,8 @@ using namespace CPU;
 
 class RandomCloud: public WorldObjectSingle {
 protected:
-    constexpr static float minSpeed = -0.2f;
-    constexpr static float maxSpeed = 0.2f;
+    constexpr static float minSpeed = 0;
+    constexpr static float maxSpeed = 0.05f;
     constexpr static int minHeight = 128;
     constexpr static int maxHeight = 333;
     constexpr static float rainDuration = 2;
@@ -27,6 +27,8 @@ protected:
     int rainAmount;
     bool isRaining;
     float rainTime;
+    Rain *myRain;
+    void spawnRaindrop();
 public:
     RandomCloud(World *world);
 

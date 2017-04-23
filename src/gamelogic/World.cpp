@@ -230,6 +230,10 @@ void World::treeClicked(WorldObject *plant) {
 }
 
 void World::cloudClicked(WorldObject *cloud) {
+    RandomCloud *mycloud = dynamic_cast<RandomCloud*>(cloud);
+    if (mycloud != NULL){
+        mycloud->doRain(10);
+    }
 
 }
 

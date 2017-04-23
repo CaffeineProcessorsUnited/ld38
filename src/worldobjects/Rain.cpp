@@ -5,7 +5,7 @@
 #include <random>
 #include "src/worldobjects/Rain.h"
 
-const vector<string> Rain::sprites = {"@rain1", "@rain2"};
+const vector<string> Rain::sprites = {"@rain1"};
 
 Rain::Rain(World *world): WorldObjectSingle(world) {
     std::random_device generator;
@@ -19,6 +19,17 @@ Rain::Rain(World *world): WorldObjectSingle(world) {
 
 }
 
-ObjectType Rain::type() {
+void Rain::update(float delta_time) {
+    WorldObjectSingle::update(delta_time);
+    pos.height = pos.height - fallSpeed;
+    if (pos.height <= 0) {
+        world->destroy(this);
+    }
+
+
+
+}
+
+ObjectType Rain::type() const {
     return ObjectType::RAIN;
 }

@@ -20,6 +20,7 @@ using namespace gameplay;
 #include "src/worldobjects/Unicorn.h"
 #include "src/worldobjects/RainbowTree.h"
 #include "src/worldobjects/Background.h"
+#include "src/worldobjects/Rain.h"
 
 class World: public CPU::EventHandler {
 private:
