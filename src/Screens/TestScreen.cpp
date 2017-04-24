@@ -26,7 +26,7 @@ void TestScreen::finalize() {
 }
 
 void TestScreen::update(float elapsedTime) {
-    if(!isInitialized() )
+    if(isPaused() || !isInitialized() )
         return;
     ScreenForm::update(elapsedTime);
 

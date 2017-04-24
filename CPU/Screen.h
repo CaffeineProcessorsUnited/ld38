@@ -23,6 +23,7 @@ namespace CPU {
     class Screen : public Ref, public EventHandler  {
         ScreenManager *parent;
         bool visible;
+        bool paused;
         ScreenLayer layer;
         bool initialized;
 
@@ -38,6 +39,8 @@ namespace CPU {
         void hide();
         void setVisible(bool visible);
         bool isVisible() const;
+        void setPaused(bool paused);
+        bool isPaused() const;
 
         virtual void resize(int width, int height);
 
