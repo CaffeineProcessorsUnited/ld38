@@ -22,22 +22,25 @@ void ActionSelector::addAction(WorldObjectAction* action) {
 
 void ActionSelector::doAction() {
 	float maxprio = 0;
+	int cnt = 0;
 	for(WorldObjectAction* ac: *actions) {
-		float diff = maxprio - ac->getPriority();
-		if (diff > indiffernece_offset) {
+    		float prio = ac->getPriority();
+		if (maxprio > prio) {
 			continue;
-		} else if (diff < (-1*indiffernece_offset)) {
+		} else if(maxprio < prio) {
     			eqActions->clear();
-			maxprio += diff;
+			maxprio = prio;
 			eqActions->push_back(ac);
+			cnt = 1;
 		} else {
 			eqActions->push_back(ac);
+			cnt++;
     		}
 	}
 	if (eqActions->size() == 1) {
 		eqActions->at(0)->doAction();
 	} else {
-		uniform_int_distribution<int> selac(0,eqActions->size());
+		uniform_int_distribution<int> selac(0,cnt);
 		eqActions->at(selac(generator))->doAction();
 	}
 }

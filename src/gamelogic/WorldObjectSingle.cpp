@@ -88,3 +88,6 @@ bool WorldObjectSingle::near(const WorldPos &pos, float dist) const {
     return r.distance(r2) < dist;
 }
 
+float WorldObjectSingle::getSpeed() {
+	return this->speed;
+}

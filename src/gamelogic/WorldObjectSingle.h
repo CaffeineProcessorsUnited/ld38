@@ -27,6 +27,8 @@ public:
 
     bool intersect(int x, int y) const;
     bool near(const WorldPos& pos, float dist) const;
+
+    float getSpeed();
 };
 
 #endif //LD38_WORLDOBJECTSINGLE_H

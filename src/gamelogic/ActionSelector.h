@@ -13,7 +13,6 @@ class ActionSelector{
 		vector<WorldObjectAction*>* actions;
 		random_device generator;
     	public:
-        	const float indiffernece_offset = 0.05f;
 
         	ActionSelector();
         	~ActionSelector();

@@ -184,7 +184,7 @@ set(GAME_SRC
     src/gamelogic/World.h
     src/gamelogic/WorldObject.cpp
     src/gamelogic/WorldObject.h
-        src/worldobjects/RandomCloud.cpp
+    src/worldobjects/RandomCloud.cpp
     src/worldobjects/RandomCloud.h
     src/worldobjects/RandomStar.cpp
     src/worldobjects/RandomStar.h
@@ -196,8 +196,11 @@ set(GAME_SRC
     src/gamelogic/WorldObjectSingle.h
     src/gamelogic/WorldResource.h
     src/gamelogic/WorldObjectAction.h
+    src/gamelogic/WorldObjectAction.cpp
     src/gamelogic/ActionSelector.h
     src/gamelogic/ActionSelector.cpp
+    src/gamelogic/UnicornAction.h
+    src/gamelogic/UnicornAction.cpp
     src/worldobjects/RainbowTree.cpp
     src/worldobjects/RainbowTree.h
     src/fw_decl.h
