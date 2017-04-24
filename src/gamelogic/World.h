@@ -30,10 +30,9 @@ private:
     vector<WorldObject *> toSpawn;
     vector<WorldObject *> toDestroy;
     Vector2 _offset;
-    CPU::SpriteBatch *batch;
+    CPU::SpriteBatch *batch, *granny;
     Font* font;
     Background *background;
-    Granny *granny;
     int seeds;
     string seedText;
 

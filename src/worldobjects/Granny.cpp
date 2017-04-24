@@ -8,7 +8,6 @@ WorldObjectSingle(world) {
 	speed = 0;
 
 	_batch = new CPU::SpriteBatch("@granny");
-	_batch->scale.set(100,100);
 }
 
 ObjectType Granny::type() const {
@@ -17,10 +16,6 @@ ObjectType Granny::type() const {
 
 void Granny::update(float delta_time) {
 	WorldObjectSingle::update(delta_time);
-}
-
-void Granny::draw() {
-	WorldObjectSingle::draw();
 }
 
 CPU::SpriteBatch* Granny::batch() {

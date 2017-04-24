@@ -13,7 +13,6 @@ class Granny : public WorldObjectSingle {
 		Granny(World* world);
 		virtual ObjectType type() const override;
 		void update(float delta_time);
-		void draw();
 		CPU::SpriteBatch* batch();
 };
 
