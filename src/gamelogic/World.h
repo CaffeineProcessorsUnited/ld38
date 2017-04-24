@@ -45,6 +45,7 @@ public:
 
     constexpr static unsigned int MAX_LAYERS = 10;
     constexpr static float MAX_HEIGHT= 4200;
+    constexpr static float MINDRAGDISTANCE = 1000;
     static float RADIUS;
     constexpr static float SPEED = 3.337;
     constexpr static float DAYTIME = 60;

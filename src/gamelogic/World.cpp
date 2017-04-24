@@ -183,9 +183,11 @@ void World::touchMove(int x, int y, unsigned int contactIndex) {
     b = Vector3((float) x - _offset.x, (float) y - _offset.y, 0);
     n = Vector3(a);
     n.cross(b);
-    rotateV += n.z / 36000 * SPEED;
-    dragStart.set(x, y);
-    drag = true;
+    if (abs(n.z) > MINDRAGDISTANCE) {
+        rotateV += n.z / 36000 * SPEED;
+        dragStart.set(x, y);
+        drag = true;
+    }
 }
 
 void World::mouseScrolled(int wheelData) {

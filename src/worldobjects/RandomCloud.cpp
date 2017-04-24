@@ -79,7 +79,7 @@ void RandomCloud::forceRainOnGrouping() const {
             }
         }
     }
-    if(count > 1){
+    if(count > 1) {
         for(WorldObject* object: objects){
             RandomCloud* cloud = dynamic_cast<RandomCloud*>(object);
             if(cloud != nullptr){
