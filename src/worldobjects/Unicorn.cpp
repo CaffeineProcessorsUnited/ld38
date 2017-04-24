@@ -27,3 +27,10 @@ void Unicorn::update(float delta_time) {
 	WorldObjectSingle::update(delta_time);
 	action_sel->doAction();
 }
+
+void Unicorn::draw() {
+    if (speed != 0) {
+        batch->scale.set(sgn(speed) * abs(batch->scale.x), batch->scale.y);
+    }
+	WorldObjectSingle::draw();
+}

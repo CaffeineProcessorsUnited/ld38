@@ -19,7 +19,7 @@ Rain::Rain(World *world) : WorldObjectSingle(world) {
 
 void Rain::update(float delta_time) {
     WorldObjectSingle::update(delta_time);
-    pos.height = pos.height - fallSpeed;
+    pos.height -= delta_time * fallSpeed;
     if (pos.height <= 0) {
         world->receiveRain(pos);
         world->destroy(this);

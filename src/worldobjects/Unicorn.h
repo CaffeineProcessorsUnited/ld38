@@ -17,6 +17,7 @@ class Unicorn : public WorldObjectSingle {
 		~Unicorn();
 		virtual ObjectType type() const override;
 		void update(float delta_time);
+		void draw();
 };
 
 #endif // Unicorn_h_INCLUDED

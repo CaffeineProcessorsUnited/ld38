@@ -13,7 +13,7 @@ class Rain: public WorldObjectSingle {
 protected:
     int spriteIndex;
     const static vector<string> sprites;
-    constexpr static float fallSpeed = 3;
+    constexpr static float fallSpeed = 30;
 
 public:
     Rain(World *world);

@@ -102,7 +102,7 @@ void RandomCloud::draw() {
 void RandomCloud::spawnRaindrop() {
     myRain = world->spawn<Rain>();
     myRain->pos = pos;
-    myRain->setSpeed(speed);
+    //myRain->setSpeed(speed);
     myRain->pos.height = pos.height - 50;
 }
 
