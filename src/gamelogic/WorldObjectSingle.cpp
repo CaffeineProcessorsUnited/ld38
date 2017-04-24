@@ -11,18 +11,18 @@ WorldObjectSingle::WorldObjectSingle(World *world):
         WorldObject(world)
 {
     speed = 0;
-    batch = NULL;
     overlayBackground = NULL;
+    _batch = NULL;
 }
 
 WorldObjectSingle::~WorldObjectSingle(){
-    if(batch != nullptr){
-        SAFE_DELETE(batch);
+    if(_batch != nullptr){
+        SAFE_DELETE(_batch);
     }
 }
 
 void WorldObjectSingle::update(float time_delta){
-    if(batch == nullptr)
+    if(_batch == nullptr)
         return;
 
     pos.rad += (speed*time_delta);
@@ -32,19 +32,19 @@ void WorldObjectSingle::update(float time_delta){
         pos.rad += 2*M_PI;
     }
 
-    batch->pos = world->pos2vec(pos);
-    batch->rotationRad = - pos.rad;
+    _batch->pos = world->pos2vec(pos);
+    _batch->rotationRad = - pos.rad;
 }
 
 void WorldObjectSingle::draw() {
-    if(batch != nullptr)
-        batch->draw();
+    if(_batch != nullptr)
+        _batch->draw();
 }
 
 
 void WorldObjectSingle::resize(unsigned int width, unsigned int height) {
-    if(batch != nullptr)
-        batch->recreate();
+    if(_batch != nullptr)
+        _batch->recreate();
     if(overlayBackground != nullptr)
         overlayBackground->recreate();
 }
@@ -56,11 +56,11 @@ void WorldObjectSingle::setSpeed(float speed) {
 bool WorldObjectSingle::intersect(int x, int y) const {
     //Important: Assume rotation point is the center
 
-    const float w = batch->scale.x;
-    const float h = batch->scale.y;
-    const float cX = batch->pos.x + w/2.f;
-    const float cY = batch->pos.y + h/2.f;
-    const float angle = batch->rotationRad;
+    const float w = _batch->scale.x;
+    const float h = _batch->scale.y;
+    const float cX = _batch->pos.x + w/2.f;
+    const float cY = _batch->pos.y + h/2.f;
+    const float angle = _batch->rotationRad;
 
     const Vector2 center(cX, cY);
 

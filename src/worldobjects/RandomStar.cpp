@@ -42,9 +42,9 @@ RandomStar::RandomStar(World *world):
     appearTod = distributionAppear(generator);
     disappearTod = distributionDisappear(generator);
 
-    batch = new CPU::SpriteBatch(RandomStar::sprites[spriteIndex]);
+    _batch = new CPU::SpriteBatch(RandomStar::sprites[spriteIndex]);
     float scale = distributionScale(generator);
-    batch->scale.set(scale, scale);
+    _batch->scale.set(scale, scale);
 }
 
 void RandomStar::update(float delta_time){

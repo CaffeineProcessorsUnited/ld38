@@ -20,6 +20,7 @@ World::World():
     batch->rotationPoint.set(0.5, 0.5);
 
     background = new Background(this);
+    granny = new Granny(this);
 
     size.set(Game::getInstance()->getWidth(), Game::getInstance()->getHeight());
     dragStart = Vector2::zero();
@@ -75,6 +76,7 @@ void World::update(float time_delta) {
     }
     background->update(time_delta);
     batch->pos.set(_offset.x, _offset.y, 1);
+    granny->batch()->pos.set(_offset.x, _offset.y, 1);
     for(WorldObject *obj: objects){
         if(obj == nullptr){
             continue;
@@ -90,6 +92,7 @@ void World::draw() {
     }
     background->draw();
     batch->draw();
+    granny->draw();
     for(WorldObject *obj: objects){
         if (obj->type() != ObjectType::STAR) {
             obj->draw();
@@ -121,6 +124,9 @@ void World::resize(unsigned int width, unsigned int height) {
     batch->recreate();
     batch->scale.set(w,w);
     batch->rotationPoint.set(0.5, 0.5);
+    granny->batch()->recreate();
+    granny->batch()->scale.set(w,w);
+    granny->batch()->rotationPoint.set(0.5, 0.5);
 }
 
 void World::rotate(float rad) {
@@ -161,7 +167,7 @@ void World::touchRelease(int x, int y, unsigned int contactIndex) {
                     treeClicked(obj);
                     break;
                 case UNICORN:
-                    unicornCicked(obj);
+                    unicornClicked(obj);
                     break;
                 case CLOUD:
                     cloudClicked(obj);
@@ -250,6 +256,11 @@ bool World::isSky(int x, int y) const {
     return SKY <= dist;
 }
 
+bool World::isVisible(float deg) const {
+    Vector2 pos = angle2pos(deg);
+    return pos.x > 0 && pos.x < size.x && pos.y > 0 && pos.y < size.y;
+}
+
 void World::treeClicked(WorldObject *plant) {
     RainbowTree *tree = dynamic_cast<RainbowTree*>(plant);
     if(tree != nullptr){
@@ -266,7 +277,7 @@ void World::cloudClicked(WorldObject *cloud) {
 
 }
 
-void World::unicornCicked(WorldObject *unicorn) {
+void World::unicornClicked(WorldObject *unicorn) {
 
 }
 
@@ -295,6 +306,11 @@ float World::pos2angle(int x, int y){
     top.y = 9999;
     float angle = points2angle(Vector2(x, y), offset(), top);
     return (float) fmod(angle,4 * M_PI);
+}
+
+Vector2 World::angle2pos(float rad) const {
+    Vector3 vec = pos2vec(WorldPos(rad,0,0));
+    return Vector2(vec.x, vec.y);
 }
 
 void World::receiveSeeds(int n) {

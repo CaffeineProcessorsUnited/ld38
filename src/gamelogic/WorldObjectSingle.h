@@ -15,7 +15,7 @@ using namespace CPU;
 class WorldObjectSingle: public WorldObject {
 protected:
     float speed;
-    CPU::SpriteBatch* batch;
+    CPU::SpriteBatch* _batch;
     string overlayText;
     CPU::SpriteBatch* overlayBackground;
 public:

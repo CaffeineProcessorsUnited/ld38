@@ -11,8 +11,8 @@
 RainbowTree::RainbowTree(World* world):
         WorldObjectSingle(world)
 {
-    batch = new CPU::SpriteBatch("@plantseed");
-    batch->scale.set(20,20);
+    _batch = new CPU::SpriteBatch("@plantseed");
+    _batch->scale.set(20,20);
     growthState = 0;
     water = 50;
     upgradeBatch();
@@ -46,31 +46,31 @@ void RainbowTree::consume(){
 }
 
 void RainbowTree::upgradeBatch() {
-    if (batch != nullptr) {
-        SAFE_DELETE(batch);
+    if (_batch != nullptr) {
+        SAFE_DELETE(_batch);
     }
     switch (growthState) {
         case 0:
-            batch = new CPU::SpriteBatch("@plantseed");
-            batch->scale.set(20, 20);
+            _batch = new CPU::SpriteBatch("@plantseed");
+            _batch->scale.set(20, 20);
             break;
         case 1:
-            batch = new CPU::SpriteBatch("@plantsmall");
-            batch->scale.set(30, 30);
+            _batch = new CPU::SpriteBatch("@plantsmall");
+            _batch->scale.set(30, 30);
             break;
         case 2:
-            batch = new CPU::SpriteBatch("@plantmedium");
-            batch->scale.set(50, 50);
+            _batch = new CPU::SpriteBatch("@plantmedium");
+            _batch->scale.set(50, 50);
             break;
         case 3:
-            batch = new CPU::SpriteBatch("@planttree");
-            batch->scale.set(100, 140);
+            _batch = new CPU::SpriteBatch("@planttree");
+            _batch->scale.set(100, 140);
             break;
         default:
-            batch = NULL;
+            _batch = NULL;
             break;
     }
-    batch->recreate();
+    _batch->recreate();
 }
 
 ObjectType RainbowTree::type() const {
