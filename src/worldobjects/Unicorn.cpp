@@ -54,4 +54,7 @@ void Unicorn::setOverlayText(string text) {
 	this->overlayText = text;
 }
 
+World* Unicorn::getWorld() {
+	return world;
+}
 

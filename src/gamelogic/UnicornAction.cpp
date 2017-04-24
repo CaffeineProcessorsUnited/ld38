@@ -94,7 +94,7 @@ float UnicornActionEat::getPriority() {
 	}
 	Unicorn* uni = this->getUnicorn();
 	if (uni->hunger >= hungerstep) {
-		vector<WorldObject*>& objects = uni->world.getObjects();
+		vector<WorldObject*>& objects = uni->getWorld()->getObjects();
 		for(WorldObject* object: objects){
 			RainbowTree* tree = dynamic_cast<RainbowTree*>(object);
 			if (tree != nullptr) {

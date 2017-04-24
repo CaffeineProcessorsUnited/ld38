@@ -29,6 +29,7 @@ class Unicorn : public WorldObjectSingle {
 		void update(float delta_time);
 		void setOverlayText(string text);
 		void draw();
+		World* getWorld();
 };
 
 #endif // Unicorn_h_INCLUDED
