@@ -29,7 +29,9 @@ namespace CPU {
         CLOUD,
         UNICORN,
         STAR,
-        RAIN
+        RAIN,
+        SUN,
+        MOON
     };
 
     template <typename T> int sgn(T val) {

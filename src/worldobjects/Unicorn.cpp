@@ -53,3 +53,5 @@ void Unicorn::kill() {
 void Unicorn::setOverlayText(string text) {
 	this->overlayText = text;
 }
+
+

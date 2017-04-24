@@ -1,4 +1,6 @@
 #include "src/gamelogic/UnicornAction.h"
+#include "src/worldobjects/RainbowTree.h"
+#include "src/gamelogic/World.h"
 
 UnicornAction::UnicornAction(WorldObject* object):WorldObjectAction(object){}
 
@@ -92,7 +94,7 @@ float UnicornActionEat::getPriority() {
 	}
 	Unicorn* uni = this->getUnicorn();
 	if (uni->hunger >= hungerstep) {
-		vector<WorldObject*>& objects = world->getObjects();
+		vector<WorldObject*>& objects = uni->world.getObjects();
 		for(WorldObject* object: objects){
 			RainbowTree* tree = dynamic_cast<RainbowTree*>(object);
 			if (tree != nullptr) {
