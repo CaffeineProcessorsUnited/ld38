@@ -258,6 +258,7 @@ void World::plantSapling(int x, int y) {
         RainbowTree *tree = spawn<RainbowTree>();
         tree->pos.rad = rotation;
         seeds -= 1;
+        seedText = "Got "+to_string(seeds)+" seeds";
     }
 }
 
