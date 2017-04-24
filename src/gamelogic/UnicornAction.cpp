@@ -128,13 +128,23 @@ UnicornActionReproduce::UnicornActionReproduce(WorldObject* object):UnicornActio
 void UnicornActionReproduce::doAction() {
     Unicorn* uni = this->getUnicorn();
     if(partner != nullptr && uni->canBreed && partner->canBreed){
-        uni->setOverlayText("Where do small Unicorns come from?");
-        uni->lastBreed = 0;
-        partner->lastBreed = 0;
-        uni->hunger += 20;
-        partner->hunger += 20;
-        //uni->getWorld()->spawn<Unicorn>();
-        cout << "new unicörn" << endl;
+        std::uniform_int_distribution<int> breedChance(0,100);
+        if (breedChance(generator) < 10){
+            uni->setOverlayText("Where do small Unicorns come from?");
+            uni->lastBreed = 0;
+            partner->lastBreed = 0;
+            uni->hunger += 20;
+            partner->hunger += 20;
+            uni->getWorld()->spawn<Unicorn>();
+            cout << "new unicörn" << endl;
+            partner->canBreed = false;
+            partner = nullptr;
+            uni->canBreed = false;
+
+        }
+
+
+
 
 
 

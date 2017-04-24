@@ -90,7 +90,6 @@ void RainbowTree::update(float delta) {
     WorldObjectSingle::update(delta);
 
     water -= DEHYDRATE;
-    cout << "water " << water <<endl;
 
     overlayText = "hydration: "+to_string((int)water)+"%\ngrowth: "+to_string(growthState+1)+"/4";
 
