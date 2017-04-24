@@ -72,6 +72,7 @@ public:
     Vector2 size;
 
     float getHourOfDay();
+    float getHourOfDay(float deg);
     void setHourOfDay(float hour);
     vector<WorldObject*> objectsAtPos(int x, int y) const;
     bool isGround(int x, int y) const;

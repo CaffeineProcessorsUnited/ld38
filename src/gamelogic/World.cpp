@@ -202,6 +202,11 @@ float World::getHourOfDay() {
     return background->getHourOfDay();
 }
 
+float World::getHourOfDay(float deg) {
+    float degPercent = deg / (2 * M_PI);
+    return background->getHourOfDay() + (degPercent * 24);
+}
+
 void World::setHourOfDay(float hour) {
     background->setHourOfDay(hour);
 }
