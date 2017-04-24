@@ -12,7 +12,8 @@ LD38::LD38():
 void LD38::initialize()
 {
     App::initialize();
-    testScreen = getScreenManager()->createScreen<TestScreen>(BACK, true);
+    testScreen = getScreenManager()->createScreen<TestScreen>(BACK, false);
+    testScreen->show();
 
     setShowFPS(true);
     Game::setVsync(false);
