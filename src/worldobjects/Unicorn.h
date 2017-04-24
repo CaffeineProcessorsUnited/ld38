@@ -12,11 +12,12 @@ class Unicorn : public WorldObjectSingle {
 	private:
 		ActionSelector* action_sel;
 		int hunger_cnt;
+		float lasttime; 
 	public:
 		constexpr static float maxSpeed = 0.1f;
 		constexpr static int maxHunger = 100;
 		constexpr static int hungerStep = 50;
-		constexpr static int maxAge = 100;
+		constexpr static int maxAge = 365;
 		constexpr static float range = 0.5;
 
 		int hunger;

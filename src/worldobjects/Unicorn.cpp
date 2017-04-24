@@ -13,6 +13,7 @@ WorldObjectSingle(world) {
 	thirst = 0;
 	age = 0;
 	hunger_cnt = 0;
+	lasttime = 0;
 
 	action_sel->addAction(new UnicornActionWalk(this));
 	action_sel->addAction(new UnicornActionStop(this));
@@ -33,7 +34,11 @@ ObjectType Unicorn::type() const {
 
 void Unicorn::update(float delta_time) {
 	overlayText = "thinking...\nHunger: " + to_string(hunger) + "/" + to_string(maxHunger) + "\nAge: " + to_string(age) + "/" + to_string(maxAge);
-
+	float t = world->getHourOfDay();
+	if(t < lasttime) {
+		age++;
+	}
+	lasttime = t;
 	WorldObjectSingle::update(delta_time);
 	action_sel->doAction();
 	if(hunger_cnt >= hungerStep) {
