@@ -13,13 +13,6 @@ using namespace CPU;
 
 class TestScreen: public ScreenForm {
     World *world;
-    vector<RandomCloud*> clouds;
-    RandomCloud *myCloud;
-    vector<RandomStar*> stars;
-    RandomStar *myStar;
-
-    Unicorn *uni;
-    Rain *rain;
 public:
     virtual void resize(int width, int height) override;
 

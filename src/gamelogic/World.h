@@ -41,6 +41,7 @@ private:
     Vector2 dragStart;
     Vector3 a, b, n;
     float rotateV;
+    float timeToCloudSpawn;
 public:
     World();
     ~World();
@@ -56,6 +57,8 @@ public:
     constexpr static float SKY = 430;
     constexpr static float RAIN_DIST = 64;
     constexpr static float RAIN_HYDR = 10.f;
+    constexpr static float CLOUD_DELAY = 10.f;
+
     vector<WorldResource *> &getResources();
     vector<WorldObject *> &getObjects();
 

@@ -34,6 +34,17 @@ World::World():
     font = Font::create("res/roboto.gpb");
     seeds = 10;
     seedText = "Got "+to_string(seeds)+" seeds";
+
+    timeToCloudSpawn = CLOUD_DELAY;
+
+    for(int i = 0; i < 30; i++){
+        spawn<RandomCloud>();
+    }
+    spawn<Unicorn>();
+    //Spawn Random Stars.
+    for(int i = 0; i < 200; i++){
+        spawn<RandomStar>();
+    }
 }
 
 World::~World() {
@@ -73,6 +84,14 @@ void World::update(float time_delta) {
         ++i;
     }
     toDestroy.clear();
+
+    timeToCloudSpawn -= time_delta;
+    if(timeToCloudSpawn <= 0) {
+        timeToCloudSpawn = CLOUD_DELAY;
+
+        RandomCloud* cloud = spawn<RandomCloud>();
+        cloud->pos.rad = 0;
+    }
 
     if (fabs(rotateV) > 0.000005) {
         rotate(rotateV * time_delta);

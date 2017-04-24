@@ -18,26 +18,7 @@ TestScreen::TestScreen(ScreenManager *parent) :
 void TestScreen::initialize() {
     ScreenForm::initialize();
 
-    //loadForm("res/demo.form");
-    //registerFormControl("mainLabel");
-
     world = new World();
-
-    //Spawn Random Clouds.
-    for(int i = 0; i < 30; i++){
-        myCloud = world->spawn<RandomCloud>();
-        clouds.push_back(myCloud);
-
-    }
-
-    //Spawn Random Stars.
-    for(int i = 0; i < 200; i++){
-        myStar = world->spawn<RandomStar>();
-        stars.push_back(myStar);
-    }
-    uni = world->spawn<Unicorn>();
-
-
 }
 
 void TestScreen::finalize() {
