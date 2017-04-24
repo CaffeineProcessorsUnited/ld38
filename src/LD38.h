@@ -1,6 +1,7 @@
 #ifndef LD38_H_
 #define LD38_H_
 
+#include "src/Screens/MainMenu.h"
 #include "Screens/TestScreen.h"
 #include "CPU/CPU.h"
 
@@ -25,8 +26,9 @@ protected:
     void preRender() override;
     void render(float elapsedTime);
 
-private:
     TestScreen *testScreen;
+    MainMenu *mainMenu;
+
 };
 
 #endif

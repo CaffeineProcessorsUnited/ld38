@@ -91,7 +91,9 @@ void Background::setHourOfDay(float hour) {
         hour -= 24;
     }
     float percentageOfDay = 24 / colors.size();
-    current = (hour / percentageOfDay);
+    current = (int) (hour / percentageOfDay);
+    next = (current + 1) % colors.size();
+    cout << current << endl;
     lastColorChange = timePerColor * fmod(hour, percentageOfDay);
 }
 

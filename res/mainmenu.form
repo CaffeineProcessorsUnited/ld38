@@ -1,0 +1,35 @@
+form demo
+{
+    // Form properties.
+    theme                  = res/ld38.theme
+    layout                 = LAYOUT_FLOW
+    position               = 200, 200
+    alignment              = ALIGN_VCENTER_HCENTER
+    size                   = 500, 500
+    autoWidth              = false
+    autoHeight             = false
+    width                  = 500
+    height                 = 500
+    consumeInputEvents     = false
+
+    // All the Controls within this Form.
+    container mainContainer {
+        style = defaultStyle
+        consumeInputEvents  = false
+
+        label mainLabel {
+            text               = LD38 - Main Menu
+            position           = 0, 0
+            consumeInputEvents = true
+            style = defaultStyle
+        }
+
+        button startButton {
+            text = Start Game
+            position    = 0, 100
+            style       = buttonStyle
+            consumeInputEvents = true
+        }
+    }
+
+}

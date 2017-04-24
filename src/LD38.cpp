@@ -5,7 +5,8 @@ LD38 game;
 
 LD38::LD38():
     App(),
-    testScreen(NULL)
+    testScreen(NULL),
+    mainMenu(NULL)
 {
 }
 
@@ -14,6 +15,7 @@ void LD38::initialize()
     App::initialize();
     testScreen = getScreenManager()->createScreen<TestScreen>(BACK, false);
     testScreen->show();
+    mainMenu = getScreenManager()->createScreen<MainMenu>(FRONT, false);
 
     setShowFPS(true);
     Game::setVsync(false);
@@ -27,6 +29,7 @@ void LD38::finalize()
     App::finalize();
 
     SAFE_RELEASE(testScreen);
+    SAFE_RELEASE(mainMenu);
 }
 
 void LD38::update(float elapsedTime)

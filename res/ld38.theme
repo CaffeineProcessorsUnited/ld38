@@ -1,0 +1,118 @@
+theme ld38
+{
+    texture = res/png/image.png
+    cursor ld38cursor
+    {
+        color = #000000FF
+    }
+
+    skin ld38skin
+    {
+        color = #000000FF
+    }
+
+    skin pink
+    {
+        color = #FF00FFFF
+    }
+
+    style defaultStyle
+    {
+        margin
+                {
+                    top = 0
+                    bottom = 0
+                    left = 0
+                    right = 0
+                }
+                padding
+                {
+                    top = 0
+                    bottom = 0
+                    left = 0
+                    right = 0
+                }
+                stateNormal
+                {
+                    skin = ld38skin
+                    cursor = ld38cursor
+                    font = res/roboto.gpb
+                    fontSize = 70
+                    textColor = #FFFFFFFF
+                    textAlignment = ALIGN_VCENTER_LEFT
+                    rightToLeft = false
+                    opacity = 1
+                }
+                stateFocus
+                {
+                    skin = ld38skin
+                    cursor = ld38cursor
+                    font = res/roboto.gpb
+                    fontSize = 16
+                    textColor = #FFFFFFFF
+                    textAlignment = ALIGN_VCENTER_LEFT
+                    rightToLeft = false
+                    opacity = 1
+                }
+                stateActive
+                {
+                    skin = ld38skin
+                    cursor = ld38cursor
+                    font = res/roboto.gpb
+                    fontSize = 16
+                    textColor = #FFFFFFFF
+                    textAlignment = ALIGN_VCENTER_LEFT
+                    rightToLeft = false
+                    opacity = 1
+                }
+                stateDisabled
+                {
+                    skin = ld38skin
+                    cursor = ld38cursor
+                    font = res/roboto.gpb
+                    fontSize = 70
+                    textColor = #FFFFFFFF
+                    textAlignment = ALIGN_VCENTER_LEFT
+                    rightToLeft = false
+                    opacity = 1
+                }
+
+    }
+    style buttonStyle
+    {
+
+       padding
+                        {
+                            top = 10
+                            bottom = 10
+                            left = 10
+                            right = 10
+                        }
+        stateNormal
+                        {
+                            skin = pink
+                            cursor = ld38cursor
+                            font = res/roboto.gpb
+                            fontSize = 50
+                            textColor = #FFFFFFFF
+                            textAlignment = ALIGN_VCENTER_LEFT
+                            rightToLeft = false
+                            opacity = 1
+                        }
+
+                        stateActive
+                                        {
+                                            skin = ld38skin
+                                            cursor = ld38cursor
+                                            font = res/roboto.gpb
+                                            fontSize = 49
+                                            textColor = #FFFFFFFF
+                                            textAlignment = ALIGN_VCENTER_LEFT
+                                            rightToLeft = false
+                                            opacity = 1
+                                        }
+    }
+
+
+  }
+}
