@@ -32,7 +32,7 @@ public:
     virtual ObjectType type() const = 0;
     virtual bool intersect(int x, int y) const = 0;
     virtual bool near(const WorldPos& pos, float dist) const = 0;
-
+    virtual void drawOverlay() = 0;
 
     WorldPos pos;
 };

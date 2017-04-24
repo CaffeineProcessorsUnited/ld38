@@ -68,6 +68,7 @@ void TestScreen::keyRelease(Keyboard::Key key) {
 
 void TestScreen::mouseMove(int x, int y) {
     ScreenForm::mouseMove(x, y);
+    world->mouseMove(x,y);
 }
 
 void TestScreen::mouseScrolled(int wheelData) {

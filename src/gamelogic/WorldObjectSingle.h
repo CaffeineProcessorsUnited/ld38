@@ -16,11 +16,14 @@ class WorldObjectSingle: public WorldObject {
 protected:
     float speed;
     CPU::SpriteBatch* batch;
+    string overlayText;
+    CPU::SpriteBatch* overlayBackground;
 public:
     WorldObjectSingle(World *world);
     virtual ~WorldObjectSingle();
     virtual void update(float time_delta);
     virtual void draw();
+    virtual void drawOverlay();
     virtual void resize(unsigned int width, unsigned int height);
     virtual void setSpeed(float speed);
     virtual ObjectType type() const = 0;

@@ -64,7 +64,7 @@ void RainbowTree::upgradeBatch() {
             break;
         case 3:
             batch = new CPU::SpriteBatch("@planttree");
-            batch->scale.set(100, 100);
+            batch->scale.set(100, 140);
             break;
         default:
             batch = NULL;
@@ -91,6 +91,8 @@ void RainbowTree::update(float delta) {
 
     water -= DEHYDRATE;
     cout << "water " << water <<endl;
+
+    overlayText = "hydration: "+to_string((int)water)+"%\ngrowth: "+to_string(growthState+1)+"/4";
 
     tryGrow();
     tryDie();

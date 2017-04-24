@@ -39,6 +39,9 @@ RandomCloud::RandomCloud(World *world):
 void RandomCloud::update(float delta_time) {
     WorldObjectSingle::update(delta_time);
 
+    overlayText = "water: "+to_string(rainAmount);
+
+
     if (isRaining) {
         if (myRain != NULL){
             if (pos.height - myRain->pos.height > 100){

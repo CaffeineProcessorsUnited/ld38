@@ -98,6 +98,11 @@ void World::draw() {
 
     font->start();
     font->drawText(seedText.c_str(), 20, 50, Vector4(1, 0, 0, 1), font->getSize());
+    for(WorldObject *obj: objects){
+        if(obj->intersect(mousePos.x, mousePos.y)) {
+            obj->drawOverlay();
+        }
+    }
     font->finish();
 }
 
@@ -130,12 +135,17 @@ void World::rotate(float rad) {
     }
 }
 
+void World::mouseMove(int x, int y) {
+    mousePos.set(x,y);
+}
 
 void World::touchPress(int x, int y, unsigned int contactIndex) {
+    mousePos.set(x,y);
     dragStart.set(x, y);
 }
 
 void World::touchRelease(int x, int y, unsigned int contactIndex) {
+    mousePos.set(x,y);
     cout << "DRAG " << drag << endl;
     if(!drag){
         cout << Vector2(_offset.x-x, _offset.y-y).length()-RADIUS << endl;
@@ -179,6 +189,7 @@ void World::touchRelease(int x, int y, unsigned int contactIndex) {
 }
 
 void World::touchMove(int x, int y, unsigned int contactIndex) {
+    mousePos.set(x,y);
     a = Vector3(dragStart.x - _offset.x, dragStart.y - _offset.y, 0);
     b = Vector3((float) x - _offset.x, (float) y - _offset.y, 0);
     n = Vector3(a);
@@ -308,4 +319,8 @@ Vector3 World::pos2vec(const WorldPos& pos) const {
     return Vector3(offset().x + sin(pos.rad)*(World::RADIUS+pos.height),
             offset().y + cos(pos.rad)*(World::RADIUS+pos.height),
             pos.zindex);
+}
+
+Font *World::activeFont() {
+    return font;
 }

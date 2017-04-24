@@ -24,6 +24,8 @@ ObjectType Unicorn::type() const {
 }
 
 void Unicorn::update(float delta_time) {
+	overlayText = "thinking...";
+
 	WorldObjectSingle::update(delta_time);
 	action_sel->doAction();
 }

@@ -29,3 +29,6 @@ void Rain::update(float delta_time) {
 ObjectType Rain::type() const {
     return ObjectType::RAIN;
 }
+
+void Rain::drawOverlay() {
+}

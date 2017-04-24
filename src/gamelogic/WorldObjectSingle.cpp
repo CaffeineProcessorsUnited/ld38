@@ -12,6 +12,7 @@ WorldObjectSingle::WorldObjectSingle(World *world):
 {
     speed = 0;
     batch = NULL;
+    overlayBackground = NULL;
 }
 
 WorldObjectSingle::~WorldObjectSingle(){
@@ -44,6 +45,8 @@ void WorldObjectSingle::draw() {
 void WorldObjectSingle::resize(unsigned int width, unsigned int height) {
     if(batch != nullptr)
         batch->recreate();
+    if(overlayBackground != nullptr)
+        overlayBackground->recreate();
 }
 
 void WorldObjectSingle::setSpeed(float speed) {
@@ -90,4 +93,23 @@ bool WorldObjectSingle::near(const WorldPos &pos, float dist) const {
 
 float WorldObjectSingle::getSpeed() {
 	return this->speed;
+}
+
+void WorldObjectSingle::drawOverlay() {
+    if(overlayBackground == nullptr){
+        overlayBackground = new CPU::SpriteBatch("@white");
+    }
+    Font* font = world->activeFont();
+    unsigned int w, h;
+    font->measureText(overlayText.c_str(),font->getSize(), &w, &h);
+    Vector3 vec = world->pos2vec(pos);
+
+    int x = vec.x+max(20.f,batch->scale.x/2.f);
+    int y = vec.y-max(20.f,batch->scale.y/2.f);
+
+    overlayBackground->pos.set(x+w/2.f,y+h/2.f,1);
+    overlayBackground->scale.set(w+10,h+10);
+    overlayBackground->draw();
+
+    font->drawText(overlayText.c_str(), x, y, Vector4(0, 0, 1, 1), font->getSize());
 }

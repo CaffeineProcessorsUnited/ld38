@@ -19,6 +19,7 @@ public:
     Rain(World *world);
     virtual ObjectType type() const;
     virtual void update(float delta_time);
+    virtual void drawOverlay();
 };
 
 #endif //LD38_RAIN_H

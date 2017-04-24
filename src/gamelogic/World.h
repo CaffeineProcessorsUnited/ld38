@@ -36,6 +36,7 @@ private:
     string seedText;
 
     bool drag;
+    Vector2 mousePos;
     Vector2 dragStart;
     Vector3 a, b, n;
     float rotateV;
@@ -64,6 +65,8 @@ public:
     void rotate(float rad);
 
     virtual void mouseScrolled(int wheelData) override;
+
+    void mouseMove(int x, int y) override;
 
     virtual void touchPress(int x, int y, unsigned int contactIndex) override;
     virtual void touchMove(int x, int y, unsigned int contactIndex) override;
@@ -105,6 +108,7 @@ public:
     float points2angle(const Vector2 &p1, const Vector2 &p2, const Vector2 &p3);
     float pos2angle(int x, int y);
     Vector3 pos2vec(const WorldPos& pos) const;
+    Font* activeFont();
 };
 
 #endif // World_h_INCLUDED
