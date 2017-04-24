@@ -1,5 +1,6 @@
 #include "Unicorn.h"
 #include "gameplay.h"
+#include <math.h>
 
 using namespace gameplay;
 
@@ -20,10 +21,17 @@ Unicorn::~Unicorn() {
 }
 
 ObjectType Unicorn::type() const {
-    return ObjectType::UNICORN;
+	return ObjectType::UNICORN;
 }
 
 void Unicorn::update(float delta_time) {
 	WorldObjectSingle::update(delta_time);
+	if(this->speed < 0) {
+		batch->scale.set(std::fabs(batch->scale.x)*-1,batch->scale.y);
+	} else if(this->speed == 0) {
+		batch->scale.set(batch->scale.x,batch->scale.y);
+	} else {
+		batch->scale.set(std::fabs(batch->scale.x),batch->scale.y);
+	}
 	action_sel->doAction();
 }

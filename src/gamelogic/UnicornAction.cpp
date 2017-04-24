@@ -28,11 +28,11 @@ void UnicornActionWalk::doAction() {
 }
 
 float UnicornActionWalk::getPriority() {
-	if(cnt>=this->walkcycle) {
-    		cnt = this->cooldown;
+	if(cnt>=this->walkcycle && wants_to_walk) {
+		cnt = this->cooldown;
 		wants_to_walk = false;
 	} else if (cnt <= 0) {
-    		cnt = 0;
+		cnt = 0;
 		wants_to_walk = true;
 	}
 	if(wants_to_walk) {

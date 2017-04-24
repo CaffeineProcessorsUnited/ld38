@@ -1,4 +1,5 @@
 #include "src/gamelogic/ActionSelector.h"
+#include <iostream>
 
 ActionSelector::ActionSelector() {
 	actions = new vector<WorldObjectAction*>();
