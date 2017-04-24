@@ -1,6 +1,6 @@
 #include "src/gamelogic/UnicornAction.h"
 
-UnicornAction::UnicornAction(WorldObject* object):WorldObjectAction(object){};
+UnicornAction::UnicornAction(WorldObject* object):WorldObjectAction(object){}
 
 Unicorn* UnicornAction::getUnicorn() {
 	return (Unicorn*) this->object;
@@ -11,7 +11,7 @@ UnicornActionWalk::UnicornActionWalk(WorldObject* object):UnicornAction(object) 
 	cooldown = 150;
 	walkcycle = 100;
 	wants_to_walk = true;
-};
+}
 
 void UnicornActionWalk::doAction() {
 	Unicorn* uni = this->getUnicorn();
@@ -42,9 +42,7 @@ float UnicornActionWalk::getPriority() {
 	return 0;
 }
 
-UnicornActionStop::UnicornActionStop(WorldObject* object):UnicornAction(object) {
-
-}
+UnicornActionStop::UnicornActionStop(WorldObject* object):UnicornAction(object) {}
 
 void UnicornActionStop::doAction() {
 	Unicorn* uni = this->getUnicorn();
@@ -54,3 +52,60 @@ void UnicornActionStop::doAction() {
 float UnicornActionStop::getPriority() {
 	return 0.1;
 }
+
+UnicornActionDie::UnicornActionDie(WorldObject* object):UnicornAction(object) {}
+
+void UnicornActionDie::doAction() {
+	this->getUnicorn()->kill();
+}
+
+float UnicornActionDie::getPriority() {
+	Unicorn* uni = this->getUnicorn();
+	if (uni->age > uni->maxAge) {
+		return 100;
+	}
+	return 0;
+}
+
+UnicornActionEat::UnicornActionEat(WorldObject* object):UnicornAction(object) {
+	food = nullptr;
+}
+
+void UnicornActionEat::doAction() {
+	Unicorn* uni = this->getUnicorn();
+	uni->setOverlayText("Going to eat something");
+	if (abs(food->pos.rad - uni->pos.rad) > 0.1 ) {
+		uni->setSpeed(sgn(food->pos.rad - uni->pos.rad) * uni->maxSpeed);
+	} else if (food->isGrown()) {
+		food->consume();
+		uni->hunger -= this->hungerstep;
+		this->food = nullptr;
+	} else {
+		this->food = nullptr;
+	}
+}
+
+float UnicornActionEat::getPriority() {
+	if (this->food != nullptr) {
+
+		return this->maxprio;
+	}
+	Unicorn* uni = this->getUnicorn();
+	if (uni->hunger >= hungerstep) {
+		vector<WorldObject*>& objects = world->getObjects();
+		for(WorldObject* object: objects){
+			RainbowTree* tree = dynamic_cast<RainbowTree*>(object);
+			if (tree != nullptr) {
+				if ( abs(tree->pos.rad - uni->pos.rad) < uni->range) {
+    					if (tree->isGrown()) {
+						this->food = tree;
+						return this->maxprio;
+    					}
+				}
+			}
+		}
+
+	}
+	return 0;
+}
+

@@ -10,13 +10,24 @@ using namespace CPU;
 
 class Unicorn : public WorldObjectSingle {
 	private:
-		constexpr static float maxSpeed = 0.1f;
 		ActionSelector* action_sel;
 	public:
+		constexpr static float maxSpeed = 0.1f;
+		constexpr static int maxHunger = 100;
+		constexpr static int maxThirst = 100;
+		constexpr static int maxAge = 100;
+		constexpr static float range = 1;
+
+		int hunger;
+		int thirst;
+		int age;
+
 		Unicorn(World* world);
 		~Unicorn();
+		void kill();
 		virtual ObjectType type() const override;
 		void update(float delta_time);
+		void setOverlayText(string text);
 		void draw();
 };
 
