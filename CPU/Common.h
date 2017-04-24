@@ -24,6 +24,7 @@ namespace CPU {
 
     enum ObjectType {
         BACKGROUND,
+        GRANNY,
         TREE,
         CLOUD,
         UNICORN,
