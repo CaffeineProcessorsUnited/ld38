@@ -55,6 +55,14 @@ bool Screen::isVisible() const {
     return visible;
 }
 
+void Screen::setPaused(bool paused) {
+    this->paused = paused;
+}
+
+bool Screen::isPaused() const {
+    return paused;
+}
+
 void Screen::raise() {
     if(getLayer() != FRONT){
         setLayer(static_cast<ScreenLayer>(getLayer()+1));
