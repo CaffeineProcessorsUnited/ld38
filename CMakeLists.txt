@@ -203,6 +203,8 @@ set(GAME_SRC
     src/gamelogic/UnicornAction.cpp
     src/worldobjects/RainbowTree.cpp
     src/worldobjects/RainbowTree.h
+    src/worldobjects/Granny.cpp
+    src/worldobjects/Granny.h
     src/fw_decl.h
     ${CPU_SOURCE}
         src/worldobjects/Rain.h src/worldobjects/Rain.cpp)

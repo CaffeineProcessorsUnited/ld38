@@ -8,6 +8,7 @@
 #include "src/worldobjects/Unicorn.h"
 #include "src/worldobjects/RainbowTree.h"
 #include "src/worldobjects/RandomCloud.h"
+#include "src/worldobjects/Granny.h"
 
 float World::RADIUS = 512;
 

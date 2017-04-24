@@ -11,7 +11,6 @@ class Granny : public WorldObjectSingle {
 	private:
 	public:
 		Granny(World* world);
-		~Granny();
 		virtual ObjectType type() const override;
 		void update(float delta_time);
 		void draw();

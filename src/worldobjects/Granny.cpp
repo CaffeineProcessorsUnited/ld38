@@ -11,10 +11,6 @@ WorldObjectSingle(world) {
 	_batch->scale.set(100,100);
 }
 
-Granny::~Granny() {
-	delete action_sel;
-}
-
 ObjectType Granny::type() const {
     return ObjectType::GRANNY;
 }

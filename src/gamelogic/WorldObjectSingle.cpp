@@ -104,8 +104,8 @@ void WorldObjectSingle::drawOverlay() {
     font->measureText(overlayText.c_str(),font->getSize(), &w, &h);
     Vector3 vec = world->pos2vec(pos);
 
-    int x = vec.x+max(20.f,batch->scale.x/2.f);
-    int y = vec.y-max(20.f,batch->scale.y/2.f);
+    int x = vec.x+max(20.f,_batch->scale.x/2.f);
+    int y = vec.y-max(20.f,_batch->scale.y/2.f);
 
     overlayBackground->pos.set(x+w/2.f,y+h/2.f,1);
     overlayBackground->scale.set(w+10,h+10);
