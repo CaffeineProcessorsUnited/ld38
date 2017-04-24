@@ -25,6 +25,7 @@ World::World():
     granny->rotationRad = M_PI;
 
     background = new Background(this);
+    setHourOfDay(12);
 
     size.set(Game::getInstance()->getWidth(), Game::getInstance()->getHeight());
     dragStart = Vector2::zero();
