@@ -8,6 +8,7 @@ using namespace CPU;
 Screen::Screen(CPU::ScreenManager *parent):
         parent(NULL),
         visible(false),
+        paused(true),
         layer(BACK),
         initialized(false)
 {
@@ -38,10 +39,12 @@ bool Screen::isInitialized() const {
 
 void Screen::show() {
     setVisible(true);
+    setPaused(false);
 }
 
 void Screen::hide() {
     setVisible(false);
+    setPaused(true);
 }
 
 void Screen::setVisible(bool visible) {
