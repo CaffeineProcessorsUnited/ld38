@@ -7,8 +7,8 @@ Granny::Granny(World* world):
 WorldObjectSingle(world) {
 	speed = 0;
 
-	batch = new CPU::SpriteBatch("@granny");
-	batch->scale.set(100,100);
+	_batch = new CPU::SpriteBatch("@granny");
+	_batch->scale.set(100,100);
 }
 
 Granny::~Granny() {
@@ -25,4 +25,8 @@ void Granny::update(float delta_time) {
 
 void Granny::draw() {
 	WorldObjectSingle::draw();
+}
+
+CPU::SpriteBatch* Granny::batch() {
+    return _batch;
 }

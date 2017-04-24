@@ -11,8 +11,8 @@ WorldObjectSingle(world) {
 	action_sel->addAction(new UnicornActionWalk(this));
 	action_sel->addAction(new UnicornActionStop(this));
 
-	batch = new CPU::SpriteBatch("@unicorn");
-	batch->scale.set(100,100);
+	_batch = new CPU::SpriteBatch("@unicorn");
+	_batch->scale.set(100,100);
 }
 
 Unicorn::~Unicorn() {
@@ -27,7 +27,7 @@ void Unicorn::update(float delta_time) {
 	WorldObjectSingle::update(delta_time);
 	action_sel->doAction();
     if (speed != 0) {
-        batch->scale.set(sgn(speed) * abs(batch->scale.x), batch->scale.y);
+        _batch->scale.set(sgn(speed) * abs(_batch->scale.x), _batch->scale.y);
     }
     cout << "I'm " << (world->isVisible(pos.rad) ? "" : "not ") << "visible" << endl;
 }

@@ -26,8 +26,8 @@ RandomCloud::RandomCloud(World *world):
     pos.rad = distributionRad(generator);
 
     cout << pos.height << " " << pos.rad << endl;
-    batch = new CPU::SpriteBatch(RandomCloud::cloudSprites[spriteIndex]);
-    batch->scale.set(100, 50);
+    _batch = new CPU::SpriteBatch(RandomCloud::cloudSprites[spriteIndex]);
+    _batch->scale.set(100, 50);
 
     rainAmount = 99999999; // TODO: maybe randomize?
     isRaining = false;

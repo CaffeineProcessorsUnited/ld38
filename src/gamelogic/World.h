@@ -20,6 +20,7 @@ using namespace gameplay;
 #include "src/worldobjects/Unicorn.h"
 #include "src/worldobjects/RainbowTree.h"
 #include "src/worldobjects/Background.h"
+#include "src/worldobjects/Granny.h"
 #include "src/worldobjects/Rain.h"
 
 class World: public CPU::EventHandler {
@@ -32,6 +33,7 @@ private:
     CPU::SpriteBatch *batch;
     Font* font;
     Background *background;
+    Granny *granny;
     int seeds;
     string seedText;
 

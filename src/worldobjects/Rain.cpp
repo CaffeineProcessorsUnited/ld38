@@ -13,8 +13,8 @@ Rain::Rain(World *world) : WorldObjectSingle(world) {
 
     spriteIndex = distributionIntSprite(generator);
 
-    batch = new CPU::SpriteBatch(Rain::sprites[spriteIndex]);
-    batch->scale.set(100, 50);
+    _batch = new CPU::SpriteBatch(Rain::sprites[spriteIndex]);
+    _batch->scale.set(100, 50);
 }
 
 void Rain::update(float delta_time) {

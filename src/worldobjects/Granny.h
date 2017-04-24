@@ -15,6 +15,7 @@ class Granny : public WorldObjectSingle {
 		virtual ObjectType type() const override;
 		void update(float delta_time);
 		void draw();
+		CPU::SpriteBatch* batch();
 };
 
 #endif // Granny_h_INCLUDED

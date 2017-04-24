@@ -31,8 +31,8 @@ Background::Background(World *world):
             Vector4(0.1, 0.1, 0.1, 0.5) // 22-23 -> start again
     };
     
-    batch = new CPU::SpriteBatch("@white");
-    batch->scale.set(world->size.x, world->size.y);
+    _batch = new CPU::SpriteBatch("@white");
+    _batch->scale.set(world->size.x, world->size.y);
     current = 0;
     next = 0;
     if (colors.size() > 1) {
@@ -43,13 +43,13 @@ Background::Background(World *world):
 }
 
 void Background::draw() {
-    if (batch != nullptr) {
-        batch->draw();
+    if (_batch != nullptr) {
+        _batch->draw();
     }
 }
 
 void Background::update(float elapsedTime) {
-    if (current != next && batch != nullptr) {
+    if (current != next && _batch != nullptr) {
         lastColorChange += elapsedTime;
         if (lastColorChange > timePerColor) {
             lastColorChange -= timePerColor;
@@ -58,10 +58,10 @@ void Background::update(float elapsedTime) {
         }
         float colorPercentage = lastColorChange / timePerColor;
 
-        batch->color.x = colorPercentage * colors[next].x + (1 - colorPercentage) * colors[current].x;
-        batch->color.y = colorPercentage * colors[next].y + (1 - colorPercentage) * colors[current].y;
-        batch->color.z = colorPercentage * colors[next].z + (1 - colorPercentage) * colors[current].z;
-        batch->color.w = colorPercentage * colors[next].w + (1 - colorPercentage) * colors[current].w;
+        _batch->color.x = colorPercentage * colors[next].x + (1 - colorPercentage) * colors[current].x;
+        _batch->color.y = colorPercentage * colors[next].y + (1 - colorPercentage) * colors[current].y;
+        _batch->color.z = colorPercentage * colors[next].z + (1 - colorPercentage) * colors[current].z;
+        _batch->color.w = colorPercentage * colors[next].w + (1 - colorPercentage) * colors[current].w;
     }
 }
 
@@ -70,10 +70,10 @@ Background::~Background() {
 }
 
 void Background::resize(unsigned int width, unsigned int height) {
-    if (batch != nullptr) {
-        batch->recreate();
-        batch->scale.set(world->size.x, world->size.y);
-        batch->pos.set(world->size.x / 2, world->size.y / 2, 1);
+    if (_batch != nullptr) {
+        _batch->recreate();
+        _batch->scale.set(world->size.x, world->size.y);
+        _batch->pos.set(world->size.x / 2, world->size.y / 2, 1);
     }
 }
 

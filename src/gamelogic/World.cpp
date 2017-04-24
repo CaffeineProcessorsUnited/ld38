@@ -20,6 +20,7 @@ World::World():
     batch->rotationPoint.set(0.5, 0.5);
 
     background = new Background(this);
+    granny = new Granny(this);
 
     size.set(Game::getInstance()->getWidth(), Game::getInstance()->getHeight());
     dragStart = Vector2::zero();
@@ -75,6 +76,7 @@ void World::update(float time_delta) {
     }
     background->update(time_delta);
     batch->pos.set(_offset.x, _offset.y, 1);
+    granny->batch()->pos.set(_offset.x, _offset.y, 1);
     for(WorldObject *obj: objects){
         if(obj == nullptr){
             continue;
@@ -90,6 +92,7 @@ void World::draw() {
     }
     background->draw();
     batch->draw();
+    granny->draw();
     for(WorldObject *obj: objects){
         if (obj->type() != ObjectType::STAR) {
             obj->draw();
@@ -116,6 +119,9 @@ void World::resize(unsigned int width, unsigned int height) {
     batch->recreate();
     batch->scale.set(w,w);
     batch->rotationPoint.set(0.5, 0.5);
+    granny->batch()->recreate();
+    granny->batch()->scale.set(w,w);
+    granny->batch()->rotationPoint.set(0.5, 0.5);
 }
 
 void World::rotate(float rad) {
