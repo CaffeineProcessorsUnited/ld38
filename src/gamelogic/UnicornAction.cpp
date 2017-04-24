@@ -55,7 +55,9 @@ float UnicornActionStop::getPriority() {
 	return 0.1;
 }
 
-UnicornActionDie::UnicornActionDie(WorldObject* object):UnicornAction(object) {}
+UnicornActionDie::UnicornActionDie(WorldObject* object):UnicornAction(object) {
+	hunger_cnt = 0;
+}
 
 void UnicornActionDie::doAction() {
 	this->getUnicorn()->kill();
@@ -63,7 +65,12 @@ void UnicornActionDie::doAction() {
 
 float UnicornActionDie::getPriority() {
 	Unicorn* uni = this->getUnicorn();
-	if (uni->age > uni->maxAge) {
+	if (uni->hunger > uni->maxHunger) {
+		hunger_cnt++;
+	} else {
+		hunger_cnt = 0;
+	}
+	if (uni->age > uni->maxAge || hunger_cnt == hungerDeathDelay) {
 		return 100;
 	}
 	return 0;
@@ -89,8 +96,11 @@ void UnicornActionEat::doAction() {
 
 float UnicornActionEat::getPriority() {
 	if (this->food != nullptr) {
-
-		return this->maxprio;
+		if (food->isGrown()) {
+			return this->maxprio;
+		} else {
+			this->food = nullptr;
+		}
 	}
 	Unicorn* uni = this->getUnicorn();
 	if (uni->hunger >= hungerstep) {

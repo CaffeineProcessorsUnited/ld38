@@ -4,6 +4,7 @@
 #include "src/gamelogic/WorldObjectAction.h"
 #include "src/gamelogic/ActionSelector.h"
 #include "src/worldobjects/Unicorn.h"
+#include "src/worldobjects/RainbowTree.h"
 #include <random>
 #include <math.h>
 
@@ -38,6 +39,9 @@ class UnicornActionStop: public UnicornAction {
 };
 
 class UnicornActionDie: public UnicornAction {
+	private:
+		constexpr static int hungerDeathDelay = 100;
+		int hunger_cnt;
 	public:
 		UnicornActionDie(WorldObject* object);
 		void doAction();
@@ -47,7 +51,7 @@ class UnicornActionDie: public UnicornAction {
 class UnicornActionEat: public UnicornAction {
 	private:
 		constexpr static float maxprio = 10;
-    		constexpr static int hungerstep = 10;
+		constexpr static int hungerstep = 10;
     		RainbowTree* food;
 	public:
 		UnicornActionEat(WorldObject* object);

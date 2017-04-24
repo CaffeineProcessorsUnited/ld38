@@ -12,6 +12,7 @@ WorldObjectSingle(world) {
 	hunger = 0;
 	thirst = 0;
 	age = 0;
+	hunger_cnt = 0;
 
 	action_sel->addAction(new UnicornActionWalk(this));
 	action_sel->addAction(new UnicornActionStop(this));
@@ -31,15 +32,19 @@ ObjectType Unicorn::type() const {
 }
 
 void Unicorn::update(float delta_time) {
-	overlayText = "thinking...";
+	overlayText = "thinking...\nHunger: " + to_string(hunger) + "/" + to_string(maxHunger) + "\nAge: " + to_string(age) + "/" + to_string(maxAge);
 
 	WorldObjectSingle::update(delta_time);
 	action_sel->doAction();
+	if(hunger_cnt >= hungerStep) {
+		hunger++;
+		hunger_cnt = 0;
+	}
 	if (speed != 0) {
 	    _batch->scale.set(sgn(speed) * abs(_batch->scale.x), _batch->scale.y);
+	    hunger_cnt++;
 	}
 	cout << "I'm " << (world->isVisible(pos.rad) ? "" : "not ") << "visible" << endl;
-	hunger++;
 }
 
 void Unicorn::draw() {
