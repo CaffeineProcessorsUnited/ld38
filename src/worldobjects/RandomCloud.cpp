@@ -79,7 +79,7 @@ void RandomCloud::forceRainOnGrouping() const {
             }
         }
     }
-    if(count > 1){
+    if(count > 1) {
         for(WorldObject* object: objects){
             RandomCloud* cloud = dynamic_cast<RandomCloud*>(object);
             if(cloud != nullptr){
@@ -102,7 +102,7 @@ void RandomCloud::draw() {
 void RandomCloud::spawnRaindrop() {
     myRain = world->spawn<Rain>();
     myRain->pos = pos;
-    myRain->setSpeed(speed);
+    //myRain->setSpeed(speed);
     myRain->pos.height = pos.height - 50;
 }
 

@@ -151,7 +151,7 @@ void World::touchRelease(int x, int y, unsigned int contactIndex) {
                     treeClicked(obj);
                     break;
                 case UNICORN:
-                    unicornCicked(obj);
+                    unicornClicked(obj);
                     break;
                 case CLOUD:
                     cloudClicked(obj);
@@ -183,9 +183,11 @@ void World::touchMove(int x, int y, unsigned int contactIndex) {
     b = Vector3((float) x - _offset.x, (float) y - _offset.y, 0);
     n = Vector3(a);
     n.cross(b);
-    rotateV += n.z / 36000 * SPEED;
-    dragStart.set(x, y);
-    drag = true;
+    if (abs(n.z) > MINDRAGDISTANCE) {
+        rotateV += n.z / 36000 * SPEED;
+        dragStart.set(x, y);
+        drag = true;
+    }
 }
 
 void World::mouseScrolled(int wheelData) {
@@ -200,6 +202,11 @@ Vector2 World::offset() const {
 
 float World::getHourOfDay() {
     return background->getHourOfDay();
+}
+
+float World::getHourOfDay(float deg) {
+    float degPercent = deg / (2 * M_PI);
+    return background->getHourOfDay() + (degPercent * 24);
 }
 
 void World::setHourOfDay(float hour) {
@@ -232,6 +239,11 @@ bool World::isSky(int x, int y) const {
     return SKY <= dist;
 }
 
+bool World::isVisible(float deg) const {
+    Vector2 pos = angle2pos(deg);
+    return pos.x > 0 && pos.x < size.x && pos.y > 0 && pos.y < size.y;
+}
+
 void World::treeClicked(WorldObject *plant) {
     RainbowTree *tree = dynamic_cast<RainbowTree*>(plant);
     if(tree != nullptr){
@@ -248,7 +260,7 @@ void World::cloudClicked(WorldObject *cloud) {
 
 }
 
-void World::unicornCicked(WorldObject *unicorn) {
+void World::unicornClicked(WorldObject *unicorn) {
 
 }
 
@@ -277,6 +289,11 @@ float World::pos2angle(int x, int y){
     top.y = 9999;
     float angle = points2angle(Vector2(x, y), offset(), top);
     return (float) fmod(angle,4 * M_PI);
+}
+
+Vector2 World::angle2pos(float rad) const {
+    Vector3 vec = pos2vec(WorldPos(rad,0,0));
+    return Vector2(vec.x, vec.y);
 }
 
 void World::receiveSeeds(int n) {

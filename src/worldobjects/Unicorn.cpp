@@ -1,6 +1,7 @@
 #include "Unicorn.h"
 #include "gameplay.h"
 #include <math.h>
+#include "src/gamelogic/World.h"
 
 using namespace gameplay;
 
@@ -26,12 +27,12 @@ ObjectType Unicorn::type() const {
 
 void Unicorn::update(float delta_time) {
 	WorldObjectSingle::update(delta_time);
-	if(this->speed < 0) {
-		batch->scale.set(std::fabs(batch->scale.x)*-1,batch->scale.y);
-	} else if(this->speed == 0) {
-		batch->scale.set(batch->scale.x,batch->scale.y);
-	} else {
-		batch->scale.set(std::fabs(batch->scale.x),batch->scale.y);
+	if (speed != 0) {
+		batch->scale.set(sgn(speed) * fabs(batch->scale.x), batch->scale.y);
 	}
 	action_sel->doAction();
+}
+
+void Unicorn::draw() {
+	WorldObjectSingle::draw();
 }
