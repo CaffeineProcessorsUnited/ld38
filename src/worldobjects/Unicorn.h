@@ -20,9 +20,11 @@ class Unicorn : public WorldObjectSingle {
 		constexpr static int maxAge = 365;
 		constexpr static float range = 0.5;
 
+        float lastBreed;
 		int hunger;
 		int thirst;
 		int age;
+        bool canBreed;
 
 		Unicorn(World* world);
 		~Unicorn();

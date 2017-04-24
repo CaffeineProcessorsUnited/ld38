@@ -58,5 +58,23 @@ class UnicornActionEat: public UnicornAction {
 		void doAction();
 		float getPriority();
 };
+
+class UnicornActionReproduce: public UnicornAction {
+private:
+    constexpr static float maxprio = 5;
+    const static int maxHunger = 50;
+    const static int minAge = 0;
+    const static int maxAge = 10;
+    constexpr static float breedCooldown = 20;
+	Unicorn *partner;
+
+
+
+public:
+	UnicornActionReproduce(WorldObject* object);
+	void doAction();
+	float getPriority();
+
+};
 #endif // UnicornAction_h_INCLUDED
 

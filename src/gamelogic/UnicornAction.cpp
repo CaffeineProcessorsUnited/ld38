@@ -121,3 +121,49 @@ float UnicornActionEat::getPriority() {
 	return 0;
 }
 
+UnicornActionReproduce::UnicornActionReproduce(WorldObject* object):UnicornAction(object) {
+    partner = nullptr;
+}
+
+void UnicornActionReproduce::doAction() {
+    Unicorn* uni = this->getUnicorn();
+    if(partner != nullptr && uni->canBreed && partner->canBreed){
+        uni->setOverlayText("Where do small Unicorns come from?");
+        uni->lastBreed = 0;
+        partner->lastBreed = 0;
+        uni->hunger += 20;
+        partner->hunger += 20;
+        //uni->getWorld()->spawn<Unicorn>();
+        cout << "new unicörn" << endl;
+
+
+
+    }
+
+}
+
+float UnicornActionReproduce::getPriority() {
+    if (this->partner != nullptr) {
+
+        return this->maxprio;
+    }
+
+    Unicorn* uni = this->getUnicorn();
+    uni->canBreed = (uni->hunger <= maxHunger && uni->age >= minAge && uni->age <= maxAge && uni->lastBreed >= breedCooldown);
+    if(uni->canBreed){
+        vector<WorldObject*>& objects = uni->getWorld()->getObjects();
+        for(WorldObject* object: objects){
+            Unicorn* uni2 = dynamic_cast<Unicorn*>(object);
+            if (uni2 != nullptr) {
+                if ( abs(uni2->pos.rad - uni->pos.rad) < uni->range) {
+                    if (uni2->canBreed) {
+                        this->partner = uni2;
+                        return this->maxprio;
+                    }
+                }
+            }
+        }
+
+    }
+    return 0;
+}

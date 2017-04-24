@@ -12,6 +12,8 @@ WorldObjectSingle(world) {
 	hunger = 0;
 	thirst = 0;
 	age = 0;
+    lastBreed = 0;
+    canBreed = false;
 	hunger_cnt = 0;
 	lasttime = 0;
 
@@ -19,6 +21,7 @@ WorldObjectSingle(world) {
 	action_sel->addAction(new UnicornActionStop(this));
 	action_sel->addAction(new UnicornActionDie(this));
 	action_sel->addAction(new UnicornActionEat(this));
+    action_sel->addAction(new UnicornActionReproduce(this));
 
 	_batch = new CPU::SpriteBatch("@unicorn");
 	_batch->scale.set(90,90);
@@ -33,7 +36,7 @@ ObjectType Unicorn::type() const {
 }
 
 void Unicorn::update(float delta_time) {
-	overlayText = "thinking...\nHunger: " + to_string(hunger) + "/" + to_string(maxHunger) + "\nAge: " + to_string(age) + "/" + to_string(maxAge);
+    overlayText = "CanBreed: "+to_string(canBreed)+ "\nlastBreed: "+to_string(lastBreed)+"\nHunger: " + to_string(hunger) + "/" + to_string(maxHunger) + "\nAge: " + to_string(age) + "/" + to_string(maxAge);
 	float t = world->getHourOfDay();
 	if(t < lasttime) {
 		age++;
@@ -49,7 +52,7 @@ void Unicorn::update(float delta_time) {
 	    _batch->scale.set(sgn(speed) * abs(_batch->scale.x), _batch->scale.y);
 	    hunger_cnt++;
 	}
-	cout << "I'm " << (world->isVisible(pos.rad) ? "" : "not ") << "visible" << endl;
+    lastBreed += delta_time;
 }
 
 void Unicorn::draw() {

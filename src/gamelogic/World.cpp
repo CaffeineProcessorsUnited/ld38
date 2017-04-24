@@ -41,7 +41,10 @@ World::World():
     for(int i = 0; i < 30; i++){
         spawn<RandomCloud>();
     }
-    spawn<Unicorn>();
+    for(int i = 0; i < 7; i++){
+        spawn<Unicorn>();
+    }
+
     //Spawn Random Stars.
     for(int i = 0; i < 200; i++){
         spawn<RandomStar>();
