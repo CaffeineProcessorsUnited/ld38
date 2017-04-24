@@ -1,4 +1,6 @@
 #include "Unicorn.h"
+#include "gameplay.h"
+#include <math.h>
 #include "src/gamelogic/World.h"
 
 using namespace gameplay;
@@ -20,7 +22,7 @@ Unicorn::~Unicorn() {
 }
 
 ObjectType Unicorn::type() const {
-    return ObjectType::UNICORN;
+	return ObjectType::UNICORN;
 }
 
 void Unicorn::update(float delta_time) {
