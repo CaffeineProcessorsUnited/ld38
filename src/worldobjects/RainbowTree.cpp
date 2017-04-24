@@ -23,7 +23,16 @@ void RainbowTree::grow(){
         this->growthState += 1;
 
         if(growthState == 3){
-            world->receiveSeeds(1);
+            std::random_device generator;
+            std::uniform_int_distribution<int> seedDist(0,100);
+            int numseeds = seedDist(generator);
+            if(numseeds < 60) {
+                world->receiveSeeds(1);
+            } else if(numseeds < 90){
+                world->receiveSeeds(2);
+            } else {
+                world->receiveSeeds(3);
+            }
         }
     }
     upgradeBatch();
@@ -88,7 +97,7 @@ void RainbowTree::update(float delta) {
 }
 
 void RainbowTree::receiveRain(float numWater) {
-    water = max(water+numWater,99.f);
+    water = min(water+numWater,99.f);
 }
 
 bool RainbowTree::canDie() const {

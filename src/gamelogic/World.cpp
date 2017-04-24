@@ -25,6 +25,10 @@ World::World():
     dragStart = Vector2::zero();
     rotateV = 0;
     drag = false;
+
+    font = Font::create("res/roboto.gpb");
+    seeds = 10;
+    seedText = "Got "+to_string(seeds)+" seeds";
 }
 
 World::~World() {
@@ -91,6 +95,10 @@ void World::draw() {
             obj->draw();
         }
     }
+
+    font->start();
+    font->drawText(seedText.c_str(), 20, 50, Vector4(1, 0, 0, 1), font->getSize());
+    font->finish();
 }
 
 void World::resize(unsigned int width, unsigned int height) {
@@ -134,6 +142,8 @@ void World::touchRelease(int x, int y, unsigned int contactIndex) {
         vector<WorldObject *> objs = objectsAtPos(x,y);
         cout << "got " << objs.size() << "objs" << endl;
 
+        int countRain = 0;
+
         for(WorldObject* obj: objs){
             ObjectType type = obj->type();
             switch(type){
@@ -146,11 +156,14 @@ void World::touchRelease(int x, int y, unsigned int contactIndex) {
                 case CLOUD:
                     cloudClicked(obj);
                     break;
+                case RAIN:
+                    countRain += 1;
+                    break;
             }
         }
         if(isGround(x,y)){
             cout << "GROUND " << x << " " << y << endl;
-            if(objs.size() == 0) {
+            if(objs.size() == countRain) {
                 plantSapling(x, y);
             }
             //Do something with ground
@@ -240,9 +253,12 @@ void World::unicornCicked(WorldObject *unicorn) {
 }
 
 void World::plantSapling(int x, int y) {
-    float rotation = pos2angle(x,y);
-    RainbowTree* tree = spawn<RainbowTree>();
-    tree->pos.rad = rotation;
+    if(seeds > 0) {
+        float rotation = pos2angle(x, y);
+        RainbowTree *tree = spawn<RainbowTree>();
+        tree->pos.rad = rotation;
+        seeds -= 1;
+    }
 }
 
 float World::points2angle(const Vector2& p1, const Vector2& p2, const Vector2& p3){
@@ -264,6 +280,7 @@ float World::pos2angle(int x, int y){
 
 void World::receiveSeeds(int n) {
     seeds += n;
+    seedText = "Got "+to_string(seeds)+" seeds";
 }
 
 void World::receiveRain(const WorldPos& pos) {

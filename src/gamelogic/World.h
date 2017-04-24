@@ -30,8 +30,10 @@ private:
     vector<WorldObject *> toDestroy;
     Vector2 _offset;
     CPU::SpriteBatch *batch;
+    Font* font;
     Background *background;
     int seeds;
+    string seedText;
 
     bool drag;
     Vector2 dragStart;
