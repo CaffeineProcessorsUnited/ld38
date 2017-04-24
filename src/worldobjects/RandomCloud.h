@@ -39,7 +39,7 @@ public:
     bool canRain();
     bool canRain(int amount);
     bool doRain();
-    bool doRain(int amount, bool dieAfter=false);
+    bool doRain(int amount);
     virtual ObjectType type() const;
 
     void forceRainOnGrouping() const;

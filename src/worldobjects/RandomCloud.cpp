@@ -29,7 +29,7 @@ RandomCloud::RandomCloud(World *world):
     _batch = new CPU::SpriteBatch(RandomCloud::cloudSprites[spriteIndex]);
     _batch->scale.set(100, 50);
 
-    rainAmount = 99999999; // TODO: maybe randomize?
+    rainAmount = 20;
     isRaining = false;
     rainTime = 0;
     myRain = NULL;
@@ -43,7 +43,7 @@ void RandomCloud::update(float delta_time) {
 
 
     if (isRaining) {
-        if (myRain != NULL){
+        if (myRain != nullptr){
             if (pos.height - myRain->pos.height > 100){
                 spawnRaindrop();
             }
@@ -57,13 +57,13 @@ void RandomCloud::update(float delta_time) {
         } else {
             isRaining = false;
         }
+    } else {
+        myRain = nullptr;
     }
-    else {
-        myRain = NULL;
-        if(mustDie){
-            cout << "DIEDIEDIE" << endl;
-            world->destroy(this);
-        }
+
+    if(!isRaining && rainAmount <= 0) {
+        cout << "DIEDIEDIE" << endl;
+        world->destroy(this);
     }
 
     forceRainOnGrouping();
@@ -71,7 +71,7 @@ void RandomCloud::update(float delta_time) {
 
 void RandomCloud::forceRainOnGrouping() const {
     vector<WorldObject*>& objects = world->getObjects();
-
+    return;
 
     int count = 0;
     for(WorldObject* object: objects){
@@ -96,10 +96,6 @@ void RandomCloud::forceRainOnGrouping() const {
 
 void RandomCloud::draw() {
     WorldObjectSingle::draw();
-    if (isRaining) {
-
-
-    }
 }
 
 void RandomCloud::spawnRaindrop() {
@@ -118,24 +114,19 @@ bool RandomCloud::canRain() {
 }
 
 bool RandomCloud::canRain(int amount) {
-    if (rainAmount - amount >= 0) {
-        rainAmount -= amount;
-        return true;
-    }
-    return false;
+    return (rainAmount - amount >= 0);
 }
 
 bool RandomCloud::doRain() {
     return doRain(1);
 }
 
-bool RandomCloud::doRain(int amount, bool dieAfter) {
+bool RandomCloud::doRain(int amount) {
     if (!canRain(amount)) {
         return false;
     }
+    rainAmount -= amount;
     rainTime = 0;
     isRaining = true;
-    if(dieAfter)
-        mustDie = true;
     return true;
 }
