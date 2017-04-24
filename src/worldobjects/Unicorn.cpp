@@ -1,5 +1,5 @@
 #include "Unicorn.h"
-#include "gameplay.h"
+#include "src/gamelogic/World.h"
 
 using namespace gameplay;
 
@@ -26,6 +26,7 @@ ObjectType Unicorn::type() const {
 void Unicorn::update(float delta_time) {
 	WorldObjectSingle::update(delta_time);
 	action_sel->doAction();
+    cout << "I'm " << (world->isVisible(pos.rad) ? "" : "not ") << "visible" << endl;
 }
 
 void Unicorn::draw() {

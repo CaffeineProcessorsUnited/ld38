@@ -79,8 +79,9 @@ public:
     bool isGround(int x, int y) const;
     bool isAir(int x, int y) const;
     bool isSky(int x, int y) const;
+    bool isVisible(float deg) const;
 
-    void unicornCicked(WorldObject* unicorn);
+    void unicornClicked(WorldObject *unicorn);
     void treeClicked(WorldObject *plant);
     void cloudClicked(WorldObject* cloud);
     void receiveSeeds(int n);
@@ -104,6 +105,7 @@ public:
     void plantSapling(int x, int y);
     float points2angle(const Vector2 &p1, const Vector2 &p2, const Vector2 &p3);
     float pos2angle(int x, int y);
+    Vector2 angle2pos(float rad) const;
     Vector3 pos2vec(const WorldPos& pos) const;
 };
 
