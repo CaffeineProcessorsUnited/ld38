@@ -62,10 +62,10 @@ class UnicornActionEat: public UnicornAction {
 class UnicornActionReproduce: public UnicornAction {
 private:
     constexpr static float maxprio = 5;
-    const static int maxHunger = 50;
-    const static int minAge = 0;
-    const static int maxAge = 10;
-    constexpr static float breedCooldown = 20;
+    const static int maxHunger = 20;
+    const static int minAge = 10;
+    const static int maxAge = 200;
+    constexpr static float breedCooldown = 100;
 	Unicorn *partner;
 
 
