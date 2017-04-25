@@ -28,8 +28,15 @@ void MainMenu::render() {
 }
 
 void MainMenu::controlClick(Control* control){
-    if(control->getId() == "startButton"){
+    if(strcmp(control->getId(),"startButton") == 0){
         cout << "Start Button Pressed! Yay!" << endl;
+        testScreen = getParent()->createScreen<TestScreen>(BACK, false);
+        testScreen->initialize();
+        testScreen->show();
+        setVisible(false);
+        testScreen->update(0);
+
+
     }
 }
 
