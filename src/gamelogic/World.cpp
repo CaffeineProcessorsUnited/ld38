@@ -104,12 +104,17 @@ void World::update(float time_delta) {
     background->update(time_delta);
     batch->pos.set(_offset.x, _offset.y, 1);
     granny->pos.set(_offset.x, _offset.y, 1);
+    int unicorn_cnt = 0;
     for(WorldObject *obj: objects){
         if(obj == nullptr){
             continue;
         }
+        if(obj->type() == ObjectType::UNICORN) {
+		unicorn_cnt++;
+        }
         obj->update(time_delta);
     }
+    unicornText = "Amount of Unicorns: " + to_string(unicorn_cnt);
 }
 void World::draw() {
     for(WorldObject *obj: objects){
@@ -128,6 +133,7 @@ void World::draw() {
 
     font->start();
     font->drawText(seedText.c_str(), 20, 50, Vector4(1, 0, 0, 1), font->getSize());
+    font->drawText(unicornText.c_str(), 20, 65, Vector4(1, 0, 0, 1), font->getSize());
     for(WorldObject *obj: objects){
         if(obj->intersect(mousePos.x, mousePos.y)) {
             obj->drawOverlay();

@@ -35,6 +35,7 @@ private:
     Background *background;
     int seeds;
     string seedText;
+    string unicornText;
 
     bool drag;
     Vector2 mousePos;
