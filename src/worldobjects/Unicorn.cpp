@@ -36,7 +36,7 @@ ObjectType Unicorn::type() const {
 }
 
 void Unicorn::update(float delta_time) {
-    overlayText = "CanBreed: "+to_string(canBreed)+ "\nlastBreed: "+to_string(lastBreed)+"\nHunger: " + to_string(hunger) + "/" + to_string(maxHunger) + "\nAge: " + to_string(age) + "/" + to_string(maxAge);
+    overlayText = "\nHunger: " + to_string(hunger) + "/" + to_string(maxHunger) + "\nAge: " + to_string(age) + "/" + to_string(maxAge);
 	float t = world->getHourOfDay();
 	if(t < lasttime) {
 		age++;
