@@ -17,7 +17,7 @@ class Unicorn : public WorldObjectSingle {
 		constexpr static float maxSpeed = 0.1f;
 		constexpr static int maxHunger = 100;
 		constexpr static int hungerStep = 50;
-		constexpr static int maxAge = 365;
+		constexpr static int maxAge = 10;
 		constexpr static float range = 0.5;
 
         float lastBreed;
