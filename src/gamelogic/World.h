@@ -36,6 +36,7 @@ private:
     int seeds;
     string seedText;
     string unicornText;
+    string highscoreText;
 
     bool drag;
     Vector2 mousePos;
@@ -59,6 +60,9 @@ public:
     constexpr static float RAIN_DIST = 64;
     constexpr static float RAIN_HYDR = 10.f;
     constexpr static float CLOUD_DELAY = 10.f;
+
+    int unicorn_cnt;
+    int unicorn_cnt_max;
 
     vector<WorldResource *> &getResources();
     vector<WorldObject *> &getObjects();

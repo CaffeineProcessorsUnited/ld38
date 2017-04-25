@@ -14,7 +14,7 @@ float World::RADIUS = 512;
 
 World::World():
     resources(),
-    objects()
+    objects(), unicorn_cnt_max(0)
 {
     batch = new CPU::SpriteBatch("@world");
     batch->scale.set(-2*RADIUS, 2*RADIUS);
@@ -104,7 +104,7 @@ void World::update(float time_delta) {
     background->update(time_delta);
     batch->pos.set(_offset.x, _offset.y, 1);
     granny->pos.set(_offset.x, _offset.y, 1);
-    int unicorn_cnt = 0;
+    unicorn_cnt = 0;
     for(WorldObject *obj: objects){
         if(obj == nullptr){
             continue;
@@ -114,7 +114,11 @@ void World::update(float time_delta) {
         }
         obj->update(time_delta);
     }
+    if(unicorn_cnt > unicorn_cnt_max) {
+        unicorn_cnt_max = unicorn_cnt;
+    }
     unicornText = "Amount of Unicorns: " + to_string(unicorn_cnt);
+    highscoreText = "Highscore: " + to_string(unicorn_cnt_max);
 }
 void World::draw() {
     for(WorldObject *obj: objects){
@@ -134,6 +138,7 @@ void World::draw() {
     font->start();
     font->drawText(seedText.c_str(), 20, 50, Vector4(1, 0, 0, 1), font->getSize());
     font->drawText(unicornText.c_str(), 20, 65, Vector4(1, 0, 0, 1), font->getSize());
+    font->drawText(highscoreText.c_str(), 20, 80, Vector4(1, 0, 0, 1), font->getSize());
     for(WorldObject *obj: objects){
         if(obj->intersect(mousePos.x, mousePos.y)) {
             obj->drawOverlay();

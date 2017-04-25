@@ -83,13 +83,17 @@ UnicornActionEat::UnicornActionEat(WorldObject* object):UnicornAction(object) {
 void UnicornActionEat::doAction() {
 	Unicorn* uni = this->getUnicorn();
 	uni->setOverlayText("Going to eat something");
-	if (abs(food->pos.rad - uni->pos.rad) > 0.1 ) {
-		uni->setSpeed(sgn(food->pos.rad - uni->pos.rad) * uni->maxSpeed);
-	} else if (food->isGrown()) {
-		food->consume();
-		uni->hunger -= this->hungerstep;
-		this->food = nullptr;
-	} else {
+	try{
+		if (abs(food->pos.rad - uni->pos.rad) > 0.1 ) {
+			uni->setSpeed(sgn(food->pos.rad - uni->pos.rad) * uni->maxSpeed);
+		} else if (food->isGrown()) {
+			food->consume();
+			uni->hunger -= this->hungerstep;
+			this->food = nullptr;
+		} else {
+			this->food = nullptr;
+		}
+	} catch(const std::exception& e) {
 		this->food = nullptr;
 	}
 }
@@ -140,14 +144,7 @@ void UnicornActionReproduce::doAction() {
             partner->canBreed = false;
             partner = nullptr;
             uni->canBreed = false;
-
         }
-
-
-
-
-
-
     }
 
 }
